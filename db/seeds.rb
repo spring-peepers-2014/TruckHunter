@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+
+
+Trucks.create(name: "The Cinnamon Snail", twitter_handle: "VeganLunchTruck")
+Trucks.create(name: "Korilla BBQ", twitter_handle: "KorillaBBQ")
+Trucks.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks")
+Trucks.create(name: "Milk Truck", twitter_handle: "milktrucknyc")

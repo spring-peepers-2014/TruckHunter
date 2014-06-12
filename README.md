@@ -13,3 +13,9 @@ Minimum Viable Product
 * A user can add a new food truck's name and twitter handle.
 * A user can report issues with a food truck's information.
 * Administrators can review user submitted information to approve new food trucks to the database or correct issues with a truck's data.	
+
+
+Schema
+===========
+
+![First Draft](doc/schema.png)

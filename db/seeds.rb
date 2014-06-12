@@ -10,7 +10,7 @@
 
 
 
-Trucks.create(name: "The Cinnamon Snail", twitter_handle: "VeganLunchTruck")
-Trucks.create(name: "Korilla BBQ", twitter_handle: "KorillaBBQ")
-Trucks.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks")
-Trucks.create(name: "Milk Truck", twitter_handle: "milktrucknyc")
+Truck.create(name: "The Cinnamon Snail", twitter_handle: "VeganLunchTruck")
+Truck.create(name: "Korilla BBQ", twitter_handle: "KorillaBBQ")
+Truck.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks")
+Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc")

@@ -7,14 +7,22 @@ class Truck < ActiveRecord::Base
 
 
 	def fetch_tweets!
-		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
-		# p trucks_tweets.text
-
+		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
 
 		trucks_tweets.each do |tweet|
+			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
+			geo_enabled = JSON.parse(tweet.to_json)["user"]["geo_enabled"]
 
-			p JSON.parse(tweet.to_json)["user"]["geo_enabled"]
-			# Tweet.create(body: tweet.tweet, tweet_time: tweet.created_at)
+			if geo_enabled
+				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
+				new_tweet.location = coordinates
+			else
+				# LocationHunter.parse_for_location(tweet.text)
+				##### parse tweet text for location	#####
+			end
+
+			new_tweet.save
+
 		end
 	end
 
@@ -22,7 +30,7 @@ class Truck < ActiveRecord::Base
 		return false if self.latitude.nil? || self.longitude.nil?
 		time_since_update = Time.now - self.updated_at
 
-		if time_since_update > 14400 
+		if time_since_update > 14400 ###4 hour interval
 			false
 		else
 			true

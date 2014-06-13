@@ -1,6 +1,6 @@
 class Tweet < ActiveRecord::Base
 	belongs_to :truck
 
-	validates :body, presence: true
-	validates :tweet_time, presence: true
+	validates :body, presence: true, uniqueness: true
+	validates :tweet_time, presence: true, uniqueness: true
 end

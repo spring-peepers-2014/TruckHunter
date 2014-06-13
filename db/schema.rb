@@ -29,15 +29,17 @@ ActiveRecord::Schema.define(version: 20140612201815) do
     t.boolean  "active",          default: true
     t.string   "profile_img_url"
     t.boolean  "approved",        default: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tweets", force: true do |t|
     t.integer  "truck_id"
-    t.text     "body",              null: false
-    t.string   "tweet_coordinates"
-    t.datetime "tweet_time",        null: false
+    t.text     "body",       null: false
+    t.string   "location"
+    t.datetime "tweet_time", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

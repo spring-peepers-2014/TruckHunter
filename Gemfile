@@ -38,10 +38,8 @@ gem 'geocoder'
 gem 'debugger', group: [:development, :test]
 
 gem 'twitter'
-gem 'geocoder'
-gem 'json'
 
-gem 'mapbox-rails'
+gem 'json'
 
 gem 'mapbox-rails'
 

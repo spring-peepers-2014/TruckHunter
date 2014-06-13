@@ -1,4 +1,8 @@
 <script type='text/javascript'>
-  var map = L.mapbox.map('map', 'inslee.igapaca7', { center: [40.7427,-73.97], zoom: 13});
+  var map = L.mapbox.map('map', 'inslee.igapaca7');
+
+  map.featureLayer.on('click', function(e) {
+         map.panTo(e.layer.getLatLng());
+     });
 
 </script>

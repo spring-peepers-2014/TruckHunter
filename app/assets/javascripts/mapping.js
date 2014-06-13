@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.jsr
 
 $(document).ready(function(){
-  var map = L.mapbox.map('map', 'inslee.igapaca7');
+  // var map = L.mapbox.map('map', 'inslee.igapaca7');
   // map.featureLayer.on('click', function(e) {
   //        map.panTo(e.layer.getLatLng());
   //    });
@@ -11,9 +11,13 @@ $(document).ready(function(){
     url: "/trucks.json",
     dataType: 'json'
   }).done(function(response) {
-    console.log(response[0].geometry.coordinates)
-    L.marker(response[0].geometry.coordinates).addTo(map)
-    .bindPopup(response[0].properties.name)
+    console.log(response)
+    // console.log(response[0].geometry.coordinates)
+    L.mapbox.map('map', 'inslee.igapaca7')
+    .setView([37.8, -96], 4)
+    .featureLayer.setGeoJSON(response);
+    // L.marker(response[0].geometry.coordinates).addTo(map)
+    // .bindPopup(response[0].properties.name)
 
   });
 

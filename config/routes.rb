@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "trucks#index"
+  root "home#index"
 
   resources :trucks do
     resources :tweets

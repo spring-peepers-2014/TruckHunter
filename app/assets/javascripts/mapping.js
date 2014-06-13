@@ -12,12 +12,10 @@ $(document).ready(function(){
     dataType: 'json'
   }).done(function(response) {
     console.log(response)
-    // console.log(response[0].geometry.coordinates)
     L.mapbox.map('map', 'inslee.igapaca7')
-    .setView([37.8, -96], 4)
+    .setView([40.75, -73.97], 13)
     .featureLayer.setGeoJSON(response);
-    // L.marker(response[0].geometry.coordinates).addTo(map)
-    // .bindPopup(response[0].properties.name)
+
 
   });
 

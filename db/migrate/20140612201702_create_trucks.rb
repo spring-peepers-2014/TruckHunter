@@ -5,7 +5,7 @@ class CreateTrucks < ActiveRecord::Migration
 		t.string :twitter_handle, :null => false
 		t.boolean :active, :default => true
 		t.string :profile_img_url
-		t.boolean :approved, :default => false
+		t.boolean :approved, :default => true
 		t.float :latitude
 		t.float :longitude
 

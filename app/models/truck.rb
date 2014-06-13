@@ -10,12 +10,18 @@ class Truck < ActiveRecord::Base
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
 		# p trucks_tweets.text
 
-		# p Geocoder.search("21st and 5th from 9:00-3:00 new york").first
+		# p Geocoder.search("21st and 5th new york").first
 
 		trucks_tweets.each do |tweet|
-			p tweet.to_json
+
+			p "Geo enabled:" JSON.parse(tweet.to_json)["user"]["geo_enabled"]
 			# Tweet.create(body: tweet.tweet, tweet_time: tweet.created_at)
 		end
 	end
+
+	def has_current_tweets?
+		# @tweets = self.tweets.last
+	end
+
 
 end

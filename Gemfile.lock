@@ -203,6 +203,7 @@ DEPENDENCIES
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
+  json
   launchy
   mapbox-rails
   pg

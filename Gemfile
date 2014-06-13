@@ -41,6 +41,8 @@ gem 'twitter'
 gem 'geocoder'
 gem 'json'
 
+gem 'mapbox-rails'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

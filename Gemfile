@@ -40,6 +40,8 @@ gem 'debugger', group: [:development, :test]
 gem 'twitter'
 gem 'geocoder'
 
+gem 'mapbox-rails'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

@@ -6,6 +6,14 @@ class TrucksController < ApplicationController
 	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
 	@unknown_trucks = @trucks - @current_trucks
 
+	@unknown_trucks.each do |truck|
+		truck.fetch_tweets!
+	end
+
+	
+
+
+
     # @geojson = []
     @geojson = [
   {

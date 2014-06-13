@@ -10,8 +10,9 @@ class Truck < ActiveRecord::Base
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
 
 		trucks_tweets.each do |tweet|
+
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
-			geo_enabled = JSON.parse(tweet.to_json)["user"]["geo_enabled"]
+			geo_enabled = JSON.parse(tweet.to_json)["geo"]
 
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
@@ -19,11 +20,16 @@ class Truck < ActiveRecord::Base
 			else
 				# LocationHunter.parse_for_location(tweet.text)
 				##### parse tweet text for location	#####
+				p "no coordinates"
+				p JSON.parse(tweet.to_json)
 			end
 
 			new_tweet.save
-
 		end
+	end
+
+	def update_location
+		tweets = self.tweets.reverse
 	end
 
 	def has_current_location?

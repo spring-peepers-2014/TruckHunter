@@ -10,7 +10,7 @@
 
 
 
-Truck.create(name: "The Cinnamon Snail", twitter_handle: "VeganLunchTruck")
-Truck.create(name: "Korilla BBQ", twitter_handle: "KorillaBBQ")
-Truck.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks")
-Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc")
+Truck.create(name: "The Cinnamon Snail", twitter_handle: "VeganLunchTruck", latitude: -73.947, longitude: 40.755)
+Truck.create(name: "Korilla BBQ", twitter_handle: "KorillaBBQ", latitude: -73.94, longitude: 40.742)
+Truck.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks", latitude: -73.95, longitude: 40.749)
+Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc", latitude: -73.957, longitude: 40.732)

@@ -48,5 +48,26 @@ class Truck < ActiveRecord::Base
 		self.longitude = longitude
 	end
 
+	def self.geo_json
+
+		geojson =[]
+		Truck.all.each do |truck|
+			geojson <<  { type: "Feature",
+		    					  geometry: {
+						        	type: "Point",
+						        	coordinates: [truck.latitude,truck.longitude]
+						      	},
+								    properties: {
+								      title: truck.name,
+								      description: "Twitter" + truck.twitter_handle,
+								      :'marker-color' => "#6c6c6c",
+								      :'marker-size' => "small",
+								      :'marker-symbol' => "bus"
+								    }
+									}
+		end
+		return geojson.to_json
+	end
+
 
 end

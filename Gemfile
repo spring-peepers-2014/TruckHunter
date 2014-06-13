@@ -38,6 +38,7 @@ gem 'geocoder'
 gem 'debugger', group: [:development, :test]
 
 gem 'twitter'
+gem 'geocoder'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -3,7 +3,7 @@ class CreateTweets < ActiveRecord::Migration
     create_table :tweets do |t|
     	t.belongs_to :truck
     	t.text :body, :null => false
-    	t.string :tweet_coordinates
+    	t.string :location
     	t.datetime :tweet_time, :null => false
 
     	t.timestamps

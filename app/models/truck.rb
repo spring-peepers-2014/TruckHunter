@@ -23,11 +23,6 @@ class Truck < ActiveRecord::Base
 
 			new_tweet.save
 
-<<<<<<< HEAD
-			# p "Geo enabled:" JSON.parse(tweet.to_json)["user"]["geo_enabled"]
-			# Tweet.create(body: tweet.tweet, tweet_time: tweet.created_at)
-=======
->>>>>>> bfafc92e5e0a3148f6009c1a932d14bc2d3988cb
 		end
 		
 	end

@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.jsr
 
 $(document).ready(function(){
-  // var map = L.mapbox.map('map', 'inslee.igapaca7');
+
   // map.getTileJSON();
 //   $.ajax({
 //     type: "get",

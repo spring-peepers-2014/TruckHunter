@@ -39,6 +39,7 @@ gem 'debugger', group: [:development, :test]
 
 gem 'twitter'
 gem 'geocoder'
+gem 'json'
 
 group :development, :test do
   gem 'rspec-rails'

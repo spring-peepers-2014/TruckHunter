@@ -6,6 +6,8 @@ class CreateTrucks < ActiveRecord::Migration
 		t.boolean :active, :default => true
 		t.string :profile_img_url
 		t.boolean :approved, :default => false
+		t.float :latitude
+		t.float :longitude
 
      	t.timestamps
     end

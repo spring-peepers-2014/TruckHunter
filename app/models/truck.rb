@@ -17,6 +17,7 @@ class Truck < ActiveRecord::Base
 			p "Geo enabled:" JSON.parse(tweet.to_json)["user"]["geo_enabled"]
 			# Tweet.create(body: tweet.tweet, tweet_time: tweet.created_at)
 		end
+		
 	end
 
 	def has_current_tweets?

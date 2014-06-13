@@ -28,11 +28,7 @@ ActiveRecord::Schema.define(version: 20140612201815) do
     t.string   "twitter_handle",                 null: false
     t.boolean  "active",          default: true
     t.string   "profile_img_url"
-<<<<<<< HEAD
-    t.boolean  "approved",        default: false
-=======
     t.boolean  "approved",        default: true
->>>>>>> bfafc92e5e0a3148f6009c1a932d14bc2d3988cb
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"

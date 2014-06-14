@@ -21,6 +21,8 @@ class TrucksController < ApplicationController
 		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
+  	end
+  	
   end
 
   def new

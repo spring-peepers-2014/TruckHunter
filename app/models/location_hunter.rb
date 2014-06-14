@@ -26,8 +26,8 @@ module LocationHunter
 
 		return false if [latitude, longitude] == [40.7127837, -74.0059413]
 			
-		self.latitude = latitude
-		self.longitude = longitude
+		# self.latitude = latitude
+		# self.longitude = longitude
 
 		[latitude, longitude].join(",")
 	end

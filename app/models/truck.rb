@@ -20,26 +20,33 @@ class Truck < ActiveRecord::Base
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
 				new_tweet.location = coordinates
 			else
-				new_tweet.location = geocode_coordinates(tweet.text)
+				new_tweet.location = get_coordinates(tweet.text)
 			end
 
+			p new_tweet.location
+
 			p "*****************************"
-			p new_tweet.body
+			p new_tweet
 
 			new_tweet.save
 			
 			p "*****************************"
-			p new_tweet.body
+			p new_tweet
 		end
+
 	end
 
 	def update_location
 		tweets_with_location = self.tweets.where.not(location: nil)
 		if tweets_with_location != []
 			p tweets_with_location.last.location
-			geocode_coordinates(tweets_with_location.last.location)
+			
+			coords = tweets_with_location.last.location.split(",")
+			self.latitude = coords[0]
+			self.longitude = coords[1]
 		end
 	end
+
 
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?

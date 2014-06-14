@@ -10,7 +10,7 @@ MapWidget.View.prototype = {
 
 		$.ajax({
     type: "get",
-    url: "/trucks.json",
+    url: "/trucks/new.json",
     dataType: 'json'
 		}).done(function(response){
 				L.mapbox.featureLayer(response).addTo(mapLoad);

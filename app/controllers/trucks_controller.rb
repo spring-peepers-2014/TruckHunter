@@ -8,22 +8,23 @@ class TrucksController < ApplicationController
 
 	@unknown_trucks.each do |truck|
 		last_tweet = truck.tweets.last
-		time_since_last_tweet = Time.now - last_tweet.created_at
+
+		if last_tweet.nil?
+			time_since_last_tweet = 9000 ### if no tweets
+		else
+			time_since_last_tweet = Time.now - last_tweet.created_at
+		end
 
 		if time_since_last_tweet > 3600
 			truck.fetch_tweets!
 			truck.update_location
 		end
-	end
 
-	@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
-
-  render :json => Truck.geo_json
-  
+		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
   end
 
   def new
-
+  	render :json => Truck.geo_json
   end
 
   def create

@@ -18,42 +18,8 @@ class TrucksController < ApplicationController
 
 	@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
 
-    # @geojson = []
-    @geojson = [
-  {
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: [-77.03238901390978,38.913188059745586]
-    },
-    properties: {
-      title: "Mapbox DC",
-      description: "1714 14th St NW, Washington DC",
-      :'marker-color' => "#6c6c6c",
-      :'marker-size' => "small",
-      :'marker-symbol' => "bus"
-    }
-  },
-  {
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: [-122.414, 37.776]
-    },
-    properties: {
-      title: "Mapbox SF",
-      description: "155 9th St, San Francisco",
-      :'marker-color' => "#6c6c6c",
-      :'marker-size' => "small",
-      :'marker-symbol' => "bus"
-    }
-  }
-]
 
-
-
-  render :json => @geojson.to_json
-
+  render :json => Truck.geo_json
   end
 
 

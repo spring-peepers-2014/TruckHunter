@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140612201815) do
     t.boolean  "active",          default: true
     t.string   "profile_img_url"
     t.boolean  "approved",        default: true
+    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
@@ -38,7 +39,6 @@ ActiveRecord::Schema.define(version: 20140612201815) do
   create_table "tweets", force: true do |t|
     t.integer  "truck_id"
     t.text     "body",       null: false
-    t.string   "location"
     t.datetime "tweet_time", null: false
     t.datetime "created_at"
     t.datetime "updated_at"

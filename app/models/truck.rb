@@ -7,6 +7,10 @@ class Truck < ActiveRecord::Base
 	validates :name, presence: true
 	validates :twitter_handle, uniqueness: true
 
+	geocoded_by :address
+	after_validation :geocode, :if => :address_changed?
+	before_save :geocode
+
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
@@ -21,19 +25,20 @@ class Truck < ActiveRecord::Base
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
 				self.latitude = coordinates[0]
 				self.longitude =  coordinates[1]
-				return
+				# return
 			else
-				coordinates = self.get_coordinates(tweet.text)
+				self.get_coordinates(tweet.text)
+				# coordinates = self.get_coordinates(tweet.text)
 
-				if coordinates
-					p coordinates
-					p "you got here for this tweet"
-					self.update(latitude: coordinates[0])
-					self.update(longitude: coordinates[1])
-					p self.latitude
-					p self.longitude
-					return
-				end
+				# if coordinates
+				# 	p coordinates
+				# 	p "you got here for this tweet"
+				# 	self.update(latitude: coordinates[0])
+				# 	self.update(longitude: coordinates[1])
+				# 	p self.latitude
+				# 	p self.longitude
+				# 	return
+				# end
 			end
 
 		end
@@ -54,14 +59,14 @@ class Truck < ActiveRecord::Base
 
 	def self.geo_json
 
-		@trucks = Truck.all
+		@trucks = Truck.where("address IS NOT NULL")
 
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|
 				json.type "Feature"
 				json.geometry do
 					json.type "Point"
-					json.coordinates [truck.latitude,truck.longitude]
+					json.coordinates [truck.longitude, truck.latitude]
 				end
 				json.properties do
 					json.title truck.name

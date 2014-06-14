@@ -11,19 +11,14 @@ class TrucksController < ApplicationController
   		last_tweet = truck.tweets.last
 
   		if last_tweet.nil?
-  			time_since_last_tweet = 9000 ### if no tweets
+  			time_since_last_tweet = 9000
   		else
   			time_since_last_tweet = Time.now - last_tweet.created_at
   		end
 
-  		if time_since_last_tweet > 3600
-  			truck.fetch_tweets!
-  			truck.update_location
-  		end
-
-  		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
+  		truck.fetch_tweets! if time_since_last_tweet > 3600
     end
-
+		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
   end
 
   def new

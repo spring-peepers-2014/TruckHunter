@@ -2,6 +2,7 @@ class TrucksController < ApplicationController
   respond_to :json
 
   def index
+<<<<<<< HEAD
 	@trucks = Truck.where(approved: true, active: true)
 	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
 	@unknown_trucks = @trucks - @current_trucks
@@ -19,16 +20,12 @@ class TrucksController < ApplicationController
 			truck.fetch_tweets!
 			truck.update_location
 		end
-	end
 
-	@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
-
-  render :json => Truck.geo_json
-  
+		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
   end
 
   def new
-
+  	render :json => Truck.geo_json
   end
 
   def create

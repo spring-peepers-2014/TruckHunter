@@ -1,5 +1,6 @@
 class TrucksController < ApplicationController
-  respond_to :json
+	respond_to :json
+	before_filter :load_truck, :except => [:index, :create]
 
   def index
 	@trucks = Truck.where(approved: true, active: true)
@@ -30,7 +31,13 @@ class TrucksController < ApplicationController
   end
 
   def create
-  	
+  	@truck = Truck.new params[:truck]
+  	@truck.save
+  end
+
+  private
+  def load_truck
+    @truck = Truck.find params[:id]
   end
 
 end

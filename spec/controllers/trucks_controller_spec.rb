@@ -5,7 +5,7 @@ describe TrucksController do
   let!(:truck) { FactoryGirl.build(:truck) }
   
   context "#create" do
-    it "creates a new truck with twitter handle" do
+    it "creates a new truck with name and twitter handle" do
       # expect {
       #   post :create, :todo_id => todo.id, :task => attributes_for(:task)
       #   expect(response).to be_success

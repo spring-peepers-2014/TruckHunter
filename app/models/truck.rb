@@ -1,4 +1,6 @@
 class Truck < ActiveRecord::Base
+	include LocationHunter
+
 	has_many :tweets
 	has_many :issues
 
@@ -18,23 +20,33 @@ class Truck < ActiveRecord::Base
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
 				new_tweet.location = coordinates
 			else
-				# LocationHunter.parse_for_location(tweet.text)
-				##### parse tweet text for location	#####
-				p "no coordinates"
-				p JSON.parse(tweet.to_json)
+				new_tweet.location = get_coordinates(tweet.text)
 			end
 
+			p new_tweet.location
+
+			p "*****************************"
+			p new_tweet
+
 			new_tweet.save
+			
+			p "*****************************"
+			p new_tweet
 		end
+
 	end
 
 	def update_location
 		tweets_with_location = self.tweets.where.not(location: nil)
 		if tweets_with_location != []
 			p tweets_with_location.last.location
-			geocode_coordinates(tweets_with_location.last.location)
+			
+			coords = tweets_with_location.last.location.split(",")
+			self.latitude = coords[0]
+			self.longitude = coords[1]
 		end
 	end
+
 
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?
@@ -45,43 +57,6 @@ class Truck < ActiveRecord::Base
 		else
 			true
 		end
-	end
-
-
-	def parse_tweet(tweet)
-		my_match = /(@|at|on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)|\S\d+\s\b\w+\b\s(Avenue|Ave|Street|St)|\A?^?\d+\s(\b\w+\b\s)+(Avenue|Ave|Street|St)|(\b\w+\b\s){2}Park|(\b\w+\b\s)(St|Street)\sand?\s(\b\w+\b\s)(St|Street)/i.match(tweet).to_s
-	end
-
-	def clean_match(match)
-		match = parse_tweet(match)
-
-		match = /seaport/i.match(tweet).to_s if match == ""
-				
-		match.gsub!("(", "")
-		match.gsub!(")", "")
-		match.gsub!("at ", "")
-		match.gsub!(" on ", "")
-		match.gsub!("@", "")
-
-		return false if match == ""
-		match
-	end
-
-	def geocode_coordinates(location)
-		location = clean_match(location)
-
-		return false if location == false
-
-		geo_data = Geocoder.search(location + ", new york city").first
-		latitude = geo_data.geometry["location"]["lat"]
-		longitude = geo_data.geometry["location"]["lng"]
-
-		return false if [latitude, longitude] == [40.7127837, -74.0059413]
-			
-		self.latitude = latitude
-		self.longitude = longitude
-
-		[latitude, longitude]
 	end
 
 

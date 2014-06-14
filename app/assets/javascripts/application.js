@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require mapbox.js
+//= require_tree ./map_widget
 //= require_tree .

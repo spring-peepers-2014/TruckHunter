@@ -6,7 +6,7 @@ module LocationHunter
 
 	def clean_match(match)
 		match = /seaport/i.match(match).to_s if match == ""
-				
+
 		match.gsub!("(", "")
 		match.gsub!(")", "")
 		match.gsub!("at ", "")
@@ -25,11 +25,11 @@ module LocationHunter
 		longitude = geo_data.geometry["location"]["lng"]
 
 		return false if [latitude, longitude] == [40.7127837, -74.0059413]
-			
+
 		# self.latitude = latitude
 		# self.longitude = longitude
 
-		[latitude, longitude].join(",")
+		[latitude, longitude]
 	end
 
 	def get_coordinates(tweet_body)

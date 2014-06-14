@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :tweets, constraints: {:format => /json/}
   end
 
+  resources :admins
+
 end

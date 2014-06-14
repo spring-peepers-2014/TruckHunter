@@ -47,34 +47,33 @@ class Truck < ActiveRecord::Base
 
 
 	def parse_tweet(tweet)
-		my_match = /(@|at|on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)/.match(tweet).to_s
-
-		if my_match == ""
-			my_match = /seaport/i.match(tweet).to_s
-		end
-
-		my_match
+		my_match = /(@| at| on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?) | \S\d+\s\b\w+\b\s(Avenue|Ave|Street|St)/.match(tweet).to_s
 	end
 
 	def clean_match(match)
-		short_string = match
-		short_string.gsub!("at", "")
-		short_string.gsub!("on", "")
-		short_string.gsub!("@", "")
-		short_string
+		match = /seaport/i.match(tweet).to_s if match == ""
+				
+		match.gsub!("(", "")
+		match.gsub!(")", "")
+		match.gsub!("at ", "")
+		match.gsub!("on ", "")
+		match.gsub!("@", "")
+
+		return false if match == ""
+		match
 	end
 
 	def geocode_coordinates(location)
+		return false if location == false
+
 		geo_data = Geocoder.search(location + ", new york city").first
 		latitude = geo_data.geometry["location"]["lat"]
 		longitude = geo_data.geometry["location"]["lng"]
 
-		if [latitude, longitude] == [40.7127837, -74.0059413]
-			return false
-		else
-			self.latitude = latitude
-			self.longitude = longitude
-		end
+		return false if [latitude, longitude] == [40.7127837, -74.0059413]
+			
+		self.latitude = latitude
+		self.longitude = longitude
 
 		[latitude, longitude]
 	end

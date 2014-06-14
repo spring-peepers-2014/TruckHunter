@@ -1,4 +1,6 @@
 class Truck < ActiveRecord::Base
+	include LocationHunter
+
 	has_many :tweets
 	has_many :issues
 

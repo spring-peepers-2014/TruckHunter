@@ -5,5 +5,13 @@ class AdminsController < ApplicationController
 		@all_issues = Issue.all
 	end
 
+	def add_truck
+
+	end
+
+	def kill_truck
+	end
+
+
 end
 

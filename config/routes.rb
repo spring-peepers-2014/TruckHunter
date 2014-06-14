@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :tweets, constraints: {:format => /json/}
   end
 
-  resources :admins
+  resources :admins do
+  	resources :kill_truck, only: [:edit, :update]
+  	resources :add_truck, only: [:edit, :update]
+  end
 
 end

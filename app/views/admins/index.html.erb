@@ -2,13 +2,17 @@
 
 <% @pending_trucks.each do |truck| %>
 	<%= truck.name %>
-	<div id="approve"></div>
-	<div id="kill"></div>
+	<div id="approve">
+		
+	</div>
+	<div id="kill">
+		
+	</div>
 <% end %>
 
 <h2>Problems Reported</h2>
 	<%= @all_issues.each do |issue| %>
 		<%= issue.truck %>
 		<%= issue.issue_body %>
+		<!-- link to kill truck -->
 	<% end %>
-	

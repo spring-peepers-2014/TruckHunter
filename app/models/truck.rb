@@ -18,10 +18,16 @@ class Truck < ActiveRecord::Base
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
 				new_tweet.location = coordinates
 			else
-				tweet.location = geocode_coordinates(tweet.text)
+				new_tweet.location = geocode_coordinates(tweet.text)
 			end
 
+			p "*****************************"
+			p new_tweet.body
+
 			new_tweet.save
+			
+			p "*****************************"
+			p new_tweet.body
 		end
 	end
 
@@ -74,7 +80,10 @@ class Truck < ActiveRecord::Base
 		longitude = geo_data.geometry["location"]["lng"]
 
 		return false if [latitude, longitude] == [40.7127837, -74.0059413]
-			
+		
+		p location
+		p "*" * 50
+
 		self.latitude = latitude
 		self.longitude = longitude
 

@@ -11,7 +11,7 @@ $(document).ready(function(){
     url: "/trucks.json",
     dataType: 'json'
   }).done(function(response) {
-    console.log(response)
+    console.log(response);
     L.mapbox.map('map', 'inslee.igapaca7')
     .setView([40.75, -73.97], 13)
     .featureLayer.setGeoJSON(response);

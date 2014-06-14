@@ -56,6 +56,10 @@ class Truck < ActiveRecord::Base
 	end
 
 	def self.geo_json
+		@trucks = Truck.all
+
+		json.array! @trucks do |truck|
+		end
 
 		geojson =[]
 		Truck.all.each do |truck|
@@ -66,7 +70,7 @@ class Truck < ActiveRecord::Base
 						      	},
 								    properties: {
 								      title: truck.name,
-								      description: "Twitter" + truck.twitter_handle,
+								      description: "Twitter Handle: " + truck.twitter_handle,
 								      :'marker-color' => "#6c6c6c",
 								      :'marker-size' => "small",
 								      :'marker-symbol' => "bus"

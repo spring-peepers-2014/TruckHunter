@@ -10,9 +10,3 @@
 	</div>
 <% end %>
 
-<h2>Problems Reported</h2>
-	<%= @all_issues.each do |issue| %>
-		<%= issue.truck %>
-		<%= issue.issue_body %>
-		<!-- link to kill truck -->
-	<% end %>

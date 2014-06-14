@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TrucksController do
 
   let!(:truck) { FactoryGirl.build(:truck) }
-  
+
   context "#create" do
     it "creates a new truck with name and twitter handle" do
       # expect {

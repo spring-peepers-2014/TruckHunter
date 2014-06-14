@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
-	new MapWidget.View()
-	
+	var map = new MapWidget.View();
+	map.draw();
+
 });

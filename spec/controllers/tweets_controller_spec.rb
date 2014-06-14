@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TweetsController do
 
-  let!(:tweet) { FactoryGril.build(:tweet) }
+  let!(:tweet) { FactoryGirl.build(:tweet) }
 
   context "#index" do
     it "is successful" do

@@ -18,10 +18,7 @@ class Truck < ActiveRecord::Base
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
 				new_tweet.location = coordinates
 			else
-				# LocationHunter.parse_for_location(tweet.text)
-				##### parse tweet text for location	#####
-				p "no coordinates"
-				p JSON.parse(tweet.to_json)
+				tweet.location = geocode_coordinates(tweet.text)
 			end
 
 			new_tweet.save
@@ -30,8 +27,10 @@ class Truck < ActiveRecord::Base
 
 	def update_location
 		tweets_with_location = self.tweets.where.not(location: nil)
-		p tweets_with_location.last.location
-		geocode_coordinates(tweets_with_location.last.location)
+		if tweets_with_location != []
+			p tweets_with_location.last.location
+			geocode_coordinates(tweets_with_location.last.location)
+		end
 	end
 
 	def has_current_location?
@@ -53,7 +52,7 @@ class Truck < ActiveRecord::Base
 	def clean_match(match)
 		match = parse_tweet(match)
 
-		match = /seaport/i.match(tweet).to_s if match == ""
+		match = /seaport/i.match(match).to_s if match == ""
 				
 		match.gsub!("(", "")
 		match.gsub!(")", "")
@@ -79,7 +78,7 @@ class Truck < ActiveRecord::Base
 		self.latitude = latitude
 		self.longitude = longitude
 
-		[latitude, longitude]
+		[latitude, longitude].join(",")
 	end
 
 

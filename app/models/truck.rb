@@ -39,34 +39,39 @@ class Truck < ActiveRecord::Base
 	end
 
 
+
+
+	def parse_tweet(tweet)
+		my_match = /(@|at|on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)/.match(tweet).to_s
+
+		if my_match == ""
+			my_match = /seaport/i.match(tweet).to_s
+		end
+
+		my_match
+	end
+
+	def clean_match(match)
+		short_string = match
+		short_string.gsub!("at", "")
+		short_string.gsub!("on", "")
+		short_string.gsub!("@", "")
+		short_string
+	end
+
 	def geocode_coordinates(location)
-		geo_data = Geocoder.search(location).first
+		geo_data = Geocoder.search(location + ", new york city").first
 		latitude = geo_data.geometry["location"]["lat"]
 		longitude = geo_data.geometry["location"]["lng"]
 
-		self.latitude = latitude
-		self.longitude = longitude
-	end
-
-	def self.geo_json
-
-		geojson =[]
-		Truck.all.each do |truck|
-			geojson <<  { type: "Feature",
-		    					  geometry: {
-						        	type: "Point",
-						        	coordinates: [truck.latitude,truck.longitude]
-						      	},
-								    properties: {
-								      title: truck.name,
-								      description: "Twitter" + truck.twitter_handle,
-								      :'marker-color' => "#6c6c6c",
-								      :'marker-size' => "small",
-								      :'marker-symbol' => "bus"
-								    }
-									}
+		if [latitude, longitude] == [40.7127837, -74.0059413]
+			return false
+		else
+			self.latitude = latitude
+			self.longitude = longitude
 		end
-		return geojson.to_json
+
+		[latitude, longitude]
 	end
 
 

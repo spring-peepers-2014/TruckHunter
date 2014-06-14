@@ -7,12 +7,16 @@ class TrucksController < ApplicationController
 	@unknown_trucks = @trucks - @current_trucks
 
 	@unknown_trucks.each do |truck|
-		truck.fetch_tweets!
+		last_tweet = truck.tweets.last
+		time_since_last_tweet = Time.now - last_tweet.created_at
+
+		if time_since_last_tweet > 3600
+			truck.fetch_tweets!
+			truck.update_location
+		end
 	end
 
-	
-
-
+	@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
 
     # @geojson = []
     @geojson = [

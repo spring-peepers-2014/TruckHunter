@@ -29,7 +29,9 @@ class Truck < ActiveRecord::Base
 	end
 
 	def update_location
-		tweets = self.tweets.reverse
+		tweets_with_location = self.tweets.where.not(location: nil)
+		p tweets_with_location.last.location
+		geocode_coordinates(tweets_with_location.last.location)
 	end
 
 	def has_current_location?

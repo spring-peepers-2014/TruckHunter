@@ -19,7 +19,6 @@ describe HomeController do
   #     get :index
   #     expect(assigns(:todo)).to be_a_new Todo
   #   end
-
-  end
+  # end
 
 end

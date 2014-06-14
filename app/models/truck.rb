@@ -81,29 +81,25 @@ class Truck < ActiveRecord::Base
 
 
 	def self.geo_json
+
 		@trucks = Truck.all
 
-		json.array! @trucks do |truck|
+		Jbuilder.encode do |json|
+			json.array! @trucks do |truck|
+				json.type "Feature"
+				json.geometry do
+					json.type "Point"
+					json.coordinates [truck.latitude,truck.longitude]
+				end
+				json.properties do
+					json.title truck.name
+					json.description "Twitter Handle: " + truck.twitter_handle
+					json.set! :'marker-color', "#6c6c6c"
+					json.set! :'marker-size', "small"
+					json.set! :'marker-symbol', "bus"
+				end
+			end
 		end
 
-		geojson =[]
-		Truck.all.each do |truck|
-			geojson <<  { type: "Feature",
-		    					  geometry: {
-						        	type: "Point",
-						        	coordinates: [truck.latitude,truck.longitude]
-						      	},
-								    properties: {
-								      title: truck.name,
-								      description: "Twitter Handle: " + truck.twitter_handle,
-								      :'marker-color' => "#6c6c6c",
-								      :'marker-size' => "small",
-								      :'marker-symbol' => "bus"
-								    }
-									}
-		end
-		return geojson.to_json
 	end
-
-
 end

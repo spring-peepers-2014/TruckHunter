@@ -2,7 +2,6 @@ class Truck < ActiveRecord::Base
 	include LocationHunter
 
 	has_many :tweets
-	has_many :issues
 
 	validates :name, presence: true
 	validates :twitter_handle, uniqueness: true
@@ -16,22 +15,17 @@ class Truck < ActiveRecord::Base
 			new_tweet.save
 
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
-
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
-				self.latitude = coordinates[0]
-				self.longitude =  coordinates[1]
+				self.update(latitude: coordinates[0])
+				self.update(longitude: coordinates[1])
 				return
 			else
 				coordinates = self.get_coordinates(tweet.text)
 
 				if coordinates
-					p coordinates
-					p "you got here for this tweet"
 					self.update(latitude: coordinates[0])
 					self.update(longitude: coordinates[1])
-					p self.latitude
-					p self.longitude
 					return
 				end
 			end

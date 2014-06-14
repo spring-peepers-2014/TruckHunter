@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140612201743) do
     t.boolean  "active",          default: true
     t.string   "profile_img_url"
     t.boolean  "approved",        default: true
+    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"

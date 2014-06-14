@@ -12,44 +12,30 @@ class Truck < ActiveRecord::Base
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
 
 		trucks_tweets.each do |tweet|
-			##create the tweet in the database
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
+			new_tweet.save
+
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
 
-			##check to see if the tweet is geo-enabled,
-			##if it is, then save the truck's lat & long
 			if geo_enabled
-				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
+				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
 				self.latitude = coordinates[0]
 				self.longitude =  coordinates[1]
-				new_tweet.save
 				return
-
-			#if not geo enabled, try to grab the location
-			#do we save the truck's lat & long here too?
 			else
 				coordinates = self.get_coordinates(tweet.text)
-				unless coordinates == false
-					self.latitude = coordinates[0]
-					self.longitude = coordinates[1]
-					new_tweet.save
+
+				if coordinates
+					p coordinates
+					p "you got here for this tweet"
+					self.update(latitude: coordinates[0])
+					self.update(longitude: coordinates[1])
+					p self.latitude
+					p self.longitude
 					return
 				end
 			end
 
-		end
-	end
-
-
-
-	def update_location
-		tweets_with_location = self.tweets.where.not(location: nil)
-		if tweets_with_location != []
-			p tweets_with_location.last.location
-
-			coords = tweets_with_location.last.location.split(",")
-			self.latitude = coords[0]
-			self.longitude = coords[1]
 		end
 	end
 

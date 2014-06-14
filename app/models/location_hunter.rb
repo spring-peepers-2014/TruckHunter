@@ -1,4 +1,4 @@
-class LocationHunter < ActiveRecord::Base
+class LocationHunter
 
 	
 

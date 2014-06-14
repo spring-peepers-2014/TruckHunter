@@ -4,6 +4,6 @@ MapWidget.View = function() {
 
 MapWidget.View.prototype = {
 	draw: function() {
-		this.map;
+	
 	};
 };

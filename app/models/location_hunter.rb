@@ -15,6 +15,8 @@ module LocationHunter
 		match.gsub!(" at ", "")
 		match.gsub!(" on ", "")
 		match.gsub!("@", "")
+		match.gsub!("between", "and")
+		match.gsub!("btw", "and")
 
 		return false if match == ""
 		match

@@ -31,13 +31,42 @@ class TrucksController < ApplicationController
     render :json => Truck.geo_json
   end
 
-  private
-  def load_truck
-    @truck = Truck.find params[:id]
+ 
+  def approve
+    Truck.find(params[:id]).update(approved: true)
+    redirect_to :back
   end
+
+  def edit
+    @truck = Truck.find(params[:id])
+
+  end
+
+
+  def update
+    truck = Truck.find(params[:id])
+    truck.update_attributes(truck_params)
+    truck.save
+
+    redirect_to admins_path
+
+  end
+
+  def destroy
+    Truck.find(params[:id]).destroy
+
+    redirect_to admins_path
+  end
+
+  private
 
   def truck_params
     params.require(:truck).permit(:name, :twitter_handle)
   end
+
+   def load_truck
+    @truck = Truck.find params[:id]
+  end
+
 
 end

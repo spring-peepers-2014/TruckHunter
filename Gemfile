@@ -43,6 +43,8 @@ gem 'json'
 
 gem 'mapbox-rails'
 
+gem 'oauth'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

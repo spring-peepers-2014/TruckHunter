@@ -4,11 +4,23 @@ class AdminsController < ApplicationController
 		@pending_trucks = Truck.where.not(approved: true)
 	end
 
-	def add_truck
-
+	def new
+		@admin = Admin.new
 	end
 
-	def kill_truck
+	def create
+		admin = Admin.first
+		if admin && admin.authenticate
+			session[:admin] = true
+		else
+			render :new
+		end
+	end
+
+
+	def destroy
+		session.clear
+		redirect_to root_path
 	end
 
 

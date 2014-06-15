@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
   end
 
-  resources :admins, only: [:index]
+  resources :admins, only: [:index, :new, :create, :destroy]
 
   get '/trucks/:id/approve' => "trucks#approve", :as => 'truck_approve'
-
+  get '/admins/signin' => 'admins#signin', :as => 'admins_signin'
 
 
 end

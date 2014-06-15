@@ -1,0 +1,10 @@
+<h2>welcome admin! login! </h2>
+
+
+<%= form_for @admin do |f| %>
+	<%= f.label :username %>
+	<%= f.text_field :username%>
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+	<%= f.submit "login!"%>
+<% end %>

@@ -35,8 +35,11 @@ body {
   float: left;
 }
 
-.addtruck {
+#footer {
+	border-top: 1px solid black;
+	background-color: #eee;
   position:fixed;
   left:0;
   bottom:0;  
+  width: 100%;
 }

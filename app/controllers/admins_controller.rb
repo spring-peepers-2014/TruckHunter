@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
 		@pending_trucks = Truck.where.not(approved: true)
 	end
 
+	#this shows the admin login page
 	def new
 		@admin = Admin.new
 	end

@@ -13,4 +13,10 @@ Rails.application.routes.draw do
   get '/admins/signin' => 'admins#signin', :as => 'admins_signin'
 
 
+
+
+  get '/signin' => 'admins#new', :as => :signin
+  post '/signin' => 'admins#create'
+  delete '/logout' => 'admins#destroy'
+
 end

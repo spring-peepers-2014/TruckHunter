@@ -7,9 +7,11 @@ module LocationHunter
 	def clean_match(match)
 		match = /seaport/i.match(match).to_s if match == ""
 
+		match.gsub!("#", "")
 		match.gsub!("(", "")
 		match.gsub!(")", "")
 		match.gsub!(" at ", "")
+		match.gsub!("at ", "")
 		match.gsub!(" on ", "")
 		match.gsub!("@", "")
 		match.gsub!("between", "and")

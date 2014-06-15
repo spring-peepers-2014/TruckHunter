@@ -13,9 +13,9 @@ class Truck < ActiveRecord::Base
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
-		p trucks_tweets.length
+		self.update(tweets_last_fetched: Time.now)
+
 		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
-		p recent_tweets.length
 
 		recent_tweets.each do |tweet|
 			p "these are recent tweets"

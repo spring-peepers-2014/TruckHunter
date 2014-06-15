@@ -13,11 +13,21 @@ class Truck < ActiveRecord::Base
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
-		recent_tweets = trucks_tweets.select { |tweet| Time.now - tweet.created_at < 86400 }
+		p trucks_tweets.length
+		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
+		p recent_tweets.length
 
 		recent_tweets.each do |tweet|
+			p "these are recent tweets"
+			p tweet.text
+
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
+			p "is the tweet valid?"
+			p new_tweet.valid?
+
 			new_tweet.save
+			p new_tweet.save
+
 
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
 			if geo_enabled

@@ -3,6 +3,7 @@ class TrucksController < ApplicationController
 	# before_filter :load_truck, :except => [:index, :create]
 
   def index
+    @newtruck = Truck.new
   	@trucks = Truck.where(approved: true, active: true)
   	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
 	
@@ -19,6 +20,11 @@ class TrucksController < ApplicationController
     end
     
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
+  end
+
+  def addtruck
+    @newtruck = Truck.create(name: params[:truck][:name], twitter_handle: params[:truck][:twitter_handle], approved: false)
+    redirect_to root_path
   end
 
   def new

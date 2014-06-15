@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   post '/admins/signin' => 'admins#create'
   delete '/admins/logout' => 'admins#destroy', :as => :logout
 
+  post '/addtruck' => 'trucks#addtruck', :as => 'make_truck'
+
 end

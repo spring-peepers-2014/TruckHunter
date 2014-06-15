@@ -1,6 +1,6 @@
 class TrucksController < ApplicationController
 	respond_to :json
-	# before_filter :load_truck, :except => [:index, :create]
+	before_filter :load_truck, :except => [:index, :new, :create]
 
   def index
   	@trucks = Truck.where(approved: true, active: true)

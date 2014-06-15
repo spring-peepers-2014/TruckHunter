@@ -16,7 +16,9 @@ Truck.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks")
 Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc")
 
 
+
 # Tweet.create(truck_id: 1, body: "48 wall st", tweet_time: Time.now)
 # Tweet.create(truck_id: 2, body: "32nd st & 5th ave", tweet_time: Time.now)
 # Tweet.create(truck_id: 3, body: "990 avenue of america", tweet_time: Time.now)
 # Tweet.create(truck_id: 4, body: "no way", tweet_time: Time.now)
+

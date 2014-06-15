@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :tweets, constraints: {:format => /json/}
   end
 
-  resources :admins
+  resources :admins, only: [:index]
+
+  get '/trucks/:id/approve' => "trucks#approve", :as => 'truck_approve'
+
+
 
 end

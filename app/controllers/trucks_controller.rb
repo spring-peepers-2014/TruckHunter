@@ -34,17 +34,24 @@ class TrucksController < ApplicationController
   end
 
   def edit
-    
-    render :edit
+
   end
 
 
   def update
-    
+    @truck = Truck.find(params[:id])
+    @truck.name = params[:name]
+    @truck.twitter_handle = params[:twitter_handle]
+    @truck.save
+
+    redirect_to admins_path
+
   end
 
   def destroy
     Truck.find(params[:id]).destroy
+
+    redirect_to admins_path
   end
 
 end

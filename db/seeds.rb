@@ -18,3 +18,5 @@ Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc")
 
 Truck.create(name: "Grilled Cheese", twitter_handle: "TheGrilledCheese", approved: false)
 Truck.create(name: "And Ham", twitter_handle: "AndHam", approved: false)
+Truck.create(name: "Cupcakes", twitter_handle: "Cupcake Lover", approved: false)
+Truck.create(name: "Candy", twitter_handle: "Candy yeyuh", approved: false)

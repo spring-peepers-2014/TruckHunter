@@ -17,14 +17,15 @@ ActiveRecord::Schema.define(version: 20140612201743) do
   enable_extension "plpgsql"
 
   create_table "trucks", force: true do |t|
-    t.string   "name",                           null: false
-    t.string   "twitter_handle",                 null: false
-    t.boolean  "active",          default: true
+    t.string   "name",                               null: false
+    t.string   "twitter_handle",                     null: false
+    t.boolean  "active",              default: true
     t.string   "profile_img_url"
-    t.boolean  "approved",        default: true
+    t.boolean  "approved",            default: true
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.datetime "tweets_last_fetched"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

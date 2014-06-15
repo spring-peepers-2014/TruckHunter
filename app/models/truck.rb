@@ -71,7 +71,8 @@ class Truck < ActiveRecord::Base
 				end
 				json.properties do
 					json.title truck.name
-					json.description "Twitter Handle: " + truck.twitter_handle
+					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
+					<br><i>"+truck.tweets.last.body+"</i>"
 					json.set! :'marker-color', "#6c6c6c"
 					json.set! :'marker-size', "small"
 					json.set! :'marker-symbol', "bus"

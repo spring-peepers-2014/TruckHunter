@@ -45,6 +45,8 @@ gem 'mapbox-rails'
 
 gem 'oauth'
 
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

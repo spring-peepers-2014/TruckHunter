@@ -34,15 +34,15 @@ class TrucksController < ApplicationController
   end
 
   def edit
+    @truck = Truck.find(params[:id])
 
   end
 
 
   def update
-    @truck = Truck.find(params[:id])
-    @truck.name = params[:name]
-    @truck.twitter_handle = params[:twitter_handle]
-    @truck.save
+    truck = Truck.find(params[:id])
+    truck.update_attributes(truck_params)
+    truck.save
 
     redirect_to admins_path
 
@@ -52,6 +52,12 @@ class TrucksController < ApplicationController
     Truck.find(params[:id]).destroy
 
     redirect_to admins_path
+  end
+
+  private
+
+  def truck_params
+    params.require(:truck).permit(:name, :twitter_handle)
   end
 
 end

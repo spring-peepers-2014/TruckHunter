@@ -12,12 +12,11 @@ class AdminsController < ApplicationController
 	def create
 		admin = Admin.find_by_username(params[:admin][:username])
 
-		p params
 		if admin && admin.authenticate(params[:admin][:password])
 			session[:admin] = true
 			redirect_to admins_page_path
 		else
-			redirect_to :back
+			redirect_to admins_signin_path
 		end
 	end
 

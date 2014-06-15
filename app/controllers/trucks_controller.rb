@@ -1,12 +1,11 @@
 class TrucksController < ApplicationController
 	respond_to :json
-	before_filter :load_truck, :except => [:index, :new, :create]
+	# before_filter :load_truck, :except => [:index, :create]
 
   def index
   	@trucks = Truck.where(approved: true, active: true)
-  	@current_trucks = @trucks.select { |truck| p truck.has_current_location? }
-    p @current_trucks
-  	p @unknown_trucks = @trucks - @current_trucks
+  	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
+  	@unknown_trucks = @trucks - @current_trucks
 
   	@unknown_trucks.each do |truck|
   		last_tweet = truck.tweets.last

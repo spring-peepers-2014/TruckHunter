@@ -9,7 +9,5 @@ describe TrucksController, :type => :controller do
         post :create, truck: FactoryGirl.attributes_for(:truck)
         expect(response).to be_success
     end
-    it "doesn't create a truck with a handle that is already in the database" do
-    end
   end
 end

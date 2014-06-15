@@ -18,23 +18,16 @@ class Truck < ActiveRecord::Base
 		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
 
 		recent_tweets.each do |tweet|
-			p "these are recent tweets"
-			p tweet.text
 
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
-			p "is the tweet valid?"
-			p new_tweet.valid?
-
 			new_tweet.save
-			p new_tweet.save
-
-
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
+
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
 
-				self.latitude = coordinates[0]
-				self.longitude =  coordinates[1]
+				self.update(latitude: coordinates[0])
+				self.update(longitude:  coordinates[1])
 				# return
 			else
 				self.get_coordinates(tweet.text)
@@ -65,7 +58,6 @@ class Truck < ActiveRecord::Base
 
 
 	def self.geo_json
-
 
 		@trucks = Truck.where.not(longitude: -74.0059413, latitude: 40.7127837).where('updated_at > ?', 4.hours.ago)
 		#(longitude: -74.0059413, latitude: 40.7127837)

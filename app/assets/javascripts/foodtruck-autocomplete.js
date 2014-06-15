@@ -1,13 +1,6 @@
 $(function(){
 
-  // var currencies = [
-  //   { value: 'Afghan afghani'},
-  //   { value: 'Albanian lek'},
-  //   { value: 'Algerian dinar'},
-  //   { value: 'European euro'},
-  //   { value: 'Angolan kwanza' },
 
-  // ];
   var foodTrucks = []
   findFoodTrucks();
   autoComplete();
@@ -18,8 +11,6 @@ $(function(){
         url: '/searchbar/new',
         dataType: 'json'
     }).done(function(response){
-        // console.log("scope")
-        // console.log(foodTrucks)
         var namesofFoodTrucks = response
         for (var i=0; i < namesofFoodTrucks.length; i++) {
             foodTrucks.push({ value: namesofFoodTrucks[i]});
@@ -35,6 +26,24 @@ $(function(){
     })
   }
   
+
+
+  // $('#searchbox').keyup(search);
+
+  //   function search() {
+  //   // get the value of the search input field
+  //       var searchString = $('#autocomplete').val().toLowerCase();
+  //       console.log(searchString)
+  //       featureLayer.setFilter(showState);
+
+  //   // here we're simply comparing the 'state' property of each marker
+  //   // to the search string, seeing whether the former contains the latter.
+  //       function showTruck(feature) {
+  //           return feature.properties.title
+  //               .toLowerCase()
+  //               .indexOf(searchString) !== -1;
+  //       }
+  //   }
   // setup autocomplete function pulling from currencies[] array
   // $('#autocomplete').autocomplete({
   //   lookup: foodTrucks,

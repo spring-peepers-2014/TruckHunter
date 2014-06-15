@@ -1,6 +1,6 @@
-// $(document).ready(function(){
+$(document).ready(function(){
 
-// 	var map = new MapWidget.View();
-// 	map.draw();
+	var map = new MapWidget.View();
+	map.draw();
 
-// });
+});

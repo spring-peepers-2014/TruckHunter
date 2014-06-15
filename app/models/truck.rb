@@ -70,7 +70,7 @@ class Truck < ActiveRecord::Base
 	def self.geo_json
 
 		@trucks = Truck.where("address IS NOT NULL")
-
+		#latitude: 40.7127837, longitude: -74.0059413
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|
 				json.type "Feature"

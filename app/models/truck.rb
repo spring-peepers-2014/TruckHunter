@@ -2,48 +2,55 @@ class Truck < ActiveRecord::Base
 	include LocationHunter
 
 	has_many :tweets
-	has_many :issues
 
 	validates :name, presence: true
 	validates :twitter_handle, uniqueness: true
 
+	geocoded_by :address
+	after_validation :geocode, :if => :address_changed?
+	before_save :geocode
+
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
+		p trucks_tweets.length
+		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
+		p recent_tweets.length
 
-		trucks_tweets.each do |tweet|
+		recent_tweets.each do |tweet|
+			p "these are recent tweets"
+			p tweet.text
 
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
-			geo_enabled = JSON.parse(tweet.to_json)["geo"]
-
-			if geo_enabled
-				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"].join(",") #coordinates as "lat,lng"
-				new_tweet.location = coordinates
-			else
-				new_tweet.location = get_coordinates(tweet.text)
-			end
-
-			p new_tweet.location
-
-			p "*****************************"
-			p new_tweet
+			p "is the tweet valid?"
+			p new_tweet.valid?
 
 			new_tweet.save
-			
-			p "*****************************"
-			p new_tweet
-		end
+			p new_tweet.save
 
-	end
 
-	def update_location
-		tweets_with_location = self.tweets.where.not(location: nil)
-		if tweets_with_location != []
-			p tweets_with_location.last.location
-			
-			coords = tweets_with_location.last.location.split(",")
-			self.latitude = coords[0]
-			self.longitude = coords[1]
+			geo_enabled = JSON.parse(tweet.to_json)["geo"]
+			if geo_enabled
+				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
+
+				self.latitude = coordinates[0]
+				self.longitude =  coordinates[1]
+				# return
+			else
+				self.get_coordinates(tweet.text)
+				# coordinates = self.get_coordinates(tweet.text)
+
+				# if coordinates
+				# 	p coordinates
+				# 	p "you got here for this tweet"
+				# 	self.update(latitude: coordinates[0])
+				# 	self.update(longitude: coordinates[1])
+				# 	p self.latitude
+				# 	p self.longitude
+				# 	return
+				# end
+			end
+
 		end
 	end
 
@@ -62,14 +69,14 @@ class Truck < ActiveRecord::Base
 
 	def self.geo_json
 
-		@trucks = Truck.all
+		@trucks = Truck.where("address IS NOT NULL")
 
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|
 				json.type "Feature"
 				json.geometry do
 					json.type "Point"
-					json.coordinates [truck.latitude,truck.longitude]
+					json.coordinates [truck.longitude, truck.latitude]
 				end
 				json.properties do
 					json.title truck.name

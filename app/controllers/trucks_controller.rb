@@ -28,5 +28,24 @@ class TrucksController < ApplicationController
 
   end
 
+  def approve
+    Truck.find(params[:id]).update(approved: true)
+    redirect_to :back
+  end
+
+  def edit
+    
+    render :edit
+  end
+
+
+  def update
+    
+  end
+
+  def destroy
+    Truck.find(params[:id]).destroy
+  end
+
 end
 

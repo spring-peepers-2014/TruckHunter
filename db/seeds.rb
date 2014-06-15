@@ -14,3 +14,7 @@ Truck.create(name: "The Cinnamon Snail", twitter_handle: "VeganLunchTruck")
 Truck.create(name: "Korilla BBQ", twitter_handle: "KorillaBBQ")
 Truck.create(name: "Phil's Steaks", twitter_handle: "PhilsSteaks")
 Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc")
+
+
+Truck.create(name: "Grilled Cheese", twitter_handle: "TheGrilledCheese", approved: false)
+Truck.create(name: "And Ham", twitter_handle: "AndHam", approved: false)

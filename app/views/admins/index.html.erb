@@ -1,14 +1,21 @@
-<h2>Trucks to Approve</h2>
+<br><br><br>
 
-<% @pending_trucks.each do |truck| %>
-	name: <%= truck.name %><br>
-	twitter_handle: <%= truck.twitter_handle %><br>
 
-	<%= link_to "approved!", truck_approve_path(truck) %><br>
+<% if session[:admin] %>
+	<h2>Trucks to Approve</h2>
+	<%= link_to "logout", logout_path, method: :delete %>
 
-	<%= link_to "edit truck", edit_truck_path(truck)%> <br>
+	<% @pending_trucks.each do |truck| %>
+		name: <%= truck.name %><br>
+		twitter_handle: <%= truck.twitter_handle %><br>
 
-	<%= link_to "kill truck", truck_path(truck), method: :delete %> <br><br>
+		<%= link_to "approved!", truck_approve_path(truck) %><br>
 
+		<%= link_to "edit truck", edit_truck_path(truck)%> <br>
+
+		<%= link_to "kill truck", truck_path(truck), method: :delete %> <br><br>
+
+	<% end %>
+<% else %>
+	<h2>go away</h2>
 <% end %>
-

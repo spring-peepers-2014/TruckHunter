@@ -26,8 +26,9 @@ class TrucksController < ApplicationController
   end
 
   def create
-  	@truck = Truck.new params[:truck]
+  	@truck = Truck.new(truck_params)
   	@truck.save
+    render :json => Truck.geo_json
   end
 
   private
@@ -35,5 +36,8 @@ class TrucksController < ApplicationController
     @truck = Truck.find params[:id]
   end
 
-end
+  def truck_params
+    params.require(:truck).permit(:name, :twitter_handle)
+  end
 
+end

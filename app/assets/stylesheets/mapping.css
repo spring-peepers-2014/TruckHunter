@@ -16,7 +16,7 @@ body {
   width: 100%;
   z-index: 10000;
   height: 50px;
-  background-color: #000;
+  background-color: #eee;
   padding-left: 30px;
   padding-bottom: 10px;
   padding-top: 0px;
@@ -26,13 +26,11 @@ body {
 
 
 #header h1 {
-  font-family: 'dosis', sans-serif;
-  letter-spacing: 10px;
+  font-family: 'wendy one', sans-serif;
   text-shadow: 1px 1px 1px #867970;
   font-size: 60px;
   padding: 0px;
   margin: 0px;
   float: left;
-  color: #fff;
 }
 

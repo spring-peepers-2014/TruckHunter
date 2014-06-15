@@ -27,6 +27,17 @@ $(function(){
   }
   
 
+  function grabSearchString() {
+    $('#searchbox').on('submit', function(e){
+      e.preventDefault();
+
+    })
+
+
+    function popUpFoodTruck() {
+      
+    }
+  }
 
   // $('#searchbox').keyup(search);
 

@@ -59,18 +59,23 @@ class Truck < ActiveRecord::Base
 		return false if self.latitude.nil? || self.longitude.nil?
 		time_since_update = Time.now - self.updated_at
 
-		if time_since_update > 14400 ###4 hour interval
-			false
-		else
-			true
-		end
+		return time_since_update < 14400 ###4 hour interval
+
 	end
 
 
 	def self.geo_json
 
-		@trucks = Truck.where("address IS NOT NULL")
-		#latitude: 40.7127837, longitude: -74.0059413
+		ActiveSupport::TimeZone[-8]
+		range = (Time.now.midnight - 4.hours)..Time.now.midnight
+		time_range = ((Time.now - 4.hours)..Time.now)
+		p Time.now.midnight
+		p time_range
+		p range
+
+		@trucks = Truck.where.not(longitude: -74.0059413, latitude: 40.7127837).where('updated_at > ?', 4.hours.ago)
+		#(longitude: -74.0059413, latitude: 40.7127837)
+		p @trucks
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|
 				json.type "Feature"

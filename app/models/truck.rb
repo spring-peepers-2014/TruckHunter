@@ -32,7 +32,7 @@ class Truck < ActiveRecord::Base
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
-				
+
 				self.latitude = coordinates[0]
 				self.longitude =  coordinates[1]
 				# return

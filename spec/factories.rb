@@ -10,4 +10,5 @@ FactoryGirl.define do
 		tweet_time Time.now-15000
 	end
 
+
 end

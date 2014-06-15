@@ -6,28 +6,49 @@ class Truck < ActiveRecord::Base
 	validates :name, presence: true
 	validates :twitter_handle, uniqueness: true
 
+	geocoded_by :address
+	after_validation :geocode, :if => :address_changed?
+	before_save :geocode
+
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
+		p trucks_tweets.length
+		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
+		p recent_tweets.length
 
-		trucks_tweets.each do |tweet|
+		recent_tweets.each do |tweet|
+			p "these are recent tweets"
+			p tweet.text
+
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
+			p "is the tweet valid?"
+			p new_tweet.valid?
+
 			new_tweet.save
+			p new_tweet.save
+
 
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
-				self.update(latitude: coordinates[0])
-				self.update(longitude: coordinates[1])
-				return
+				
+				self.latitude = coordinates[0]
+				self.longitude =  coordinates[1]
+				# return
 			else
-				coordinates = self.get_coordinates(tweet.text)
+				self.get_coordinates(tweet.text)
+				# coordinates = self.get_coordinates(tweet.text)
 
-				if coordinates
-					self.update(latitude: coordinates[0])
-					self.update(longitude: coordinates[1])
-					return
-				end
+				# if coordinates
+				# 	p coordinates
+				# 	p "you got here for this tweet"
+				# 	self.update(latitude: coordinates[0])
+				# 	self.update(longitude: coordinates[1])
+				# 	p self.latitude
+				# 	p self.longitude
+				# 	return
+				# end
 			end
 
 		end
@@ -48,14 +69,14 @@ class Truck < ActiveRecord::Base
 
 	def self.geo_json
 
-		@trucks = Truck.all
+		@trucks = Truck.where("address IS NOT NULL")
 
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|
 				json.type "Feature"
 				json.geometry do
 					json.type "Point"
-					json.coordinates [truck.latitude,truck.longitude]
+					json.coordinates [truck.longitude, truck.latitude]
 				end
 				json.properties do
 					json.title truck.name

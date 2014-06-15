@@ -25,11 +25,39 @@ describe TrucksController, :type => :controller do
   	end
   end
 
-  describe "GET #approve" do
+  describe "GET #edit" do
   	it "should redirect back" do
-    	get :approve
+  		x = Truck.create(name: "please", twitter_handle: "work")
+    	get :edit, id: x.id
     	response.should be_success
   	end
   end
+
+  # describe "GET #approve" do
+  # 	it "should redirect back" do
+  # 		x = Truck.create(name: "please", twitter_handle: "work")
+  #   	get :approve, id: x.id
+  #   	response.should be_success
+  # 	end
+  # end
+
+  # describe "DELETE #destroy" do
+  #   it "it deletes a truck" do
+  #     x = Truck.create(name: "please", twitter_handle: "work")
+  #     delete :destroy, id: x.id
+  #     expect(response).to be_success
+  #   end
+  # # end
+
+  # describe "PATCH #update" do
+  # 	before :each do
+  # 		@truck = Truck.create(name: 'cmon', twitter_handle: 'now')
+  # 	end
+
+  #   it "locates the requested @truck" do
+  #     patch :update, id: @truck.id
+  #     expect(assigns(@truck)).to eq(@truck)
+  #   end
+  # end
 
 end

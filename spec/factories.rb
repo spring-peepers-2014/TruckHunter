@@ -1,8 +1,8 @@
 FactoryGirl.define do
 
 	factory :truck do
-		name "Bob's Burgers"
-		twitter_handle "VeganLunchTruck"
+		name {"Bob's Burgers"}
+		twitter_handle {"VeganLunchTruck"}
 	end
 
 	factory :tweet do

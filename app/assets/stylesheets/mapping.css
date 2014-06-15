@@ -9,6 +9,7 @@ body {
   bottom:0;
   width:100%;
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 #header {
@@ -26,11 +27,16 @@ body {
 
 
 #header h1 {
-  font-family: 'wendy one', sans-serif;
-  text-shadow: 1px 1px 1px #867970;
-  font-size: 60px;
-  padding: 0px;
-  margin: 0px;
+	font-family: 'Wendy One', sans-serif;
+	text-shadow: 1px 1px 3px #867970;
+	font-size: 60px;
+	padding-top: 0px;
+	margin-top: 0px;
   float: left;
 }
 
+.addtruck {
+  position:fixed;
+  left:0;
+  bottom:0;  
+}

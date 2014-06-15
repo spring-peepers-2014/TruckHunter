@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   resources :searchbar, only: [:new]
 
   get '/searchbar/new' => 'searchbar#new'
+  post '/addtruck' => 'trucks#addtruck', :as => 'make_truck'
+
 end

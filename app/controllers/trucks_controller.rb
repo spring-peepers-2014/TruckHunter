@@ -1,16 +1,16 @@
 class TrucksController < ApplicationController
 	respond_to :json
-	before_filter :load_truck, :except => [:index, :new, :create]
+	# before_filter :load_truck, :except => [:index, :create]
 
   def index
+    @newtruck = Truck.new
   	@trucks = Truck.where(approved: true, active: true)
   	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
-
-  	@unknown_trucks = @trucks - @current_trucks
+	
+	@unknown_trucks = @trucks - @current_trucks
 
   	@unknown_trucks.each do |truck|
-
-  		if truck.tweets_last_fetched.nil?
+		if truck.tweets_last_fetched.nil?
   			time_since_last_tweet = 9000
   		else
   			time_since_last_tweet = Time.now - truck.tweets_last_fetched
@@ -18,7 +18,13 @@ class TrucksController < ApplicationController
 
   		truck.fetch_tweets! if time_since_last_tweet > 3600
     end
+    
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
+  end
+
+  def addtruck
+    @newtruck = Truck.create(name: params[:truck][:name], twitter_handle: params[:truck][:twitter_handle], approved: false)
+    redirect_to root_path
   end
 
   def new

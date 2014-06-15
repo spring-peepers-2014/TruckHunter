@@ -29,6 +29,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    bcrypt-ruby (3.0.1)
     buftok (0.2.0)
     builder (3.2.2)
     capybara (2.3.0)
@@ -204,6 +205,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.0.0)
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner

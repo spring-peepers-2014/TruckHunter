@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "trucks#index"
 
   resources :trucks, constraints: {:format => /json/} do
-    resources :tweets, constraints: {:format => /json/}
+
   end
 
   resources :admins, only: [:index]

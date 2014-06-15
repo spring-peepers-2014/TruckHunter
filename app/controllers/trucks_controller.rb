@@ -64,6 +64,8 @@ class TrucksController < ApplicationController
     redirect_to admins_path
   end
 
+
+
   private
 
   def truck_params

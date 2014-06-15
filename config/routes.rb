@@ -7,16 +7,13 @@ Rails.application.routes.draw do
 
   end
 
-  resources :admins, only: [:index, :new, :create, :destroy]
+  resources :admins, only: [:index, :new, :create]
 
   get '/trucks/:id/approve' => "trucks#approve", :as => 'truck_approve'
-  get '/admins/signin' => 'admins#signin', :as => 'admins_signin'
 
-
-
-
-  get '/signin' => 'admins#new', :as => :signin
-  post '/signin' => 'admins#create'
-  delete '/logout' => 'admins#destroy'
+  get '/admins_page' => 'admins#index', :as => 'admins_page'
+  get '/admins/signin' => 'admins#new', :as => :signin
+  post '/admins/signin' => 'admins#create'
+  delete '/admins/logout' => 'admins#destroy', :as => :logout
 
 end

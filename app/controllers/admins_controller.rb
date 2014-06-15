@@ -10,11 +10,14 @@ class AdminsController < ApplicationController
 	end
 
 	def create
-		admin = Admin.first
-		if admin && admin.authenticate
+		admin = Admin.find_by_username(params[:admin][:username])
+
+		p params
+		if admin && admin.authenticate(params[:admin][:password])
 			session[:admin] = true
+			redirect_to admins_page_path
 		else
-			render :new
+			redirect_to :back
 		end
 	end
 
@@ -24,6 +27,10 @@ class AdminsController < ApplicationController
 		redirect_to root_path
 	end
 
+	private
 
+	def admin_params
+    	params.require(:admin).permit(:username, :password)
+	end
 end
 

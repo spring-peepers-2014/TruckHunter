@@ -1,5 +1,6 @@
 <% if session[:admin] %>
 	<h2>Trucks to Approve</h2>
+	<%= link_to "logout", logout_path, method: :delete %>
 
 	<% @pending_trucks.each do |truck| %>
 		name: <%= truck.name %><br>
@@ -12,4 +13,6 @@
 		<%= link_to "kill truck", truck_path(truck), method: :delete %> <br><br>
 
 	<% end %>
+<% else %>
+	<h2>go away</h2>
 <% end %>

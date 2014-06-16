@@ -8,16 +8,11 @@ $(document).ready(function(){
 
 
 
-
-
-
 //on form submit, grab the truck that the user is searching for
 $('#searchform').on('submit', function(e){
   e.preventDefault();
   var searchString = $('input[name="foodtruck"]').val().toLowerCase();
-  console.log("press enter!");
-  if (mapView.searchMarkersOnMap(searchString)) {
-    console.log('yay');
+  if (mapView.searchTruckMarkersOnMap(searchString)) {
     mapView.redraw(searchString);
   }
 });

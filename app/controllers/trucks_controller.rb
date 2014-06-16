@@ -4,10 +4,13 @@ class TrucksController < ApplicationController
 
   def index
     @newtruck = Truck.new
+    @message = "know a truck?"
+
+    
   	@trucks = Truck.where(approved: true, active: true)
   	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
 	
-	@unknown_trucks = @trucks - @current_trucks
+	 @unknown_trucks = @trucks - @current_trucks
 
   	@unknown_trucks.each do |truck|
 		if truck.tweets_last_fetched.nil?
@@ -23,8 +26,10 @@ class TrucksController < ApplicationController
   end
 
   def addtruck
-    @newtruck = Truck.create(name: params[:truck][:name], twitter_handle: params[:truck][:twitter_handle], approved: false)
-    redirect_to root_path
+    twitter_handle = params[:truck][:twitter_handle].gsub('@','')
+    @newtruck = Truck.create(name: params[:truck][:name], twitter_handle: twitter_handle, approved: false)
+    @message = "thanks! we'll check it soon!"
+    render :index
   end
 
   def new

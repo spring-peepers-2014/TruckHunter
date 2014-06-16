@@ -43,4 +43,6 @@ Rails.application.configure do
     config.consumer_secret = ENV['CONSUMER_SECRET']
   end
 
+  MAPID = ENV['MAP_ID']
+
 end

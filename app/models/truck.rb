@@ -12,7 +12,7 @@ class Truck < ActiveRecord::Base
 
 
 	def fetch_tweets!
-		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
+		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
 		self.update(tweets_last_fetched: Time.now)
 
 		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
@@ -21,7 +21,6 @@ class Truck < ActiveRecord::Base
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
 			new_tweet.save
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
-
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
 

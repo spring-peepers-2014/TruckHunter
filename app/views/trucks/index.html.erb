@@ -1,7 +1,7 @@
 <div id='header'>
 		<h1>TruckHunter</h1>
 		<div id="searchbox">
-	        <form>
+	        <form id="searchform">
 	        	<input type="text" name="foodtruck"  placeholder="search for a foodtruck!" id="autocomplete">
 	        </form>
 		</div>
@@ -9,17 +9,12 @@
 
 
  <div id='footer'>
-	<h3><%= form_for @newtruck, url: "/addtruck" do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name%>
-	<%= f.label :twitter_handle %> (without @)
-	<%= f.text_field :twitter_handle %>
-	<%= f.submit "Add the Truck!"%>
-	<% end %></h3>
+
 </div>
 
 <div id='map' class='dark'></div>
 <a href='#' id='geolocate' class='ui-button'>Find me</a>
+
 
 
 <div class="newtrucktab">
@@ -38,6 +33,7 @@
 		<% end %>
 	</div>
 </div>
+
 
 
 

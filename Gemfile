@@ -47,6 +47,10 @@ gem 'oauth', '0.4.7'
 
 gem 'bcrypt', '~> 3.1.2'
 
+gem 'jquery-ui-rails'
+
+gem 'rails4-autocomplete'
+
 group :development, :test do
   gem 'rspec-rails', '3.0.1'
   gem 'factory_girl_rails', '4.4.1'

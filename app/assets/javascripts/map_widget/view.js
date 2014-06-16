@@ -39,7 +39,7 @@ MapWidget.View.prototype = {
 		// Once we've got a position, zoom and center the map
 		// on it, and add a single marker.
 		map.on('locationfound', function(e) {
-			map.fitBounds(e.bounds);
+			map.fitBounds(e.bounds).setView([e.latlng.lat, e.latlng.lng],15);
 
       myLayer.setGeoJSON({
         type: 'Feature',

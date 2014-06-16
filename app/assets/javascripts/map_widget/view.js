@@ -3,7 +3,8 @@ MapWidget.View = function() {
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
 	this.currentTrucks = [];	
 	this.draw();
-	this.grabCurrentTruckMarkers();
+	this.grabTruckMarkersOnPage();
+	this.searchedMarker = ''
 };
 
 MapWidget.View.prototype = {
@@ -65,7 +66,7 @@ geolocate.parentNode.removeChild(geolocate);
 		});
 	},
 
-	grabCurrentTruckMarkers: function() {
+	grabTruckMarkersOnPage: function() {
 		var self = this;
 		$.ajax({
 			type: "get",
@@ -81,27 +82,25 @@ geolocate.parentNode.removeChild(geolocate);
 	searchTruckMarkersOnMap: function(searchString) {
 		for (var i=0; i < this.currentTrucks.length; i++) {
 			if (this.currentTrucks[i].properties.title.toLowerCase() == searchString) {
+				this.searchedMarker = this.currentTrucks[i]
 				return true;
 			}
 		}
 		return false
+	},   
+
+
+	redraw: function() {
+			var newCoordinates = this.searchedMarker.geometry.coordinates;
+			console.log(newCoordinates)
+			this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
+			this.openPopUp();
 	},
 
-
-	redraw: function(searchString) {
-		for (var i=0; i < this.currentTrucks.length; i++) {
-			if (this.currentTrucks[i].properties.title.toLowerCase() == searchString) {
-				var newCoordinates = this.currentTrucks[i].geometry.coordinates;
-				this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
-				this.openPopUp(searchString);
-			}
-		}
-	},
-
-	openPopUp: function(searchString) {
-		console.log('hi')
+	openPopUp: function() {
+		var self = this;
 		this.layer.eachLayer(function(marker){
-			if (marker.feature.properties.title.toLowerCase() === searchString){
+			if (marker.feature.properties.title == self.searchedMarker.properties.title){
 				marker.openPopup();
 			}
 		})

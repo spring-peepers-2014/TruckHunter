@@ -7,9 +7,9 @@ $('#searchform').on('submit', function(e){
   e.preventDefault();
   var searchString = $('input[name="foodtruck"]').val().toLowerCase();
   if (mapView.searchTruckMarkersOnMap(searchString)) {
-    mapView.redraw(searchString);
+    mapView.redraw();
   }
-  
+
 });
 
 

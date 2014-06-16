@@ -88,6 +88,7 @@ Truck.create(name: "Itizy Ice Cream", twitter_handle: "ItizyIceCream")
 Truck.create(name: "666 Burger", twitter_handle: "666burger")
 Truck.create(name: "Cruisin' Kitchen", twitter_handle: "Cruisin_Kitchen")
 
+
 Admin.create(username: "admin", password: "yolodbc")
 
 # Tweet.create(truck_id: 1, body: "48 wall st", tweet_time: Time.now)

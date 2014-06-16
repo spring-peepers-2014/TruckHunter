@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -50,6 +51,8 @@ gem 'bcrypt', '~> 3.1.2'
 gem 'jquery-ui-rails'
 
 gem 'rails4-autocomplete'
+
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'rspec-rails', '3.0.1'

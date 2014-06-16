@@ -1,17 +1,16 @@
 $(document).ready(function(){
 
 	var mapView = new MapWidget.View();
+  var mapController = new MapWidget.Controller(mapView);
 
 
 $('#searchform').on('submit', function(e){
   e.preventDefault();
   var searchString = $('input[name="foodtruck"]').val().toLowerCase();
-  if (mapView.searchTruckMarkersOnMap(searchString)) {
-    mapView.redraw();
+  if (mapController.searchTruckMarkersOnMap(searchString)) {
+    mapController.sendCoordinates();
   }
-
 });
-
 
 
 $('.newtrucktab').on('click', function(){

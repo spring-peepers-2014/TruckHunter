@@ -79,9 +79,13 @@ class Truck < ActiveRecord::Base
 					json.title truck.name
 					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
 					<br><i>"+truck.tweets.last.body+"</i>"
-					json.set! :'marker-color', "#6c6c6c"
-					json.set! :'marker-size', "small"
-					json.set! :'marker-symbol', "bus"
+					json.icon do
+						json.iconUrl "/assets/foodTruck.png"
+						json.iconSize [28, 22]
+						json.iconAnchor [25, 25]
+						json.popupAnchor [0, -25]
+						json.className "dot"
+					end
 				end
 			end
 		end

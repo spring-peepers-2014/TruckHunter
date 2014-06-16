@@ -6,7 +6,15 @@ MapWidget.View = function() {
 MapWidget.View.prototype = {
 
 	draw: function() {
-		
+
+		this.layer.on('layeradd', function(e) {
+			var marker = e.layer,
+					feature = marker.feature;
+
+			marker.setIcon(L.icon(feature.properties.icon));
+
+		});
+
 		this.layer.loadURL('/trucks/new.json');
 
 		this.userLocator();
@@ -25,7 +33,7 @@ MapWidget.View.prototype = {
 			e.preventDefault();
 			e.stopPropagation();
 			map.locate();
-};
+			};
 		}
 
 		// Once we've got a position, zoom and center the map

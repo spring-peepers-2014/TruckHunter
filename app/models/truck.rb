@@ -29,8 +29,20 @@ class Truck < ActiveRecord::Base
 				self.update(latitude: coordinates[0])
 				self.update(longitude:  coordinates[1])
 				self.update(location_last_updated: Time.now)
+				# return
 			else
 				self.get_coordinates(tweet.text)
+				# coordinates = self.get_coordinates(tweet.text)
+
+				# if coordinates
+				# 	p coordinates
+				# 	p "you got here for this tweet"
+				# 	self.update(latitude: coordinates[0])
+				# 	self.update(longitude: coordinates[1])
+				# 	p self.latitude
+				# 	p self.longitude
+				# 	return
+				# end
 			end
 
 		end
@@ -38,6 +50,7 @@ class Truck < ActiveRecord::Base
 
 
 	def has_current_location?
+		return false if self.latitude.nil? || self.longitude.nil?
 		(Time.now - self.location_last_updated) < 14400 ###4 hour interval
 	end
 

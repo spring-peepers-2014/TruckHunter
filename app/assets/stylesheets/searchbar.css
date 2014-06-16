@@ -3,7 +3,9 @@
   /*float: right;*/
   width: 100%; 
   text-align: right; 
-  margin-bottom: 35px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-right: 50px;
 }
 
 #searchbox form {
@@ -19,6 +21,7 @@
 #autocomplete {
   width: 400px;
   height: 40px;
+  margin-right: 50px;
   font-size: 1.5em;
   font-family: dosis;
 }

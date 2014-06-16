@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+  
   root :to => "trucks#index"
 
-  resources :trucks, constraints: {:format => /json/} do
+  resources :trucks do
 
   end
 

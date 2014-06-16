@@ -8,6 +8,15 @@ MapWidget.View = function() {
 
 MapWidget.View.prototype = {
 	draw: function() {
+
+		this.layer.on('layeradd', function(e) {
+			var marker = e.layer,
+					feature = marker.feature;
+
+			marker.setIcon(L.icon(feature.properties.icon));
+
+		});
+
 		this.layer.loadURL('/trucks/new.json');
 		this.userLocator();
 	},

@@ -5,6 +5,7 @@ class TrucksController < ApplicationController
   def index
     @newtruck = Truck.new
     @message = "know a truck?"
+  end
 
     
   	@trucks = Truck.where(approved: true, active: true)
@@ -24,25 +25,14 @@ class TrucksController < ApplicationController
     
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
 
-  # 	@trucks = Truck.where(approved: true, active: true)
-  # 	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
+  def new
+    render :json => Truck.geo_json
+  end
 
-	 # @unknown_trucks = @trucks - @current_trucks
-
-  # 	@unknown_trucks.each do |truck|
-		# if truck.tweets_last_fetched.nil?
-  # 			time_since_last_tweet = 9000
-  # 		else
-  # 			time_since_last_tweet = Time.now - truck.tweets_last_fetched
-  # 		end
-
-  # 		truck.fetch_tweets! if time_since_last_tweet > 3600
-  #   end
-
-		# @updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
-  #   @trucks_to_pin = @updated_trucks + @current_trucks
-
-
+  def create
+    @truck = Truck.new(truck_params)
+    @truck.save
+    render :json => Truck.geo_json
   end
 
   def addtruck
@@ -52,17 +42,6 @@ class TrucksController < ApplicationController
     render :index
   end
 
-  def new
-  	render :json => Truck.geo_json
-  end
-
-  def create
-  	@truck = Truck.new(truck_params)
-  	@truck.save
-    render :json => Truck.geo_json
-  end
-
-
   def approve
     Truck.find(params[:id]).update(approved: true)
     redirect_to :back
@@ -70,7 +49,6 @@ class TrucksController < ApplicationController
 
   def edit
     @truck = Truck.find(params[:id])
-
   end
 
 

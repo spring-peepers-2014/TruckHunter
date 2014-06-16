@@ -24,9 +24,9 @@ describe Truck do
 	end
 
 	context "associations" do
-		it "" do
-		end
-
+		
+		it { should have_many(:tweets) }
+		
 	end
 
 end

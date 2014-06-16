@@ -40,13 +40,15 @@ gem 'debugger', group: [:development, :test]
 
 gem 'twitter', '5.10.0'
 
-gem 'json', '1.8.1'
-
 gem 'mapbox-rails', '1.6.1.1'
 
 gem 'oauth', '0.4.7'
 
 gem 'bcrypt', '~> 3.1.2'
+
+gem 'jquery-ui-rails'
+
+gem 'rails4-autocomplete'
 
 gem 'rails_12factor'
 

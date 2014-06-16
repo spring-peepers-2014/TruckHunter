@@ -28,8 +28,10 @@ class Truck < ActiveRecord::Base
 				self.update(latitude: coordinates[0])
 				self.update(longitude:  coordinates[1])
 				self.update(location_last_updated: Time.now)
+				return
 			else
-				self.get_coordinates(tweet.text)
+				location_set = self.get_coordinates(tweet.text)
+				return if location_set
 			end
 		end
 	end

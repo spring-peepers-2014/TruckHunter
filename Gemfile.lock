@@ -232,11 +232,8 @@ DEPENDENCIES
   oauth (= 0.4.7)
   pg (= 0.17.1)
   rails (= 4.1.1)
-<<<<<<< HEAD
   rails4-autocomplete
-=======
   rails_12factor
->>>>>>> 77914a3c9f2af3ee150574d7c62a154a078bcf43
   rspec-rails (= 3.0.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

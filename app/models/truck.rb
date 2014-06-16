@@ -12,7 +12,7 @@ class Truck < ActiveRecord::Base
 
 
 	def fetch_tweets!
-		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true).reverse
+		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
 		self.update(tweets_last_fetched: Time.now)
 
 		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
@@ -33,6 +33,7 @@ class Truck < ActiveRecord::Base
 				location_set = self.get_coordinates(tweet.text)
 				return if location_set
 			end
+			
 		end
 	end
 
@@ -45,21 +46,20 @@ class Truck < ActiveRecord::Base
 
 	def self.trucks_to_pin
 		@trucks = Truck.where(approved: true, active: true)
-  	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
+  		@current_trucks = @trucks.select { |truck| truck.has_current_location? }
 	 	@unknown_trucks = @trucks - @current_trucks
 
-  	@unknown_trucks.each do |truck|
+  		@unknown_trucks.each do |truck|
 			if truck.tweets_last_fetched.nil?
-  			time_since_last_tweet = 9000
-  		else
-  			time_since_last_tweet = Time.now - truck.tweets_last_fetched
-  		end
-
-  		truck.fetch_tweets! if time_since_last_tweet > 3600
-    end
+  				time_since_last_tweet = 9000
+  			else
+  				time_since_last_tweet = Time.now - truck.tweets_last_fetched
+  			end
+  			truck.fetch_tweets! if time_since_last_tweet > 3600
+    	end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
-    @trucks_to_pin = @updated_trucks + @current_trucks
+    	@trucks_to_pin = @updated_trucks + @current_trucks
 	end
 
 

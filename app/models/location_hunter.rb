@@ -13,12 +13,13 @@ module LocationHunter
 		match.gsub!(" at ", "")
 		match.gsub!("at ", "")
 		match.gsub!(" on ", "")
+		match.gsub!("on ", "")
 		match.gsub!("@", "")
 		match.gsub!("between", "and")
 		match.gsub!("btw", "and")
 
 		return false if match == ""
-		
+
 		match
 	end
 
@@ -37,12 +38,7 @@ module LocationHunter
 		match = parse_tweet(tweet_body)
 		cleaned_match = clean_match(match)
 
-		self.update_attributes(address: "#{cleaned_match}, New York City") unless !cleaned_match
-		# p "this is get_coordinates"
-		# p cleaned_match
-		# coordinates = geocode_coordinates(cleaned_match)
-		# p coordinates
-
+		self.update_attributes(address: "#{cleaned_match}, New York City", location_last_updated: Time.now) if cleaned_match
 	end
 
 end

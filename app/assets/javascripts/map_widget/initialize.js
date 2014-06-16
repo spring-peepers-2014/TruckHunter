@@ -9,6 +9,7 @@ $('#searchform').on('submit', function(e){
   if (mapView.searchTruckMarkersOnMap(searchString)) {
     mapView.redraw(searchString);
   }
+  
 });
 
 

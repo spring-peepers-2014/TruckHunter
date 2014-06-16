@@ -72,7 +72,7 @@ geolocate.parentNode.removeChild(geolocate);
 
 	searchMarkersOnMap: function(searchString) {
 		for (var i=0; i < this.currentTrucks.length; i++) {
-			if (this.currentTrucks[i].properties.title == searchString) {
+			if (this.currentTrucks[i].properties.title.toLowerCase() == searchString) {
 				return true;
 			}
 		}
@@ -80,16 +80,26 @@ geolocate.parentNode.removeChild(geolocate);
 	},
 
 	redraw: function(searchString) {
-		console.log('inside redraw')
 		for (var i=0; i < this.currentTrucks.length; i++) {
-			console.log('inside for loop')
-			if (this.currentTrucks[i].properties.title == searchString) {
+			if (this.currentTrucks[i].properties.title.toLowerCase() == searchString) {
 				var newCoordinates = this.currentTrucks[i].geometry.coordinates;
 				var coordOne = newCoordinates[0];
 				var coordTwo = newCoordinates[1];
-				this.map.setView([coordTwo, coordOne]);
+				this.map.setView([coordTwo, coordOne], [15]);
+				this.openPopUp(searchString);
 			}
 		}
+	},
+
+
+
+	openPopUp: function(searchString) {
+		console.log('hi')
+		this.layer.eachLayer(function(marker){
+			if (marker.feature.properties.title.toLowerCase() === searchString){
+				marker.openPopup();
+			}
+		})
 	}
 
 

@@ -3,7 +3,6 @@ $(document).ready(function(){
 	var map = new MapWidget.View();
 	map.draw();
 
-<<<<<<< HEAD
   console.log('searching')
   map.searchMarkersOnMap("Shortys NYC");
 
@@ -57,8 +56,6 @@ $(document).ready(function(){
 
 
   	
-=======
->>>>>>> af1127a4aa5db71457fa2f45c3a685b5e623a3e3
 	$('.newtrucktab').on('click', function(){
 		$('.opened').show();
 	});

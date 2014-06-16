@@ -2,8 +2,8 @@ MapWidget.View = function() {
 	this.map = L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13);
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
 	this.currentTrucks = [];	
-	this.grabCurrentTruckMarkers();
 	this.draw();
+	this.grabCurrentTruckMarkers();
 };
 
 MapWidget.View.prototype = {
@@ -40,7 +40,7 @@ MapWidget.View.prototype = {
 		// Once we've got a position, zoom and center the map
 		// on it, and add a single marker.
 		map.on('locationfound', function(e) {
-			map.fitBounds(e.bounds);
+			map.fitBounds(e.bounds).setView([e.latlng.lat, e.latlng.lng],15);
 
 			myLayer.setGeoJSON({
 				type: 'Feature',

@@ -9,7 +9,7 @@ body {
   bottom:0;
   width:100%;
   margin-top: 60px;
-  margin-bottom: 60px;
+  /*margin-bottom: 60px;*/
 }
 
 #header {
@@ -35,7 +35,7 @@ body {
   float: left;
 }
 
-#footer {
+/*#footer {
 	border-top: 1px solid black;
 	background-color: #eee;
   position:fixed;
@@ -43,3 +43,4 @@ body {
   bottom:0;  
   width: 100%;
 }
+*/

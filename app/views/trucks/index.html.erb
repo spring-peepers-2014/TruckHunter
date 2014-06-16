@@ -12,3 +12,27 @@
 
 <div id='map' class='dark'></div>
 
+
+
+<div class="newtrucktab">
+	<div class="newtruck">
+		<p><%= @message %></p>
+	</div>
+
+
+	<div class="opened">
+	<%= form_for @newtruck, url: "/addtruck" do |f| %>
+		Truck <%= f.label :name %><br>
+		<%= f.text_field :name%><br>
+		Truck's <%= f.label :twitter_handle %> 
+		<%= f.text_field :twitter_handle %>
+		<%= f.submit "let us know!"%>
+		<% end %>
+	</div>
+</div>
+
+
+
+
+
+

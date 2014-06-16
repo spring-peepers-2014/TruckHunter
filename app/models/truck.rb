@@ -28,6 +28,7 @@ class Truck < ActiveRecord::Base
 
 				self.update(latitude: coordinates[0])
 				self.update(longitude:  coordinates[1])
+				self.update(location_last_updated: Time.now)
 				# return
 			else
 				self.get_coordinates(tweet.text)
@@ -50,17 +51,40 @@ class Truck < ActiveRecord::Base
 
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?
-		time_since_update = Time.now - self.updated_at
+		time_since_update = Time.now - self.location_last_updated
 
 		return time_since_update < 14400 ###4 hour interval
 
 	end
 
 
-	def self.geo_json
+	def self.trucks_to_pin
+		@trucks = Truck.where(approved: true, active: true)
+  	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
 
-		@trucks = Truck.where.not(longitude: -74.0059413, latitude: 40.7127837).where('updated_at > ?', 4.hours.ago)
-		#(longitude: -74.0059413, latitude: 40.7127837)
+	 	@unknown_trucks = @trucks - @current_trucks
+
+  	@unknown_trucks.each do |truck|
+		if truck.tweets_last_fetched.nil?
+  			time_since_last_tweet = 9000
+  		else
+  			time_since_last_tweet = Time.now - truck.tweets_last_fetched
+  		end
+
+  		truck.fetch_tweets! if time_since_last_tweet > 3600
+    end
+
+		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
+    @trucks_to_pin = @updated_trucks + @current_trucks
+	end
+
+
+	def self.geo_json
+		@trucks = trucks_to_pin
+		@trucks_false = Truck.where(longitude: -74.0059413, latitude: 40.7127837)
+		@trucks -= @trucks_false
+
+		p "hope it gets through self.geo_json"
 
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|

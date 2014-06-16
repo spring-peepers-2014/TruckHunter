@@ -7,7 +7,7 @@
 
 	<% @pending_trucks.each do |truck| %>
 		name: <%= truck.name %><br>
-		twitter_handle: <%= truck.twitter_handle %><br>
+		twitter_handle: <a href="https://twitter.com/<%= truck.twitter_handle %>"><%= truck.twitter_handle %></a><br>
 
 		<%= link_to "approved!", truck_approve_path(truck) %><br>
 

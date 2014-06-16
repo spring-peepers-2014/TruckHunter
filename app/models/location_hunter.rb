@@ -19,10 +19,12 @@ module LocationHunter
 		match.gsub!("btw.", "and")
 		match.gsub!("b/t", "and")
 		match.gsub!("btwn", "and")
-		match.gsub!("sandwich", "")
-		match.gsub!("breakfast", "")
-		match.gsub!("lunch", "")
-		match.gsub!("dinner", "")
+		match.gsub!(/\s?sandwich\s?/, "")
+		match.gsub!(/\s?breakfast\s?/, "")
+		match.gsub!(/\s?lunch\s?/, "")
+		match.gsub!(/\s?dinner\s?/, "")
+		match.gsub!(/\s?down\s?/, "")
+		match.gsub!(/\s?try\s?/, "")
 
 		return false if match == ""
 		match

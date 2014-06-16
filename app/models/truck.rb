@@ -21,6 +21,7 @@ class Truck < ActiveRecord::Base
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
 			new_tweet.save
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
+
 			if geo_enabled
 				coordinates = JSON.parse(tweet.to_json)["geo"]["coordinates"]
 
@@ -32,6 +33,7 @@ class Truck < ActiveRecord::Base
 				location_set = self.get_coordinates(tweet.text)
 				return if location_set
 			end
+			
 		end
 	end
 

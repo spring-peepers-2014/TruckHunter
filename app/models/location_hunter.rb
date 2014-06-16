@@ -19,20 +19,9 @@ module LocationHunter
 		match.gsub!("btw", "and")
 
 		return false if match == ""
-
 		match
 	end
 
-	# def geocode_coordinates(location)
-	# 	return false if location == false
-
-	# 	geo_data = Geocoder.search(location + ", new york city").first
-	# 	latitude = geo_data.geometry["location"]["lat"]
-	# 	longitude = geo_data.geometry["location"]["lng"]
-
-	# 	return false if [latitude, longitude] == [40.7127837, -74.0059413]
-	# 	[latitude, longitude]
-	# end
 
 	def get_coordinates(tweet_body)
 		match = parse_tweet(tweet_body)

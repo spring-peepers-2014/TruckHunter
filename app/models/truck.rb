@@ -29,20 +29,8 @@ class Truck < ActiveRecord::Base
 				self.update(latitude: coordinates[0])
 				self.update(longitude:  coordinates[1])
 				self.update(location_last_updated: Time.now)
-				# return
 			else
 				self.get_coordinates(tweet.text)
-				# coordinates = self.get_coordinates(tweet.text)
-
-				# if coordinates
-				# 	p coordinates
-				# 	p "you got here for this tweet"
-				# 	self.update(latitude: coordinates[0])
-				# 	self.update(longitude: coordinates[1])
-				# 	p self.latitude
-				# 	p self.longitude
-				# 	return
-				# end
 			end
 
 		end
@@ -50,22 +38,17 @@ class Truck < ActiveRecord::Base
 
 
 	def has_current_location?
-		return false if self.latitude.nil? || self.longitude.nil?
-		time_since_update = Time.now - self.location_last_updated
-
-		return time_since_update < 14400 ###4 hour interval
-
+		(Time.now - self.location_last_updated) < 14400 ###4 hour interval
 	end
 
 
 	def self.trucks_to_pin
 		@trucks = Truck.where(approved: true, active: true)
   	@current_trucks = @trucks.select { |truck| truck.has_current_location? }
-
 	 	@unknown_trucks = @trucks - @current_trucks
 
   	@unknown_trucks.each do |truck|
-		if truck.tweets_last_fetched.nil?
+			if truck.tweets_last_fetched.nil?
   			time_since_last_tweet = 9000
   		else
   			time_since_last_tweet = Time.now - truck.tweets_last_fetched

@@ -10,7 +10,6 @@ TabBarWidget.Controller.prototype = {
 		});
 
 		$('#newtrucktab').on('click', function(){
-			console.log('yo')
   			$('#newtruckform').show();
 		});
  	},

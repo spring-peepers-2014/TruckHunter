@@ -4,6 +4,7 @@ $(document).ready(function(){
   var mapController = new MapWidget.Controller(mapView);
 
 
+  var searchBarController = new SearchBarWidget.Controller(mapView)
 
 $('.newtrucktab').on('click', function(){
   $('.opened').show();

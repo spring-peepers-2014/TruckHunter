@@ -98,7 +98,9 @@ geolocate.parentNode.removeChild(geolocate);
 			console.log(response)
 			$('#header').append(response)
 		})
-	},
+
+	}, 
+
 
 	showLoader: function() {
 		$('#loading').show();
@@ -107,7 +109,6 @@ geolocate.parentNode.removeChild(geolocate);
 	hideLoader: function() {
 		$('#loading').hide();
 	}
-
 
 };
 

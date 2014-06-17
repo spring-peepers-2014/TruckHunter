@@ -1,4 +1,5 @@
-MapWidget.Controller = function(view) {
+MapWidget.Controller = function() {
+	
 	
 };	
 

@@ -33,17 +33,14 @@ describe("a searchbar widget controller", function() {
 
 	});
 
-	// it("should send coordinates to the view"), function() {
+	// it("should not send coordinates with no view"), function() {
 	// 	var searchbarwidget = new SearchBarWidget.Controller();
-	// 	searchbarwidget.searchedTruckMarker = "yo";
-	// 	expect(searchbarwidget.searchedTruckMarker).toEqual("yo");
-
+	// 	expect(searchbarwidget.sendCoordinates();).toThrowError();
 	// });
 
-	// it("should find food trucks", function() {
-	// 	var searchbarwidget = new SearchBarWidget.Controller();
-	// 	searchbarwidget.findFoodTrucks();
-	// 	expect(searchbarwidget.foodTrucks).toEqual([])
-	// }
+	it("should not find food trucks with no view", function() {
+		var searchbarwidget = new SearchBarWidget.Controller();
+		expect(searchbarwidget.foodTrucks).toEqual([]);
+	});
 
 });

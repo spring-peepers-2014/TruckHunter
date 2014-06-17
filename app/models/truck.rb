@@ -11,23 +11,12 @@ class Truck < ActiveRecord::Base
 	before_save :geocode
 
 
-	before_create :downcase
-
-
-	def downcase
-		self.name.downcase!
-	end
-
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
-		p "trucks tweets"
-		p trucks_tweets.to_json
 		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
 
 		recent_tweets.each do |tweet|
 			
-			p "wefewfwefewfs"
-			p tweet
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
 			new_tweet.save
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
@@ -56,12 +45,11 @@ class Truck < ActiveRecord::Base
 
 	def self.trucks_to_pin
 		@trucks = Truck.where(approved: true, active: true)
-		@recent_trucks = @trucks.map { |truck| truck.tweets.last.tweet_time.today? }
-		@current_trucks = @recent_trucks.select { |truck| truck.has_current_location? }
-	 	@unknown_trucks = @recent_trucks - @current_trucks
+		@current_trucks = @trucks.select { |truck| truck.has_current_location? }
+	 	@unknown_trucks = @trucks - @current_trucks
 
 		@unknown_trucks.each do |truck|
-			if truck.tweets_last_fetched.nil?
+		if truck.tweets_last_fetched.nil?
 				time_since_last_tweet = 9000
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched

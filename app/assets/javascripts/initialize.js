@@ -4,10 +4,15 @@ $(document).ready(function(){
   var mapController = new MapWidget.Controller(mapView);
 
 
+
 $('.newtrucktab').on('click', function(){
   $('.opened').show();
 });
 
+
+$(document).on('click', '#close', function(e){
+  $('#popup').remove();
+})
 
 $('form.new_truck').submit(function(e) {
   e.preventDefault();
@@ -21,6 +26,7 @@ $('form.new_truck').submit(function(e) {
    $('.opened').hide();
  })
 })
+
 
 
 });

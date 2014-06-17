@@ -11,6 +11,13 @@ class Truck < ActiveRecord::Base
 	before_save :geocode
 
 
+	before_create :downcase
+
+
+	def downcase
+		self.name.downcase!
+	end
+
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
 		p "trucks tweets"

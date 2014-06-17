@@ -1,0 +1,12 @@
+<div id="popup">
+	<!-- <a id="close" href="/">x</a> -->
+	<p id="close">&#10005;<p>
+
+
+	<a href="http://twitter.com/<%= "#{@truck.twitter_handle}"%>"> <%="#{@truck.twitter_handle}"%></a>:
+	<% if @truck.tweets.last %>
+		<p><%= @truck.tweets.last.body%> </p>
+	<% else %>
+		<p>we do not have any recent tweets for this truck!</p>
+	<% end %>
+</div>

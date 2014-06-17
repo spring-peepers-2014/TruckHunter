@@ -64,8 +64,12 @@ class Truck < ActiveRecord::Base
 
 	def self.geo_json
 		@trucks = trucks_to_pin
+
+		@trucks_stale_tweets = @trucks.select { |truck| truck.tweets.last.tweet_time < Time.now.midnight }
 		@trucks_false = Truck.where(longitude: -74.0059413, latitude: 40.7127837)
+
 		@trucks -= @trucks_false
+		@trucks -= @trucks_stale_tweets
 
 		Jbuilder.encode do |json|
 			json.array! @trucks do |truck|

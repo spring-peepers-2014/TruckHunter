@@ -1,6 +1,5 @@
 MapWidget.Controller = function() {
-	
-	
+
 };	
 
 

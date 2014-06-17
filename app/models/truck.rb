@@ -10,31 +10,6 @@ class Truck < ActiveRecord::Base
 	before_save :geocode
 	before_save :lowercase
 
-	def fetch_tweets!
-		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
-		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }	
-
-		recent_tweets.each do |tweet|
-			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
-			new_tweet.save
-			geo_enabled = JSON.parse(tweet.to_json)["geo"]
-			profile_img = JSON.parse(tweet.to_json)["user"]["profile_image_url"]
-			self.update(profile_img_url: profile_img)
-			if geo_enabled
-				lati, longi = geo_enabled["coordinates"]
-				self.update_attributes(latitude: lati, longitude: longi, location_last_updated: Time.now)
-				return
-			else
-				location = LocationHunter.get_coordinates(tweet.text)
-				if location
-					self.update_attributes(address: "#{location}, New York City", location_last_updated: Time.now)
-					return
-				end
-			end
-			
-		end
-	end
-
 
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?
@@ -53,7 +28,7 @@ class Truck < ActiveRecord::Base
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched
 			end
-			 truck.fetch_tweets! if time_since_last_tweet > 3600
+			 TweetManager.search_tweets(truck) if time_since_last_tweet > 3600
   		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }

@@ -87,6 +87,7 @@ Truck.create(name: "Fishing Shrimp", twitter_handle: "FishingShrimp")
 Truck.create(name: "Itizy Ice Cream", twitter_handle: "ItizyIceCream")
 Truck.create(name: "666 Burger", twitter_handle: "666burger")
 Truck.create(name: "Cruisin' Kitchen", twitter_handle: "Cruisin_Kitchen")
+Truck.create(name: "Yankee Doodle Dandy's", twitter_handle: "USAFoodTruck")
 
 
 Admin.create(username: "admin", password: "yolodbc")

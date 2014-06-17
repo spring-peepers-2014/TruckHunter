@@ -20,11 +20,14 @@ class Truck < ActiveRecord::Base
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
-		self.update(tweets_last_fetched: Time.now)
-
+		p "trucks tweets"
+		p trucks_tweets.to_json
 		recent_tweets = trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
 
 		recent_tweets.each do |tweet|
+			
+			p "wefewfwefewfs"
+			p tweet
 			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
 			new_tweet.save
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
@@ -53,20 +56,21 @@ class Truck < ActiveRecord::Base
 
 	def self.trucks_to_pin
 		@trucks = Truck.where(approved: true, active: true)
-  		@current_trucks = @trucks.select { |truck| truck.has_current_location? }
-	 	@unknown_trucks = @trucks - @current_trucks
+		@recent_trucks = @trucks.map { |truck| truck.tweets.last.tweet_time.today? }
+		@current_trucks = @recent_trucks.select { |truck| truck.has_current_location? }
+	 	@unknown_trucks = @recent_trucks - @current_trucks
 
-  		@unknown_trucks.each do |truck|
+		@unknown_trucks.each do |truck|
 			if truck.tweets_last_fetched.nil?
-  				time_since_last_tweet = 9000
-  			else
-  				time_since_last_tweet = Time.now - truck.tweets_last_fetched
-  			end
-  			truck.fetch_tweets! if time_since_last_tweet > 3600
-    	end
+				time_since_last_tweet = 9000
+			else
+				time_since_last_tweet = Time.now - truck.tweets_last_fetched
+			end
+			truck.fetch_tweets! if time_since_last_tweet > 3600
+  	end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
-    	@trucks_to_pin = @updated_trucks + @current_trucks
+  	@trucks_to_pin = @updated_trucks + @current_trucks
 	end
 
 
@@ -86,6 +90,7 @@ class Truck < ActiveRecord::Base
 					json.title truck.name
 					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
 					<br><i>"+truck.tweets.last.body+"</i>"
+					json.images 
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"
 						json.iconSize [28, 22]

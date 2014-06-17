@@ -1,7 +1,6 @@
 MapWidget.View = function(map) {
 	this.map = map;
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
-	this.showLoader();	
 	this.draw();
 };
 
@@ -18,7 +17,6 @@ MapWidget.View.prototype = {
 
 		this.layer.loadURL('/trucks/new.json');
 		this.userLocator();
-		this.hideLoader();
 	},
 
 	userLocator: function() {
@@ -54,9 +52,9 @@ MapWidget.View.prototype = {
 					'marker-symbol': 'star'
 				}
 			});
-// And hide the geolocation button
-geolocate.parentNode.removeChild(geolocate);
-});
+		// And hide the geolocation button
+		geolocate.parentNode.removeChild(geolocate);
+		});
 
 		// If the user chooses not to allow their location
 		// to be shared, display an error message.
@@ -64,8 +62,6 @@ geolocate.parentNode.removeChild(geolocate);
 			geolocate.innerHTML = 'Position could not be found';
 		});
 	},
-
-	
 
 	redraw: function(searchedMarker, newCoordinates) {
 			this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
@@ -87,7 +83,7 @@ geolocate.parentNode.removeChild(geolocate);
 		this.layer.eachLayer(function(marker){
 			marker.closePopup();
 			})
-		},
+	},
 
 	renderPartial: function(searchString) {
 		$.ajax({
@@ -99,16 +95,7 @@ geolocate.parentNode.removeChild(geolocate);
 			$('#header').append(response)
 		})
 
-	}, 
-
-
-	showLoader: function() {
-		$('#loading').show();
 	},
-
-	hideLoader: function() {
-		$('#loading').hide();
-	}
 
 };
 

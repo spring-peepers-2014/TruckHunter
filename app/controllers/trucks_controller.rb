@@ -1,5 +1,9 @@
 class TrucksController < ApplicationController
-	respond_to :json
+  # Why is this here?  I don't think this does what you think it does.
+  #
+  # If you had controller tests, you could remove this and see that it's not
+  # doing what you think it's doing.
+	# respond_to :json
 	# before_filter :load_truck, :except => [:index, :create]
 
   def index

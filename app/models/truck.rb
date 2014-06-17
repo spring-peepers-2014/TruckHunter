@@ -9,7 +9,7 @@ class Truck < ActiveRecord::Base
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
 	before_save :geocode
-
+	before_save :lowercase
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
@@ -91,5 +91,10 @@ class Truck < ActiveRecord::Base
 			end
 		end
 
+	end
+
+
+	def lowercase
+		self.name.downcase!
 	end
 end

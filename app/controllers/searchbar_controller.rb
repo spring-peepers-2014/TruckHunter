@@ -13,7 +13,7 @@ class SearchbarController < ApplicationController
 	end
 
 	def new
-		@trucks = Truck.all.pluck(:name)
+		@trucks = Truck.where(approved: true).pluck(:name)
 		render :json => @trucks
 	end
 

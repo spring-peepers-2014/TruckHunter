@@ -8,13 +8,15 @@ module LocationHunter
 		my_match = /\s(at|on)\s\S+\s(and|&)\s\S+|
 		((\d+(th|st|nd|rd)\s)|(\S+))\s((ave|avenue|st|street)?.?\s?(b\/t|bet|btw|btwn|between).?\s)(\d+(th|st|nd|rd)|\S+)|
 		\S+\s(and|&)?\s\S+?\s(Avenue|Ave|Street|St)|
-		(\s)(at|on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)|
+		(\s)(@|at|on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)|
 		\S\d+\s\b\w+\b\s(Avenue|Ave|Street|St)|
 		\A?^?\d+\s(\b\w+\b\s)+(Avenue|Ave|Street|St)|
 		(\b\w+\b\s){2}Park|
 		(\b\w+\b\s)(Avenue|Ave|Street|St)\sand?\s(\b\w+\b\s)(St|Street)|
 		(\b\w+\b\s)between(\s\b\w+\b)|
-		\S+\s((street|st|ave|avenue)\s)?(and|&)\s\S+/i.match(cleaned_tweet).to_s
+		\d+(th)\s(and|&)\s\S+|
+		\S+\s(and|&)\s\d+(th)|
+		\S+\s((street|st|ave|avenue)\s)(and|&)\s\S+/i.match(cleaned_tweet).to_s
 	end
 
 	def clean_match(match)

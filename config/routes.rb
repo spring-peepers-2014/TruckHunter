@@ -18,9 +18,8 @@ Rails.application.routes.draw do
   delete '/admins/logout' => 'admins#destroy', :as => :logout
 
 
-  resources :searchbar
+  resources :searchbar, only: [:index, :new, :create]
 
-  get '/searchbar/new' => 'searchbar#new'
   post '/addtruck' => 'trucks#addtruck', :as => 'make_truck'
 
 end

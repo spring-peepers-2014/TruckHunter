@@ -12,7 +12,6 @@ class SearchbarController < ApplicationController
 		end
 	end
 
-# this is loading the geo-json marker objects on map
 	def new
 		@trucks = Truck.all.pluck(:name)
 		render :json => @trucks

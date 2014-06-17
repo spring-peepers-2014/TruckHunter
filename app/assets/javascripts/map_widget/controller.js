@@ -31,6 +31,7 @@ MapWidget.Controller.prototype = {
 		});
 	},
 
+	
 
 	grabTruckMarkers: function() {
 		var self = this;

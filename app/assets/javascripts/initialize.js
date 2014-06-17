@@ -6,14 +6,9 @@ $(document).ready(function(){
 
   var searchBarController = new SearchBarWidget.Controller(mapView)
 
-$('.newtrucktab').on('click', function(){
-  $('.opened').show();
-});
+  var tabController = new TabBarWidget.Controller();
 
 
-$(document).on('click', '#close', function(e){
-  $('#popup').remove();
-})
 
 $('form.new_truck').submit(function(e) {
   e.preventDefault();

@@ -14,30 +14,41 @@
 
 
 
-<div class="newtrucktab">
-	<div class="newtruck">
+<div id="newtrucktab">
+	<div id="newtruck">
 		<p><%= @message %></p>
 	</div>
 
 
 	<div class="opened">
+		<div id="close">
+			<text>&#10005;<text>
+		</div>
 		<%= form_for @newtruck, url: "/addtruck" do |f| %>
-		Truck <%= f.label :name %><br>
-		<%= f.text_field :name%><br>
-		Truck's <%= f.label :twitter_handle %> 
-		<%= f.text_field :twitter_handle %>
-		<%= f.submit "let us know!"%>
+			Truck <%= f.label :name %><br>
+			<%= f.text_field :name%><br>
+			Truck's <%= f.label :twitter_handle %> 
+			<%= f.text_field :twitter_handle %>
+			<%= f.submit "let us know!"%>
 		<% end %>
 	</div>
+
 </div>
 
 
 
-<div class="truckownertab">
+<div id="truckownertab">
 	<p>get your truck on the map</p>
 </div>
 
 
+
+<div id="readme">
+	<div id="close">
+		<text>&#10005;<text>
+	</div>
+	<p>yo</p>
+</div>
 
 
 

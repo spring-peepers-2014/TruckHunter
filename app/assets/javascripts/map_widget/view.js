@@ -1,6 +1,7 @@
 MapWidget.View = function() {
 	this.map = L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13);
-	this.layer = L.mapbox.featureLayer().addTo(this.map);	
+	this.layer = L.mapbox.featureLayer().addTo(this.map);
+	this.showLoader();	
 	this.draw();
 };
 
@@ -17,6 +18,7 @@ MapWidget.View.prototype = {
 
 		this.layer.loadURL('/trucks/new.json');
 		this.userLocator();
+		this.hideLoader();
 	},
 
 	userLocator: function() {
@@ -96,6 +98,14 @@ geolocate.parentNode.removeChild(geolocate);
 			console.log(response)
 			$('#header').append(response)
 		})
+	},
+
+	showLoader: function() {
+		$('#loading').show();
+	},
+
+	hideLoader: function() {
+		$('#loading').hide();
 	}
 
 

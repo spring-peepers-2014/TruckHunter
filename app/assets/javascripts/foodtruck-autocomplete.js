@@ -1,43 +1,43 @@
-$(function(){
+// $(function(){
 
 
-  var foodTrucks = []
-  findFoodTrucks();
-  autoComplete();
+//   var foodTrucks = []
+//   findFoodTrucks();
+//   autoComplete();
 
-  function findFoodTrucks() {
-    $.ajax({
-        type: 'get',
-        url: '/searchbar/new',
-        dataType: 'json'
-    }).done(function(response){
-        var namesofFoodTrucks = response
-        for (var i=0; i < namesofFoodTrucks.length; i++) {
-            foodTrucks.push({ value: namesofFoodTrucks[i]});
-        }
-        return foodTrucks;
-    })
-  }
+//   function findFoodTrucks() {
+//     $.ajax({
+//         type: 'get',
+//         url: '/searchbar/new',
+//         dataType: 'json'
+//     }).done(function(response){
+//         var namesofFoodTrucks = response
+//         for (var i=0; i < namesofFoodTrucks.length; i++) {
+//             foodTrucks.push({ value: namesofFoodTrucks[i]});
+//         }
+//         return foodTrucks;
+//     })
+//   }
 
 
-  function autoComplete() {
-    $('#autocomplete').autocomplete({
-        lookup: foodTrucks
-    })
-  }
+//   function autoComplete() {
+//     $('#autocomplete').autocomplete({
+//         lookup: foodTrucks
+//     })
+//   }
   
 
-  function grabSearchString() {
-    $('#searchbox').on('submit', function(e){
-      e.preventDefault();
+//   function grabSearchString() {
+//     $('#searchbox').on('submit', function(e){
+//       e.preventDefault();
 
-    })
+//     })
 
 
-    function popUpFoodTruck() {
+//     function popUpFoodTruck() {
       
-    }
-  }
+//     }
+//   }
 
   // $('#searchbox').keyup(search);
 
@@ -66,8 +66,3 @@ $(function(){
   
 
   
-
-  
-
-
-});

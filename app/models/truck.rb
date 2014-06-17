@@ -49,16 +49,16 @@ class Truck < ActiveRecord::Base
 	 	@unknown_trucks = @trucks - @current_trucks
 
 		@unknown_trucks.each do |truck|
-		if truck.tweets_last_fetched.nil?
+			if truck.tweets_last_fetched.nil?
 				time_since_last_tweet = 9000
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched
 			end
 			truck.fetch_tweets! if time_since_last_tweet > 3600
-  	end
+  		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
-  	@trucks_to_pin = @updated_trucks + @current_trucks
+  		@trucks_to_pin = @updated_trucks + @current_trucks
 	end
 
 

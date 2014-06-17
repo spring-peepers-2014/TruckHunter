@@ -43,6 +43,7 @@ MapWidget.Controller.prototype = {
 			for (var i =0; i < response.length; i++) {
 				self.currentTrucks.push(response[i]);
 			}
+			self.view.hideLoader();
 		});
 	},
 

@@ -2,16 +2,29 @@ MapWidget.Controller = function(view) {
 	this.view = view;
 	this.currentTrucks = [];
 	this.grabTruckMarkers();
+	this.listenForSearch();
 	this.searchedTruckMarker = '';
-
 
 	this.foodTrucks = [];
 	this.findFoodTrucks();
 	this.autoCompleteThis();
-};
+};	
 
 
 MapWidget.Controller.prototype = {
+
+	listenForSearch: function() {
+		var self = this;
+		$('#searchform').on('submit', function(e){
+			e.preventDefault();
+			var searchString = $('input[name="foodtruck"]').val().toLowerCase();
+			 if (self.searchTruckMarkersOnMap(searchString)) {
+    			self.sendCoordinates();
+  			}
+		});
+	},
+
+
 	grabTruckMarkers: function() {
 		var self = this;
 		$.ajax({
@@ -38,13 +51,13 @@ MapWidget.Controller.prototype = {
 	sendCoordinates: function() {
 		var newCoordinates =this.searchedTruckMarker.geometry.coordinates;
 		console.log(newCoordinates)
-		this.view.redraw(newCoordinates, this.searchedTruckMarker);
+		this.view.redraw(this.searchedTruckMarker, newCoordinates);
 	},
 
 
 
 
-
+///////auto completition methods
 
 	findFoodTrucks: function() {
 		var self = this;

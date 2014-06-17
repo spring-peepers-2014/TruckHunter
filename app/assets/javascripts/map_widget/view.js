@@ -9,7 +9,7 @@ MapWidget.View.prototype = {
 
 		this.layer.on('layeradd', function(e) {
 			var marker = e.layer,
-					feature = marker.feature;
+			feature = marker.feature;
 
 			marker.setIcon(L.icon(feature.properties.icon));
 
@@ -65,10 +65,11 @@ geolocate.parentNode.removeChild(geolocate);
 
 	
 
-	redraw: function(newCoordinates, searchedMarker) {
+	redraw: function(searchedMarker, newCoordinates) {
 			this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
 			this.openPopUp(searchedMarker);
 	},
+
 
 	openPopUp: function(searchedMarker) {
 		var self = this;

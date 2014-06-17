@@ -5,16 +5,6 @@ $(document).ready(function(){
   // var autoCompleteController = new AutoComplete.Controller()
 
 
-
-$('#searchform').on('submit', function(e){
-  e.preventDefault();
-  var searchString = $('input[name="foodtruck"]').val().toLowerCase();
-  if (mapController.searchTruckMarkersOnMap(searchString)) {
-    mapController.sendCoordinates();
-  }
-});
-
-
 $('.newtrucktab').on('click', function(){
   $('.opened').show();
 });

@@ -1,0 +1,24 @@
+#popup {
+	font-family: arial;
+	background-color: rgba(0, 0, 0, .70);
+	color: #fff;
+	width: 600px;
+	height: 400px;
+	margin-left: 25px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#popup p {
+	font-size: 24px;
+	margin-left: 10px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+#popup a {
+	font-size: 30px;
+	font-weight: bold;
+	color: #0099ff;
+}
+

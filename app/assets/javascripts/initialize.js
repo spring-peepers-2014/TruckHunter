@@ -4,9 +4,11 @@ $(document).ready(function(){
   var mapController = new MapWidget.Controller(mapView);
 
 
+
 $('.newtrucktab').on('click', function(){
   $('.opened').show();
 });
+
 
 
 $('form.new_truck').submit(function(e) {

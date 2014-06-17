@@ -2,7 +2,9 @@
 	<div id="close">
 		<text>&#10005;<text>
 	</div>
-	<a href="http://twitter.com/<%= "#{@truck.twitter_handle}"%>"> <%="#{@truck.twitter_handle}"%></a>:
+
+	<%= link_to "#{@truck.twitter_handle}", "http://twitter.com/#{@truck.twitter_handle}"%>:
+
 	
 	<% if @truck.tweets.last %>
 		<p><%= @truck.tweets.last.body%> </p>

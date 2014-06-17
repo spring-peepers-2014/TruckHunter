@@ -10,6 +10,9 @@ $('.newtrucktab').on('click', function(){
 });
 
 
+$(document).on('click', '#close', function(e){
+  $('#popup').remove();
+})
 
 $('form.new_truck').submit(function(e) {
   e.preventDefault();
@@ -23,6 +26,7 @@ $('form.new_truck').submit(function(e) {
    $('.opened').hide();
  })
 })
+
 
 
 });

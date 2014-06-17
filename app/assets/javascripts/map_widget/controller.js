@@ -26,12 +26,12 @@ MapWidget.Controller.prototype = {
     			$('#popup').remove();
     			self.view.closePopUp();
     			self.view.renderPartial(searchString);
-  			}
+    		}
   			$('form')[0].reset();
 		});
 	},
 
-	
+
 
 	grabTruckMarkers: function() {
 		var self = this;

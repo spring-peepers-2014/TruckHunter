@@ -9,7 +9,7 @@ class Truck < ActiveRecord::Base
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
 	before_save :geocode
-
+	before_save :lowercase
 
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
@@ -54,7 +54,7 @@ class Truck < ActiveRecord::Base
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched
 			end
-			truck.fetch_tweets! if time_since_last_tweet > 3600
+			# truck.fetch_tweets! if time_since_last_tweet > 3600
   		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
@@ -83,6 +83,10 @@ class Truck < ActiveRecord::Base
 					json.images "<img src='#{truck.profile_image_url}'>"
 					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
 					<br><i>"+truck.tweets.last.body+"</i>"
+<<<<<<< HEAD
+=======
+					# json.images truck.profile_image_url
+>>>>>>> 38ebb91f49ca78a973beb48e31fd47e89283e808
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"
 						json.iconSize [28, 22]
@@ -94,5 +98,10 @@ class Truck < ActiveRecord::Base
 			end
 		end
 
+	end
+
+
+	def lowercase
+		self.name.downcase!
 	end
 end

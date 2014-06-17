@@ -18,6 +18,7 @@ MapWidget.View.prototype = {
 
 		this.layer.loadURL('/trucks/new.json');
 		this.userLocator();
+		this.hideLoader();
 	},
 
 	userLocator: function() {
@@ -97,7 +98,9 @@ geolocate.parentNode.removeChild(geolocate);
 			console.log(response)
 			$('#header').append(response)
 		})
+
 	}, 
+
 
 	showLoader: function() {
 		$('#loading').show();

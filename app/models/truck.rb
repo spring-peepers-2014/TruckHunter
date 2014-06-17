@@ -78,7 +78,7 @@ class Truck < ActiveRecord::Base
 				json.properties do
 					json.title truck.name
 					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
-					<br><i>"+truck.tweets.last.body+"</i><br>"+truck.tweets.last.tweet_time.strftime('%b %e, %l:%M %p')+""
+					<br><i>"+truck.tweets.last.body+"</i><br>Tweeted on "+truck.tweets.last.tweet_time.strftime('%b %e, %l:%M %p')+""
 					# json.images truck.profile_img_url
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"

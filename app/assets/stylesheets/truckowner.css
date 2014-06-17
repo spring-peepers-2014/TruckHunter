@@ -1,5 +1,5 @@
 #truckownertab {
-	font-family: dosis;
+	font-family: arial;
 	position: absolute;
 	padding: 5px 5px;
 	bottom: 0;
@@ -12,12 +12,12 @@
 }
 
 #readme {
+	background-color: rgba(0, 0, 0, .70);
+	font-family: arial;
 	position: absolute;
 	margin-top: 80px;
 	display: none;
 	width: 500px;
-	height: 300px;
-	background-color: #000;
-	z-index: 1000000;
+	height: 400px;
 	color: #fff;
 }

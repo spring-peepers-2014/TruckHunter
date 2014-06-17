@@ -10,14 +10,15 @@ TabBarWidget.Controller.prototype = {
 		});
 
 		$('#newtrucktab').on('click', function(){
-  			$('.opened').show();
+			console.log('yo')
+  			$('#newtruckform').show();
 		});
  	},
 	listenToClose: function() {
 		$(document).on('click', '#close', function(e){
   			$('#popup').remove();
   			$('#readme').hide();
-  			$('.opened').hide();
+  			$('#newtruckform').hide();
 		})
 	}
 }

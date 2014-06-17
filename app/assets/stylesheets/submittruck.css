@@ -1,19 +1,14 @@
-.opened {
+#newtruckform {
 	display: none;
 	position: absolute;
 	bottom: 0px;
 	padding: 20px;
 	width: 200px;
-	/*height: 100px;*/
 	background-color: #000;
 	color: #fff;
 	font-family: dosis;
 	border-radius: 10px 10px 0 0;
 	text-align: center;
-}
-
-.opened input{
-	width: 100px;
 }
 
 #newtruck  {
@@ -32,6 +27,10 @@
 	cursor: pointer;
 }
 
-.opened form {
+#newtruckform input{
+	width: 100px;
+}
+
+#newtruckform form {
 	color: #fff;
 }

@@ -3,7 +3,7 @@ module LocationHunter
 	def parse_tweet(tweet)
 		cleaned_tweet = tweet.gsub("#", "")
 		cleaned_tweet.gsub!("&amp;", "&")
-		my_match = /((\d+(th|st|nd|rd)\s)|(\S+))\s((ave|avenue|st|street).?\s(b\/t|btw|btwn|between).?\s)(\d+(th|st|nd|rd)|\S+)|\S+\s?(and|&)\s?\S+|\S+\s(and|&)?\s\S+?\s(Avenue|Ave|Street|St)|(\s)?(@|(\s)at|on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)|\S\d+\s\b\w+\b\s(Avenue|Ave|Street|St)|\A?^?\d+\s(\b\w+\b\s)+(Avenue|Ave|Street|St)|(\b\w+\b\s){2}Park|(\b\w+\b\s)(Avenue|Ave|Street|St)\sand?\s(\b\w+\b\s)(St|Street)|(\b\w+\b\s)between(\s\b\w+\b)/i.match(cleaned_tweet).to_s
+		my_match = /(at|on)\s\S+(and|&)\s\S+|((\d+(th|st|nd|rd)\s)|(\S+))\s((ave|avenue|st|street)?.?\s?(b\/t|btw|btwn|between).?\s)(\d+(th|st|nd|rd)|\S+)|\S+\s(and|&)?\s\S+?\s(Avenue|Ave|Street|St)|(\s)?(@|(\s)?at|(\s)?on)\s+((?:\S+\s)?\S*(and|&)\S*(?:\s\S+)?)|\S\d+\s\b\w+\b\s(Avenue|Ave|Street|St)|\A?^?\d+\s(\b\w+\b\s)+(Avenue|Ave|Street|St)|(\b\w+\b\s){2}Park|(\b\w+\b\s)(Avenue|Ave|Street|St)\sand?\s(\b\w+\b\s)(St|Street)|(\b\w+\b\s)between(\s\b\w+\b)/i.match(cleaned_tweet).to_s
 	end
 
 	def clean_match(match)
@@ -15,6 +15,7 @@ module LocationHunter
 		match.gsub!(" on ", "")
 		match.gsub!("@", "")
 		match.gsub!("between", "and")
+		match.gsub!("bet", "and")
 		match.gsub!("btw", "and")
 		match.gsub!("btw.", "and")
 		match.gsub!("b/t", "and")

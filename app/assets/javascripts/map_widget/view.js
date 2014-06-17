@@ -1,5 +1,6 @@
-MapWidget.View = function() {
-	this.map = L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13);
+MapWidget.View = function(map) {
+	this.map = map
+
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
 	this.draw();
 };
@@ -83,7 +84,7 @@ MapWidget.View.prototype = {
 		this.layer.eachLayer(function(marker){
 			marker.closePopup();
 			})
-		},
+	},
 
 	renderPartial: function(searchString) {
 		$.ajax({
@@ -95,16 +96,7 @@ MapWidget.View.prototype = {
 			$('#header').append(response)
 		})
 
-	}, 
-
-
-	showLoader: function() {
-		$('#loading').show();
 	},
-
-	hideLoader: function() {
-		$('#loading').hide();
-	}
 
 };
 

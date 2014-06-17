@@ -1,5 +1,4 @@
 class Truck < ActiveRecord::Base
-	include LocationHunter
 
 	has_many :tweets
 
@@ -26,8 +25,11 @@ class Truck < ActiveRecord::Base
 				self.update_attributes(latitude: lati, longitude: longi, location_last_updated: Time.now)
 				return
 			else
-				location_set = self.get_coordinates(tweet.text)
-				return if location_set
+				location = LocationHunter.get_coordinates(tweet.text)
+				if location
+					self.update_attributes(address: "#{location}, New York City", location_last_updated: Time.now)
+					return
+				end
 			end
 			
 		end
@@ -51,7 +53,7 @@ class Truck < ActiveRecord::Base
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched
 			end
-			 # truck.fetch_tweets! if time_since_last_tweet > 3600
+			 truck.fetch_tweets! if time_since_last_tweet > 3600
   		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }

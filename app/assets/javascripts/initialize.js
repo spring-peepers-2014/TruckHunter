@@ -18,8 +18,10 @@ $('form.new_truck').submit(function(e) {
     url: '/addtruck',
     data: $(this).serialize()
   }).done(function() {
-   document.getElementById("new_truck").reset();
-   $('.opened').hide();
+   // document.getElementById("new_truck").reset();
+   $('#newtruckform form')[0].reset();
+   $('#newtruckform').hide();
+   // console.log(response)
  })
 })
 

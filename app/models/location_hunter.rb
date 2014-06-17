@@ -37,7 +37,6 @@ class LocationHunter
 		match = parse_tweet(tweet_body)
 		cleaned_match = clean_match(match)
 
-		# self.update_attributes(address: "#{cleaned_match}, New York City", location_last_updated: Time.now) if cleaned_match
 		cleaned_match
 	end
 

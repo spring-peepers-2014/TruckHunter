@@ -5,8 +5,11 @@ class SearchbarController < ApplicationController
 
 	def create
 		@truck = Truck.find_by_name(params[:name])
-		# if @truck
-		render partial: "index", locals: {truck: @truck}
+		if @truck
+			render partial: "index", locals: {truck: @truck}
+		else
+			render partial: "does_not_exist"
+		end
 	end
 
 # this is loading the geo-json marker objects on map

@@ -29,3 +29,7 @@
 	margin: 0;
 	cursor: pointer;
 }
+
+img {
+	float: right;
+}

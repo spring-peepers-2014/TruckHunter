@@ -78,6 +78,24 @@ geolocate.parentNode.removeChild(geolocate);
 				marker.openPopup();
 			}
 		})
+	},
+
+	closePopUp: function(){
+		var self = this;
+		this.layer.eachLayer(function(marker){
+			marker.closePopup();
+			})
+		},
+
+	renderPartial: function(searchString) {
+		$.ajax({
+			type: 'post',
+			url: '/searchbar',
+			data: {name: searchString}
+		}).done(function(response){
+			console.log(response)
+			$('#header').append(response)
+		})
 	}
 
 

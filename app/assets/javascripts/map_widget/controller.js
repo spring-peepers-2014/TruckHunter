@@ -19,8 +19,15 @@ MapWidget.Controller.prototype = {
 			e.preventDefault();
 			var searchString = $('input[name="foodtruck"]').val().toLowerCase();
 			 if (self.searchTruckMarkersOnMap(searchString)) {
+    			$('#popup').remove();
     			self.sendCoordinates();
+    		}
+    		else {
+    			$('#popup').remove();
+    			self.view.closePopUp();
+    			self.view.renderPartial(searchString);
   			}
+  			$('form')[0].reset();
 		});
 	},
 
@@ -53,7 +60,6 @@ MapWidget.Controller.prototype = {
 		console.log(newCoordinates)
 		this.view.redraw(this.searchedTruckMarker, newCoordinates);
 	},
-
 
 
 

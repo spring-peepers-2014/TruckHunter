@@ -1,9 +1,7 @@
 MapWidget.View = function() {
 	this.map = L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13);
-	this.layer = L.mapbox.featureLayer().addTo(this.map);
-	this.currentTrucks = [];	
+	this.layer = L.mapbox.featureLayer().addTo(this.map);	
 	this.draw();
-	this.grabCurrentTruckMarkers();
 };
 
 MapWidget.View.prototype = {
@@ -11,7 +9,7 @@ MapWidget.View.prototype = {
 
 		this.layer.on('layeradd', function(e) {
 			var marker = e.layer,
-					feature = marker.feature;
+			feature = marker.feature;
 
 			marker.setIcon(L.icon(feature.properties.icon));
 
@@ -65,43 +63,18 @@ geolocate.parentNode.removeChild(geolocate);
 		});
 	},
 
-	grabCurrentTruckMarkers: function() {
+	
+
+	redraw: function(searchedMarker, newCoordinates) {
+			this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
+			this.openPopUp(searchedMarker);
+	},
+
+
+	openPopUp: function(searchedMarker) {
 		var self = this;
-		$.ajax({
-			type: "get",
-			url: "/trucks/new.json",
-			dataType: 'json'
-		}).done(function(response){
-				for (var i =0; i < response.length; i++) {
-					self.currentTrucks.push(response[i]);
-				}
-			});
-	},
-
-	searchTruckMarkersOnMap: function(searchString) {
-		for (var i=0; i < this.currentTrucks.length; i++) {
-			if (this.currentTrucks[i].properties.title.toLowerCase() == searchString) {
-				return true;
-			}
-		}
-		return false
-	},
-
-
-	redraw: function(searchString) {
-		for (var i=0; i < this.currentTrucks.length; i++) {
-			if (this.currentTrucks[i].properties.title.toLowerCase() == searchString) {
-				var newCoordinates = this.currentTrucks[i].geometry.coordinates;
-				this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
-				this.openPopUp(searchString);
-			}
-		}
-	},
-
-	openPopUp: function(searchString) {
-		console.log('hi')
 		this.layer.eachLayer(function(marker){
-			if (marker.feature.properties.title.toLowerCase() === searchString){
+			if (marker.feature.properties.title == searchedMarker.properties.title){
 				marker.openPopup();
 			}
 		})

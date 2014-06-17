@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 	var mapView = new MapWidget.View();
   var mapController = new MapWidget.Controller(mapView);
-  // var autoCompleteController = new AutoComplete.Controller()
 
 
 $('.newtrucktab').on('click', function(){

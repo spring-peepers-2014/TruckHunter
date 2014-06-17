@@ -87,4 +87,6 @@ SearchBarWidget.Controller.prototype = {
 		})
 	}
 
+	
+
 };

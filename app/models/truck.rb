@@ -18,11 +18,11 @@ class Truck < ActiveRecord::Base
 	
 
 		recent_tweets.each do |tweet|
-			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at)
+			new_tweet = self.tweets.build(body: tweet.text, tweet_time: tweet.created_at, profile_img_url: tweet.user.profile_image_url)
 			new_tweet.save
 			geo_enabled = JSON.parse(tweet.to_json)["geo"]
-			profile_img = JSON.parse(tweet.to_json)["user"]["profile_image_url"]
-			self.update(profile_img_url: profile_img)
+			# profile_img = JSON.parse(tweet.to_json)["user"]["profile_image_url"]
+			# self.update(profile_img_url: profile_img)
 			if geo_enabled
 				lati, longi = geo_enabled["coordinates"]
 
@@ -80,9 +80,9 @@ class Truck < ActiveRecord::Base
 				end
 				json.properties do
 					json.title truck.name
+					json.images "<img src='#{truck.profile_image_url}'>"
 					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
 					<br><i>"+truck.tweets.last.body+"</i>"
-					json.images truck.profile_image_url
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"
 						json.iconSize [28, 22]

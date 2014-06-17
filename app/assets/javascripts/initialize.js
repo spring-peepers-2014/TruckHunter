@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var mapView = new MapWidget.View();
+	var mapView = new MapWidget.View(L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13));
   var mapController = new MapWidget.Controller(mapView);
 
 

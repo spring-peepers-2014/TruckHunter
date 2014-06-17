@@ -1,5 +1,38 @@
-MapWidget.Controller = function(view) {
-	
+SearchBarWidget.Controller = function(view) {
+	this.view = view;
+	this.currentTrucks = [];
+	this.grabTruckMarkers();
+	this.listenForSearch();
+	this.searchedTruckMarker = '';
+
+	this.foodTrucks = [];
+	this.findFoodTrucks();
+	this.autoCompleteThis();
+};	
+
+
+SearchBarWidget.Controller.prototype = {
+
+	listenForSearch: function() {
+		var self = this;
+		$('#searchform').on('submit', function(e){
+		console.log("listening....")
+			e.preventDefault();
+			var searchString = $('input[name="foodtruck"]').val().toLowerCase();
+			 if (self.searchTruckMarkersOnMap(searchString)) {
+    			$('#popup').remove();
+    			self.sendCoordinates();
+    		}
+    		else {
+    			$('#popup').remove();
+    			self.view.closePopUp();
+    			self.view.renderPartial(searchString);
+    		}
+  			$('form')[0].reset();
+		});
+	},
+
+
 	grabTruckMarkers: function() {
 		var self = this;
 		$.ajax({
@@ -10,7 +43,6 @@ MapWidget.Controller = function(view) {
 			for (var i =0; i < response.length; i++) {
 				self.currentTrucks.push(response[i]);
 			}
-			self.view.hideLoader();
 		});
 	},
 
@@ -47,7 +79,12 @@ MapWidget.Controller = function(view) {
 			}
 		})
 	},
-};	
 
 
+	autoCompleteThis: function() {
+		$('#autocomplete').autocomplete({
+			lookup: this.foodTrucks
+		})
+	}
 
+};

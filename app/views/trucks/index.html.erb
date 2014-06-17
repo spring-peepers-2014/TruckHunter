@@ -1,16 +1,13 @@
 <div id='header'>
-		<h1>TruckHunter</h1>
-		<div id="searchbox">
-	        <form id="searchform">
-	        	<input type="text" name="foodtruck"  placeholder="search for a foodtruck!" id="autocomplete">
-	        </form>
-		</div>
+	<h1>TruckHunter</h1>
+	<div id="searchbox">
+		<form id="searchform">
+			<input type="text" name="foodtruck"  placeholder="search for a foodtruck!" id="autocomplete">
+		</form>
+	</div>
 </div>
 
 
- <div id='footer'>
-
-</div>
 
 <div id='map' class='dark'></div>
 <a href='#' id='geolocate' class='ui-button'>Find me</a>
@@ -24,7 +21,7 @@
 
 
 	<div class="opened">
-	<%= form_for @newtruck, url: "/addtruck" do |f| %>
+		<%= form_for @newtruck, url: "/addtruck" do |f| %>
 		Truck <%= f.label :name %><br>
 		<%= f.text_field :name%><br>
 		Truck's <%= f.label :twitter_handle %> 

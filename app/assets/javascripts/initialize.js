@@ -4,12 +4,16 @@ $(document).ready(function(){
   var mapController = new MapWidget.Controller(mapView);
 
 
+  var searchBarController = new SearchBarWidget.Controller(mapView)
 
   $('.newtrucktab').on('click', function(){
     $('.opened').show();
   });
 
 
+  $(document).on('click', '#close', function(e){
+    $('#popup').remove();
+  })
 
   $('form.new_truck').submit(function(e) {
     e.preventDefault();
@@ -24,14 +28,6 @@ $(document).ready(function(){
    })
   })
 
-  // var counter = 0;
-  // setInterval(function() {
-  //   var frames=12; var frameWidth = 46;
-  //   var offset=counter * -frameWidth;
-  //   document.getElementById("loading").style.backgroundPosition=
-  //       offset + "px" + " " + 0 + "px";
-  //   counter++; if (counter>=frames) counter =0;
-  // }, 100);
 
 
 });

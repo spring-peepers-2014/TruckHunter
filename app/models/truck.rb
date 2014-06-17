@@ -51,7 +51,7 @@ class Truck < ActiveRecord::Base
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched
 			end
-			truck.fetch_tweets! if time_since_last_tweet > 3600
+			 # truck.fetch_tweets! if time_since_last_tweet > 3600
   		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }
@@ -78,7 +78,7 @@ class Truck < ActiveRecord::Base
 				json.properties do
 					json.title truck.name
 					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
-					<br><i>"+truck.tweets.last.body+"</i><br>"+truck.tweets.last.tweet_time.strftime('%b %e, %l:%M %p')+""
+					<br><i>"+truck.tweets.last.body+"</i><br>Tweeted on "+truck.tweets.last.tweet_time.strftime('%b %e, %l:%M %p')+""
 					# json.images truck.profile_img_url
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"

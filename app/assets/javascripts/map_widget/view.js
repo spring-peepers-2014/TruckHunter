@@ -52,9 +52,9 @@ MapWidget.View.prototype = {
 					'marker-symbol': 'star'
 				}
 			});
-// And hide the geolocation button
-geolocate.parentNode.removeChild(geolocate);
-});
+		// And hide the geolocation button
+		geolocate.parentNode.removeChild(geolocate);
+		});
 
 		// If the user chooses not to allow their location
 		// to be shared, display an error message.
@@ -62,8 +62,6 @@ geolocate.parentNode.removeChild(geolocate);
 			geolocate.innerHTML = 'Position could not be found';
 		});
 	},
-
-	
 
 	redraw: function(searchedMarker, newCoordinates) {
 			this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);

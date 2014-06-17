@@ -1,5 +1,7 @@
 <div id="popup">
 	<a id="close" href="/">x</a>
+  <!-- NO NO NO NO NO NO.  link_to can handle this better than this
+  weird text concatenation noise -->
 	<a href="http://twitter.com/<%= "#{@truck.twitter_handle}"%>"> <%="#{@truck.twitter_handle}"%></a>:
 	<p><%= @truck.tweets.last.body%> </p>
 </div>

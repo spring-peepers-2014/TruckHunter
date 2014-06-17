@@ -18,6 +18,8 @@ class Truck < ActiveRecord::Base
 		self.name.downcase!
 	end
 
+  # How is this a concern of a truck, shouldn't there be a TweetFetcher class?
+  # This is bad OO.
 	def fetch_tweets!
 		trucks_tweets = CLIENT.user_timeline(self.twitter_handle, count: 5, exclude_replies: true)
 		self.update(tweets_last_fetched: Time.now)
@@ -45,12 +47,18 @@ class Truck < ActiveRecord::Base
 	end
 
 
+  # How is this concern of a Truck?  A truck has wheels and goes vrooom vroom.
+  # It doesn't know its latitude update occurred within the last 4 hours.
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?
 		(Time.now - self.location_last_updated) < 14400 ###4 hour interval
 	end
 
 
+  # Again, not the concern of a Truck class or a given truck.  Maybe it's the
+  # concern of an ActiveTrucksFetcher who offers a single public method called
+  # #trucks.  This is an implementation of a design pattern called "Method
+  # Object: ask about it."
 	def self.trucks_to_pin
 		@trucks = Truck.where(approved: true, active: true)
   		@current_trucks = @trucks.select { |truck| truck.has_current_location? }
@@ -70,6 +78,17 @@ class Truck < ActiveRecord::Base
 	end
 
 
+  # It seems to me that htis method is doing too much.
+  #
+  # 1.  It's rendering a Truck to jSON
+  # 2.  It's filtering out a bad truck.
+  #
+  # If you had the ActiveTrucksFinder, as above, you could put filtration into
+  # that.
+  #
+  # Now, as to the question of a Truck rendering itself to JSON, there's a
+  # design pattern called the Presenter which is used to present a model into a
+  # serialized format (e.g. JSON, xml, etc.).  Ask about it.
 	def self.geo_json
 		@trucks = trucks_to_pin
 		@trucks_false = Truck.where(longitude: -74.0059413, latitude: 40.7127837)

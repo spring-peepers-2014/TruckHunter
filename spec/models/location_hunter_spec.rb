@@ -1,3 +1,20 @@
+# Seriously?  Seriously?  No.  You're hurting me.
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
+#NO NO NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO  NO 
 require 'spec_helper'
 
 describe LocationHunter do

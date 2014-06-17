@@ -1,3 +1,5 @@
+# It would be better to not have these than to have commented
+# out jive.
 require 'spec_helper'
 
 describe "Truck", :js => true do

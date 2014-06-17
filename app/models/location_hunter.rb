@@ -1,3 +1,10 @@
+# modules suck.  This should be a class that takes
+# a raw_tweet as an argument and does this sort of crazy
+# regex logic in it.  Mixing this into truck is weird.  Does
+# a truck now how to parse tweets?  Heck no.
+#
+# LocationHunter is basically a junk drawer for ugly methods and you're hiding
+# the ugly here but using the ugly in Truck.
 module LocationHunter
 
 	def parse_tweet(tweet)

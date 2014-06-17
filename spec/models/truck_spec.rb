@@ -1,3 +1,6 @@
+# there are very few tests, adn they're not giving you much value other than
+# saying you have a model that has validations, but it's better than nothing.
+
 require 'spec_helper'
 
 describe Truck do

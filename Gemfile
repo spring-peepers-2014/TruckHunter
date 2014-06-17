@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 
@@ -36,7 +34,8 @@ gem 'spring', '1.1.3',       group: :development
 gem 'geocoder', '1.2.2'
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
 gem 'twitter', '5.10.0'
 

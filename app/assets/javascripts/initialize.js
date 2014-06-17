@@ -25,4 +25,9 @@ $('form.new_truck').submit(function(e) {
 })
 
 
+$('#close').on('click', function(e) {
+  e.preventDefault();
+  $('#popup').hide();
+  });
+
 });

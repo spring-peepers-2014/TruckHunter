@@ -13,7 +13,6 @@ Truck.create(name: "Milk Truck", twitter_handle: "milktrucknyc")
 
 Truck.create(name: "Eddie's Pizza", twitter_handle: "EddiesPizzaNY")
 Truck.create(name: "Red Hook Lobster Pound", twitter_handle: "lobstertruckny")
-Truck.create(name: "Big Gay Ice Cream", twitter_handle: "biggayicecream")
 Truck.create(name: "DUB Pies", twitter_handle: "dubpies")
 Truck.create(name: "Taco Bite", twitter_handle: "tacobite")
 Truck.create(name: "Carl's Steaks", twitter_handle: "carlssteaks")

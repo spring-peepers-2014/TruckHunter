@@ -9,7 +9,7 @@ class CreateTrucks < ActiveRecord::Migration
 		t.string :address
 		t.float :latitude
 		t.float :longitude
-    t.datetime :tweets_last_fetched
+    	t.datetime :tweets_last_fetched
 		t.datetime :location_last_updated
 
 

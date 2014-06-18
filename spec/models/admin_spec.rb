@@ -6,7 +6,6 @@ describe Admin do
 			admin = Admin.new(username: "admin", password_digest: "password")
 			expect(admin).to be_valid
 		end
-		
 	end
 
 end

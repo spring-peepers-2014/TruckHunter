@@ -5,6 +5,7 @@
     -webkit-transition:background 1s ease-out;
 }
 
+
 #loader.done {
     background:rgba(255, 255, 255, 0);
 }

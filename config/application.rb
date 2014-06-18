@@ -2,8 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-config.time_zone = 'Eastern Time (US & Canada)'
-config.active_record.default_timezone = :local
+# config.time_zone = 'Eastern Time (US & Canada)'
+# config.active_record.default_timezone = :local
 # config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
 
 

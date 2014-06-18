@@ -25,7 +25,7 @@ feature 'Admin page' do
 	scenario "lets admin edit a truck" do
 		click_link 'edit truck'
 		uri = URI.parse(current_url)
-		"#{uri.path}".should == "/trucks/#{@truck.id}/edit"
+		expect("#{uri.path}").to eq("/trucks/#{@truck.id}/edit")
 	end
 
 

@@ -5,10 +5,10 @@
 
 	<%= link_to "#{@truck.twitter_handle}", "http://twitter.com/#{@truck.twitter_handle}"%>:
 
-	
 	<% if @truck.tweets.last %>
 		<p><%= @truck.tweets.last.body%> </p>
 	<% else %>
 		<p>we do not have any recent tweets for this truck!</p>
 	<% end %>
+	
 </div>

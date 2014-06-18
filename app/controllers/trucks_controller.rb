@@ -33,7 +33,6 @@ class TrucksController < ApplicationController
     @truck = Truck.find(params[:id])
   end
 
-
   def update
     truck = Truck.find(params[:id])
     truck.update_attributes(truck_params)

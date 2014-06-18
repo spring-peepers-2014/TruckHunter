@@ -1,19 +1,18 @@
 class CreateTrucks < ActiveRecord::Migration
-  def change
-    create_table :trucks do |t|
-		t.string :name, :null => false
-		t.string :twitter_handle, :null => false
-		t.boolean :active, :default => true
-		t.string :profile_img_url
-		t.boolean :approved, :default => true
-		t.string :address
-		t.float :latitude
-		t.float :longitude
-    	t.datetime :tweets_last_fetched
-		t.datetime :location_last_updated
+	def change
+		create_table :trucks do |t|
+			t.string :name, :null => false
+			t.string :twitter_handle, :null => false
+			t.boolean :active, :default => true
+			t.string :profile_img_url
+			t.boolean :approved, :default => true
+			t.string :address
+			t.float :latitude
+			t.float :longitude
+	    t.datetime :tweets_last_fetched
+			t.datetime :location_last_updated
 
-
-     	t.timestamps
+      t.timestamps
     end
   end
 end

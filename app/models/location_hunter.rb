@@ -39,8 +39,7 @@ class LocationHunter
 	def self.get_coordinates(tweet_body)
 		match = parse_tweet(tweet_body)
 		cleaned_match = clean_match(match)
-
-		cleaned_match
+		return cleaned_match
 	end
 
 end

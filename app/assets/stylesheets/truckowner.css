@@ -1,28 +1,4 @@
-/*#truckownertab  {
-	position: absolute;
-	bottom: 5px;
-	left: 70px;
-	width: 50px;
-	height: 50px;
-	color: #fff;
-	background-color: #000;
-	box-shadow:3px 6px 12px #000000;
-	border-radius: 10px;
-	font-family: 'oxygen';
-	text-align: center;
-	cursor: pointer;
-}*/
-
-
 #truckownerreadme {
-	/*background-color: rgba(0, 0, 0, .70);
-	font-family: 'abel';
-	position: absolute;
-	margin-top: 80px;
-	display: none;
-	width: 500px;
-	height: 400px;
-	color: #fff;*/
 	width: 500px;
 	height: 500px;
 	padding: 0 30px;

@@ -1,43 +1,30 @@
-#searchbox { 
-  /*display: block; */
-  /*float: right;*/
-  width: 100%; 
-  text-align: right; 
-  margin-bottom: 20px;
-  margin-top: 10px;
-  padding-right: 50px;
+#searchform {
+  float: right;
+  top: 0;
+  margin-top: 25px;
 }
-
-#searchbox form {
-  /*display: inline-block;*/
-  padding: 0;
-  margin: 0;
-  padding: 5px;
-  border-radius: 2px;
-  margin: 5px 0 0 0;
-}
-
 
 #autocomplete {
-  width: 400px;
-  height: 40px;
-  margin-right: 50px;
   font-size: 1.5em;
   font-family: 'lato';
+  width: 400px;
+  height: 40px;
+  margin-right: 60px;
+  border-radius: 8px;
 }
 
 .autocomplete-suggestions { 
-  border: 1px solid #999; 
-  background: #fff; 
-  cursor: default; 
-  overflow: auto; 
-  white-space: nowrap;
-  padding: 10px 5px;
   font-size: 1.5em;
   font-family: 'lato';
+  background: #fff; 
+  border: 1px solid #000; 
+  padding-left: 5px;
+  padding-bottom: 2px;
+  overflow: auto; 
+  white-space: nowrap;
+  cursor: default; 
   z-index: 500;
 }
-
 
 .autocomplete-suggestions strong { 
   font-weight: normal; 

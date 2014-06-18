@@ -1,13 +1,13 @@
 <div id="popup">
-	<div id="close">
-		<text>&#10005;<text>
-	</div>
+	<span id="close">&#10005;<span>
 
 	<%= link_to "#{@truck.twitter_handle}", "http://twitter.com/#{@truck.twitter_handle}"%>:
 
 	
-	<% if @truck.tweets.last %>
-		<p><%= @truck.tweets.last.body%> </p>
+	<% if @truck %>
+		<p><%= @truck.tweets.last.body%><br>
+			<span><%= @truck.tweets.last.tweet_time %> </span>
+		</p>
 	<% else %>
 		<p>we do not have any recent tweets for this truck!</p>
 	<% end %>

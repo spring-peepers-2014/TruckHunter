@@ -5,7 +5,7 @@ TabBarWidget.Controller = function() {
 
 TabBarWidget.Controller.prototype = {
 	listenToClick: function() {
-		$('#newtrucktab').on('click', function(){
+		$('#addtruck').on('click', function(){
   			console.log('yo')
   			$('#usersubmit').show();
   			$('#truckowner').show();

@@ -1,18 +1,21 @@
 #popup {
 	font-family: 'lato';
-	background-color: rgba(0, 0, 0, .70);
 	color: #fff;
 	width: 600px;
-	height: 400px;
+	height: 250px;
+	margin-top: 100px;
 	margin-left: 25px;
+	position: relative;
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, .70);
 }
 
 #popup p {
 	font-size: 24px;
 	margin-left: 10px;
-	font-weight: normal;
+	/*font-weight: normal;*/
+	font-family: arial;
 	font-style: italic;
 }
 
@@ -20,14 +23,17 @@
 	font-size: 30px;
 	font-weight: bold;
 	color: #0099ff;
+	font-family: 'oxygen';
 }
 
-
 #close {
-	width: 20px;
-	padding: 0;
-	margin: 0;
+	margin-left: 100px;
 	cursor: pointer;
+}
+
+p span {
+	font-size: 12px;
+	font-style: normal;
 }
 
 img {

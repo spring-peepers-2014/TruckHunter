@@ -9,7 +9,11 @@ feature 'Admin page' do
 	end
 
 	scenario "lets admin approve a truck" do
-		visit admins_page_path
+		visit "/admins/signin"
+		fill_in "Username", :with => "admin"
+		fill_in "Password", :with => "password"
+    click_button "login!"
+		save_and_open_page
 		expect(click_link 'approved!').to change(@truck, :approved == true)
 	end
 
@@ -20,7 +24,6 @@ feature 'Admin page' do
 
 	scenario "lets admin edit a truck" do
 		visit admins_page_path
-		# save_and_open_page
 		expect(click_link 'edit_truck').to redirect_to edit_truck_path(@truck.id)
 	end
 

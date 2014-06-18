@@ -24,9 +24,7 @@
 </div>
 
 <div id="usersubmitform">
-	<div id="close">
-			<text>&#10005;<text>
-	</div>
+	<span id="close">&#10005;<span>
 		<%= form_for @newtruck, url: "/addtruck" do |f| %>
 			Truck <%= f.label :name %><br>
 			<%= f.text_field :name%><br>
@@ -41,9 +39,7 @@
 </div>
 
 <div id="truckownerreadme">
-	<div id="close">
-		<text>&#10005;<text>
-	</div>
+	<span id="close">&#10005;<span>
 	<h2>wanna be on our map?</h2>
 	<p>TruckHunter parses food truck's tweets to determine your location. We first check to see if your tweet is geo-tagged, and then use the coordinates to plot the food truck marker on our map. If your tweet is not geo-tagged, we then parse through the tweet to grab any text mentioning a location. We pull tweets out every hour, and when a user visits our app, we make sure to display the most recent tweets. <p>
 

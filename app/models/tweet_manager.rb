@@ -12,8 +12,8 @@ class TweetManager
 
 		tweets.each do |tweet|
 			build_tweet(truck, tweet)
-      get_profile_img(truck, tweet)
-      get_geolocation_data(truck, tweet)
+      		get_profile_img(truck, tweet)
+     		get_geolocation_data(truck, tweet)
 		end
 
 	end
@@ -25,7 +25,7 @@ class TweetManager
 
 	def self.get_profile_img(truck, tweet)
 		profile_img = JSON.parse(tweet.to_json)["user"]["profile_image_url"]
-    truck.update(profile_img_url: profile_img)
+    	truck.update(profile_img_url: profile_img)
 	end
 
   def self.get_geolocation_data(truck, tweet)

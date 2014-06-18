@@ -20,8 +20,6 @@ class TweetManager
 		puts "ERROR: #{error}"
 		puts "Are you authorized with Twitter to use this application?"
 		puts "*"*70
-		return false
-		
 	end
 
 	def self.build_tweet(truck, tweet)

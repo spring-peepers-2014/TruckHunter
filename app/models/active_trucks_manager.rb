@@ -1,23 +1,27 @@
 class ActiveTrucksManager
 
 	def self.trucks_to_pin
-		@trucks = Truck.where(approved: true, active: true)
-		@current_trucks = @trucks.select { |truck| has_current_location?(truck) }
-	 	@unknown_trucks = @trucks - @current_trucks
+		trucks = Truck.where(approved: true, active: true)
+		current_trucks = trucks.select { |truck| has_current_location?(truck) }
+	 	unknown_trucks = trucks - current_trucks
 
-		@unknown_trucks.each do |truck|
-			tweets = TweetManager.search_tweets(truck) if time_since_last_tweet(truck) > 3600
-			break if !tweets
+		unknown_trucks.each do |truck|
+			last_fetched = truck.tweets_last_fetched
+			if 9000 > 3600
+				tweets = TweetManager.search_tweets(truck)
+			end
+			now_fetched = truck.tweets_last_fetched
+			break if last_fetched == now_fetched
   		end
 
-		@updated_trucks = @unknown_trucks.select { |truck| has_current_location?(truck) }
-  		@trucks = @updated_trucks + @current_trucks
+		updated_trucks = unknown_trucks.select { |truck| has_current_location?(truck) }
+  		trucks = updated_trucks + current_trucks
 
-		@trucks_stale_tweets = @trucks.select { |truck| truck.tweets.last.tweet_time < Time.now.midnight }
-		@trucks_false = Truck.where(longitude: -74.0059413, latitude: 40.7127837)
+		trucks_stale_tweets = trucks.select { |truck| truck.tweets.last.tweet_time < Time.now.midnight }
+		trucks_false = Truck.where(longitude: -74.0059413, latitude: 40.7127837)
 
-		@trucks -= @trucks_false
-		@trucks -= @trucks_stale_tweets
+		trucks -= trucks_false
+		trucks -= trucks_stale_tweets
 	end
 
 	def self.has_current_location?(truck)
@@ -31,6 +35,7 @@ class ActiveTrucksManager
 		else
 			time_since_tweet = Time.now - truck.tweets_last_fetched
 		end
+		p time_since_tweet
 		return time_since_tweet
 	end
 

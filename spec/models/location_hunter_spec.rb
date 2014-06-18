@@ -119,5 +119,10 @@ Come by... http://fb.me/18aKS2L79") ).to eq("southstreetseaport")
 			expect( LocationHunter.get_coordinates("Did you know today is National Cannoli Day. Stop by the truck at the south street seaport and celebrate with a... http://fb.me/3jpXbdknb ") ).to eq("south street seaport")
 		end
 
+		it "returns 'the seaport' for just those words" do
+			expect( LocationHunter.get_coordinates("Happy Friday. It's not raining at the seaport. Come and get your cannoli and banana Nutella cake #italiandesserttruck") ).to eq("the seaport")
+		end
+
+
 	end
 end

@@ -12,6 +12,10 @@
 #
 src_files:
   - assets/application.js
+  - assets/javascripts
+
+  # - ../helpers/jasmine.jquery.js
+  # - ../helpers/mapbox.js
 
 # stylesheets
 #
@@ -121,4 +125,6 @@ boot_files:
 #
 # rack_options:
 #   server: 'thin'
+
+
 

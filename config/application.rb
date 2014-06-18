@@ -2,8 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# config.time_zone = 'Eastern Time (US & Canada)'
-# config.active_record.default_timezone = :local
 # config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
 
 
@@ -13,6 +11,8 @@ Bundler.require(*Rails.groups)
 
 module Truckhunter
   class Application < Rails::Application
+    config.time_zone = 'Eastern Time (US & Canada)'
+    config.active_record.default_timezone = :local
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

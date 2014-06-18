@@ -1,23 +1,42 @@
-#truckownertab {
-	font-family: arial;
+/*#truckownertab  {
 	position: absolute;
-	padding: 5px 5px;
-	bottom: 0;
-	left: 500px;
-	text-align: center;
-	background-color: #000;
+	bottom: 5px;
+	left: 70px;
+	width: 50px;
+	height: 50px;
 	color: #fff;
-	border-radius: 10px 10px 0 0;
+	background-color: #000;
+	box-shadow:3px 6px 12px #000000;
+	border-radius: 10px;
+	font-family: 'oxygen';
+	text-align: center;
 	cursor: pointer;
-}
+}*/
 
-#readme {
-	background-color: rgba(0, 0, 0, .70);
-	font-family: arial;
+
+#truckownerreadme {
+	/*background-color: rgba(0, 0, 0, .70);
+	font-family: 'abel';
 	position: absolute;
 	margin-top: 80px;
 	display: none;
 	width: 500px;
 	height: 400px;
+	color: #fff;*/
+	width: 500px;
+	height: 500px;
+	padding: 0 30px;
+	position: absolute;
+	display: none;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 150px;
+	background-color: rgba(0, 0, 0, .70);
+	border-radius: 20px;
+	text-align: center;
+	font-size: 1em;
 	color: #fff;
+	font-family: 'asap';
 }

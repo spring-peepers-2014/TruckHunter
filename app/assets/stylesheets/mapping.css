@@ -15,11 +15,11 @@ body {
 #header {
   position: fixed !important;
   width: 100%;
-  z-index: 10000;
+  z-index: 100;
   height: 70px;
   background-color: #2F2F4F;
   padding-left: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
   padding-top: 0px;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
@@ -27,11 +27,12 @@ body {
 
 
 #header h1 {
-	font-family: 'Wendy One', sans-serif;
+	font-family: 'abel', sans-serif;
 	text-shadow: 1px 1px 3px #000000;
 	font-size: 80px;
-	padding-top: 0px;
-	margin-top: 0px;
+  letter-spacing: 5px;
+  margin-top: 0;
+  padding: 0;
   float: left;
   color: white;
 }

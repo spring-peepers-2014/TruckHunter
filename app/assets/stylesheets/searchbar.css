@@ -23,7 +23,7 @@
   height: 40px;
   margin-right: 50px;
   font-size: 1.5em;
-  font-family: dosis;
+  font-family: 'lato';
 }
 
 .autocomplete-suggestions { 
@@ -34,7 +34,8 @@
   white-space: nowrap;
   padding: 10px 5px;
   font-size: 1.5em;
-  font-family: dosis;
+  font-family: 'lato';
+  z-index: 500;
 }
 
 

@@ -28,7 +28,7 @@ class Truck < ActiveRecord::Base
 			else
 				time_since_last_tweet = Time.now - truck.tweets_last_fetched
 			end
-			 TweetManager.search_tweets(truck) if time_since_last_tweet > 3600
+			 # TweetManager.search_tweets(truck) if time_since_last_tweet > 3600
   		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| truck.has_current_location? }

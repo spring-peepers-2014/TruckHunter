@@ -6,7 +6,8 @@ class ActiveTrucksManager
 	 	@unknown_trucks = @trucks - @current_trucks
 
 		@unknown_trucks.each do |truck|
-			TweetManager.search_tweets(truck) if time_since_last_tweet(truck) > 3600
+			tweets = TweetManager.search_tweets(truck) if time_since_last_tweet(truck) > 3600
+			break if !tweets
   		end
 
 		@updated_trucks = @unknown_trucks.select { |truck| has_current_location?(truck) }

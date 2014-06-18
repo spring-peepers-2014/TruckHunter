@@ -6,7 +6,6 @@ class TweetManager
 	end
 
 	def self.search_tweets(truck)
-
 		tweets = fetch_tweets!(truck.twitter_handle)
 		truck.update(tweets_last_fetched: Time.now)
 
@@ -16,6 +15,13 @@ class TweetManager
      		get_geolocation_data(truck, tweet)
 		end
 
+	rescue Twitter::Error::Forbidden => error
+		puts "*"*70
+		puts "ERROR: #{error}"
+		puts "Are you authorized with Twitter to use this application?"
+		puts "*"*70
+		return false
+		
 	end
 
 	def self.build_tweet(truck, tweet)

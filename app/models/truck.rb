@@ -7,9 +7,12 @@ class Truck < ActiveRecord::Base
 
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
+	
 	before_save :geocode
-	before_save :lowercase
-
+	
+	before_save do
+		self.name.downcase!
+	end
 
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?
@@ -70,8 +73,4 @@ class Truck < ActiveRecord::Base
 
 	end
 
-
-	def lowercase
-		self.name.downcase!
-	end
 end

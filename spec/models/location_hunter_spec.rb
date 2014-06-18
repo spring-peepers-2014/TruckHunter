@@ -50,5 +50,17 @@ describe LocationHunter do
 			expect( LocationHunter.get_coordinates("Hello #MidtownWest! How does a #Vegan platter for lunch sound? Get one today on 46th btwn 5th & 6th! #LebaneseLunch http://t.co/yp5CmLswcn") ).to eq("46th and 5th")
 		end
 
+		it "returns the correct park string from 'park' statement" do
+			expect( LocationHunter.get_coordinates("We'll be at Bryant Park today. Enjoy your burrito") ).to eq("Bryant Park")
+		end
+
+		it "returns the correct gsubs on parentheses" do
+			expect( LocationHunter.get_coordinates("()()()(th street and 5") ).to eq("th street and 5")
+		end
+
+		it "returns the correct gsubs on @ and b/t" do
+			expect( LocationHunter.get_coordinates("we're at @@sdflkj and b/ttree") ).to eq(" sdflkj and andtree")
+		end
+
 	end
 end

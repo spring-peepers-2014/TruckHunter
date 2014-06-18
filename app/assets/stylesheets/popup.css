@@ -14,11 +14,19 @@
 #popup p {
 	font-size: 24px;
 	margin-left: 10px;
-	/*font-weight: normal;*/
-	font-family: arial;
-	font-style: italic;
+	font-weight: normal;
+	font-family: 'roboto';
 }
 
+
+#popup #doesnotexist {
+	margin-left: 0;
+}
+
+p span {
+	font-size: 15px;
+	font-style: normal;
+}
 #popup a {
 	font-size: 30px;
 	font-weight: bold;
@@ -31,11 +39,8 @@
 	cursor: pointer;
 }
 
-p span {
-	font-size: 12px;
-	font-style: normal;
-}
 
-img {
-	float: right;
+#popup img {
+	float: left;
+	margin-right: 10px;
 }

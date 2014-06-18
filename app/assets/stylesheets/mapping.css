@@ -49,3 +49,25 @@ body {
   top: 0; left: 0; bottom: 0; right: 0;
  }
 
+#map img {
+  position: absolute;
+  top: 0;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+ #map .marker-title {
+  margin-left: 65px;
+ }
+
+.marker-description {
+  margin-left: 5px;
+}
+
+.marker-description a {
+  position: absolute;
+  top: 0;
+  margin-top: 30px;
+  margin-left: 60px;
+}
+

@@ -4,18 +4,18 @@ body {
 }
 
 #map {
-  position:absolute;
+  position: absolute;
   top:0;
   bottom:0;
   width:100%;
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 #header {
   position: fixed !important;
   width: 100%;
   z-index: 100;
-  height: 70px;
+  height: 50px;
   background-color: #2F2F4F;
   padding-left: 30px;
   padding-bottom: 25px;
@@ -25,12 +25,13 @@ body {
 }
 
 
-#header h1 {
-	font-family: 'abel', sans-serif;
+#header h2 {
+	font-family: 'poiret one', sans-serif;
 	text-shadow: 1px 1px 3px #000000;
-	font-size: 80px;
-  letter-spacing: 5px;
-  margin-top: 0;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  margin-top: 5px;
   padding: 0;
   float: left;
   color: white;

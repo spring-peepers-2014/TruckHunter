@@ -8,13 +8,13 @@ class TrucksController < ApplicationController
   end
 
   def new
-    render :json => Truck.geo_json
+    render :json => TruckPresenter.truck_pins
   end
 
   def create
     @truck = Truck.new(truck_params)
     @truck.save
-    render :json => Truck.geo_json
+    render :json => TruckPresenter.truck_pins
   end
 
   def addtruck
@@ -32,7 +32,6 @@ class TrucksController < ApplicationController
   def edit
     @truck = Truck.find(params[:id])
   end
-
 
   def update
     truck = Truck.find(params[:id])

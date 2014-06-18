@@ -32,10 +32,10 @@
 #findme img {
 	z-index: 10000;
 	position: absolute;
-	top: 4px;
-	left: 5px;
-	width: 40px;
-	height: 40px;
+	top: 7px;
+	left: 7px;
+	width: 37px;
+	height: 37px;
 	display: block;
 }
 
@@ -49,19 +49,19 @@
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 170px;
+	margin-top: 150px;
 	background-color: rgba(0, 0, 0, .70);
 	border-radius: 15px;
 	color: #fff;
 	text-align: center;
 	font-size: 2em;
 	cursor: pointer;
-	font-family: 'lato';
+	font-family: 'open sans';
 }
 
 
 #truckowner {
-	margin-top: 420px;
+	margin-top: 410px;
 }
 
 

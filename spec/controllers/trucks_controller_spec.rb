@@ -21,7 +21,7 @@ describe TrucksController, :type => :controller do
   describe "GET #new" do
   	it "should render json successfully" do
     	get :new, :format => :json
-    	response.should be_success
+    	expect(response).to be_success
   	end
   end
 
@@ -29,7 +29,7 @@ describe TrucksController, :type => :controller do
   	it "should redirect back" do
   		x = Truck.create(name: "please", twitter_handle: "work")
     	get :edit, id: x.id
-    	response.should be_success
+    	expect(response).to be_success
   	end
   end
 

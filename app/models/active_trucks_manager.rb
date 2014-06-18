@@ -7,7 +7,7 @@ class ActiveTrucksManager
 
 		unknown_trucks.each do |truck|
 			last_fetched = truck.tweets_last_fetched
-			if 9000 > 3600
+			if time_since_last_tweet(truck) > 3600
 				tweets = TweetManager.search_tweets(truck)
 			end
 			now_fetched = truck.tweets_last_fetched

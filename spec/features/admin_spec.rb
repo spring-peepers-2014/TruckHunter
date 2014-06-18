@@ -10,17 +10,18 @@ feature 'Admin page' do
 
 	scenario "lets admin approve a truck" do
 		visit admins_page_path
-		expect {click_link 'approved!'}.to change(@truck, :approved == true)
+		expect(click_link 'approved!').to change(@truck, :approved == true)
 	end
 
 	scenario "lets admin delete a truck" do
 		visit admins_page_path
-		expect {click_link 'kill truck'}.to change(Truck.all, :count).by(-1)
+		expect(click_link 'kill truck').to change(Truck.all, :count).by(-1)
 	end
 
 	scenario "lets admin edit a truck" do
 		visit admins_page_path
-		expect {click_link 'edit_truck'}.to redirect_to edit_truck_path(@truck.id)
+		# save_and_open_page
+		expect(click_link 'edit_truck').to redirect_to edit_truck_path(@truck.id)
 	end
 
 

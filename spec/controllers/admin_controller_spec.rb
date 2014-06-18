@@ -9,7 +9,7 @@ describe AdminsController, :type => :controller do
 	end
 
 	describe 'GET #index' do
-		it "it successful" do
+		it "it gets the index successfully" do
 			get :index
 			expect(response).to eq(Truck.where.not(approved: true))
 		end

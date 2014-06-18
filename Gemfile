@@ -50,6 +50,8 @@ gem 'jquery-ui-rails'
 
 gem 'rails4-autocomplete'
 
+gem 'seed_dump'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
@@ -59,9 +61,9 @@ group :development, :test do
 end
 
 group :test do
-	gem 'shoulda-matchers', '2.6.1'
+  gem 'shoulda-matchers', '2.6.1'
   gem 'faker', '1.3.0'
-  gem 'capybara', '2.3.0'
+  gem 'capybara', '~> 2.3.0'
   gem 'database_cleaner', '1.3.0'
   gem 'launchy', '2.4.2'
   gem 'selenium-webdriver', '2.42.0'

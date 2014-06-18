@@ -1,8 +1,9 @@
 MapWidget.View = function(map) {
-	// this.map = map
 
-	// this.layer = L.mapbox.featureLayer().addTo(this.map);
-	// this.draw();
+	this.map = map;
+	this.layer = L.mapbox.featureLayer().addTo(this.map);
+	this.draw();
+
 };
 
 MapWidget.View.prototype = {

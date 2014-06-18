@@ -42,6 +42,8 @@ SearchBarWidget.Controller.prototype = {
 		}).done(function(response){
 			for (var i =0; i < response.length; i++) {
 				self.currentTrucks.push(response[i]);
+				console.log(response[i].properties.title)
+
 			}
 		});
 	},

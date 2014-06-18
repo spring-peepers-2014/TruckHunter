@@ -123,6 +123,13 @@ Come by... http://fb.me/18aKS2L79") ).to eq("southstreetseaport")
 			expect( LocationHunter.get_coordinates("Happy Friday. It's not raining at the seaport. Come and get your cannoli and banana Nutella cake #italiandesserttruck") ).to eq("the seaport")
 		end
 
+		it "returns correct gsub of two white spaces into one" do
+			expect( LocationHunter.get_coordinates("It's a great day at 47th St.  Between Park and ") ).to eq("47th St and Park")
+		end
+
+		it "returns seaport with preceding 'the'" do
+			expect( LocationHunter.get_coordinates("Seaport Flaves: Whiskey Lucky Charms, Maker's Mark Manhattan, strawberry sorbet, vanilla, candied bacon, butterscotch, chocolate molten cake") ).to eq("Seaport")
+		end
 
 	end
 end

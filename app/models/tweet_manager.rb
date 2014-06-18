@@ -7,7 +7,7 @@ class TweetManager
 
 	def self.search_tweets(truck)
 		tweets = fetch_tweets!(truck.twitter_handle)
-		truck.update_attribute(tweets_last_fetched: Time.now)
+		truck.update(tweets_last_fetched: Time.now)
 
 		tweets.each do |tweet|
 			build_tweet(truck, tweet)

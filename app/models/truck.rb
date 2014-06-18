@@ -7,9 +7,12 @@ class Truck < ActiveRecord::Base
 
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
+	
 	before_save :geocode
-	before_save :lowercase
-
+	
+	before_save do
+		self.name.downcase!
+	end
 
 	def has_current_location?
 		return false if self.latitude.nil? || self.longitude.nil?
@@ -54,9 +57,9 @@ class Truck < ActiveRecord::Base
 				end
 				json.properties do
 					json.title truck.name
-					json.description  "<a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
-					<br><i>"+truck.tweets.last.body+"</i><br>Tweeted on "+truck.tweets.last.tweet_time.strftime('%b %e, %l:%M %p')+""
-					json.images truck.profile_img_url
+					json.description  "<img src='#{truck.profile_img_url}' /><br><a href='http://twitter.com/#{truck.twitter_handle}'>@"+truck.twitter_handle+"</a>
+					<br><i>"+truck.tweets.last.body+"</i><br>Tweeted on "+(truck.tweets.last.tweet_time-4.hours).in_time_zone.strftime("%b %e, %l:%M %p")
+					
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"
 						json.iconSize [28, 22]
@@ -70,8 +73,4 @@ class Truck < ActiveRecord::Base
 
 	end
 
-
-	def lowercase
-		self.name.downcase!
-	end
 end

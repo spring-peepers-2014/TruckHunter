@@ -50,7 +50,7 @@ gem 'jquery-ui-rails'
 
 gem 'rails4-autocomplete'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '3.0.1'

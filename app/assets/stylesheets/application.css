@@ -14,3 +14,14 @@
  *= require mapbox
  *= require_self
  */
+
+th {
+  border: 1px solid black;
+  text-align: center;
+}
+
+td {
+  text-align: left;
+  width: 250px;
+  border: 1px solid gray;
+}

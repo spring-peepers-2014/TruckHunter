@@ -12,7 +12,7 @@ class LocationHunter
 
 	def self.clean_match(match)
 		match.gsub!(/(\(|\)|\!|\?|at\s|\son\s|@|\.)\.?/i, "")
-		match.gsub!(/(between|bet|btwn|b\/t|btw)\.?/i, "and")
+		match.gsub!(/(between|bet|btwn|b\/t|btw|\bto\s)\.?/i, "and")
 		match.gsub!(/\s(sandwich|breakfast|lunch|dinner|down|try|eat|get)/i, "")
 
 		return false if match == ""

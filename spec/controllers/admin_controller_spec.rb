@@ -11,7 +11,7 @@ describe AdminsController, :type => :controller do
 	describe 'GET #index' do
 		it "it gets the index successfully" do
 			get :index
-			expect(response).to eq(Truck.where.not(approved: true))
+			expect(response).to render_template :index
 		end
 	end
 

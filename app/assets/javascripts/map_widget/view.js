@@ -1,8 +1,8 @@
 MapWidget.View = function(map) {
-	this.map = map
+	// this.map = map
 
-	this.layer = L.mapbox.featureLayer().addTo(this.map);
-	this.draw();
+	// this.layer = L.mapbox.featureLayer().addTo(this.map);
+	// this.draw();
 };
 
 MapWidget.View.prototype = {
@@ -76,14 +76,14 @@ MapWidget.View.prototype = {
 			if (marker.feature.properties.title == searchedMarker.properties.title){
 				marker.openPopup();
 			}
-		})
+    });
 	},
 
 	closePopUp: function(){
 		var self = this;
 		this.layer.eachLayer(function(marker){
 			marker.closePopup();
-			})
+    });
 	},
 
 	renderPartial: function(searchString) {
@@ -92,11 +92,10 @@ MapWidget.View.prototype = {
 			url: '/searchbar',
 			data: {name: searchString}
 		}).done(function(response){
-			console.log(response)
-			$('#header').append(response)
-		})
-
-	},
+			console.log(response);
+			$('#header').append(response);
+		});
+	}
 
 };
 

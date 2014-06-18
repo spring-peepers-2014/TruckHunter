@@ -1,12 +1,8 @@
-describe("A map", function() {
+describe("Controller", function() {
 
-  it("contains spec with an expectation", function() {
+  it("is initialized", function() {
     expect(true).toBe(true);
   });
-});
-
-describe("A suite is just a function", function() {
-  var a;
 
   it("and so is a spec", function() {
     a = true;

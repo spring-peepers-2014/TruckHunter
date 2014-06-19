@@ -6,7 +6,6 @@ EventListener = function() {
 EventListener.prototype = {
 	listenToClick: function() {
 		$('#addtruck').on('click', function(){
-  			console.log('yo')
   			$('#usersubmit').show();
   			$('#truckowner').show();
 		});

@@ -17,8 +17,8 @@
 	<img id="geolocate" src='/assets/gps.png'></img>
 </div>
 
-<div id="loader"><span class="message"><img src="/assets/loader.gif"></span></div>
-
+<!-- <div id="loader"><span class="message"><img src="/assets/loader.gif"></span></div>
+ -->
 <div id="usersubmit">
 	<p>i know a freaking amazing truck that i want to share with the world.</p>
 </div>
@@ -26,9 +26,9 @@
 <div id="usersubmitform">
 	<div id="close"><text>&#10005;</text></div>
 		<%= form_for @newtruck, url: "/addtruck" do |f| %>
-			Truck <%= f.label :name %><br>
+			Truck's Name:<br>
 			<%= f.text_field :name%><br>
-			Truck's <%= f.label :twitter_handle %> <br>
+			Twitter Handle: <br>
 			<%= f.text_field :twitter_handle %><br>
 			<%= f.submit "let us know!"%>
 		<% end %>

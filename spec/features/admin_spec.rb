@@ -9,7 +9,7 @@ feature 'Admin page' do
 		visit "/admins/signin"
 		fill_in "Username", :with => "admin"
 		fill_in "Password", :with => "password"
-    click_button "login!"
+    	click_button "login!"
 	end
 
 	scenario "lets admin approve a truck" do

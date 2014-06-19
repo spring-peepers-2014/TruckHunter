@@ -83,12 +83,14 @@ MapWidget.View.prototype = {
 	},
 
 	renderPartial: function(searchString) {
+		var self = this;
 		$.ajax({
 			type: 'post',
 			url: '/searchbar',
 			data: {name: searchString}
 		}).done(function(response){
 			console.log(response);
+			self.closeEverything();
 			$('#header').append(response);
 		});
 	},

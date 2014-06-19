@@ -21,6 +21,7 @@ SearchBarWidget.Controller.prototype = {
 			var searchString = $('input[name="foodtruck"]').val().toLowerCase();
 			 if (self.searchTruckMarkersOnMap(searchString)) {
     			$('#popup').remove();
+    			self.view.closeEverything();
     			self.sendCoordinates();
     		}
     		else {

@@ -112,8 +112,11 @@ input[name="commit"] {
 
 #truckownerreadme {
 	width: 500px;
-	height: 500px;
-	padding: 0 30px;
+	height: 450px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 30px;
+	/*padding: 0 30px;*/
 	position: absolute;
 	display: none;
 	left: 0;

@@ -1,31 +1,7 @@
 $(document).ready(function(){
   var map = L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13);
-
-
   var mapView = new MapWidget.View(map);
-
   var mapController = new MapWidget.Controller(mapView);
-
   var searchBarController = new SearchBarWidget.Controller(mapView);
-
-  var tabController = new TabBarWidget.Controller();
-
-
-
-
-
-  $('form.new_truck').submit(function(e) {
-    e.preventDefault();
-
-    $.ajax({
-      type: 'POST',
-      url: '/addtruck',
-      data: $(this).serialize()
-    }).done(function() {
-     document.getElementById("new_truck").reset();
-     $('#usersubmitform').hide();
-   })
-  })
-
-
+  var eventListener = new EventListener();
 });

@@ -1,9 +1,9 @@
-TabBarWidget.Controller = function() {
+EventListener = function() {
 	this.listenToClick();
 	this.listenToClose();
 }
 
-TabBarWidget.Controller.prototype = {
+EventListener.prototype = {
 	listenToClick: function() {
 		$('#addtruck').on('click', function(){
   			console.log('yo')
@@ -23,6 +23,18 @@ TabBarWidget.Controller.prototype = {
   			$('#truckownerreadme').slideDown('slow');
 		});
 
+		$('form.new_truck').submit(function(e) {
+		    e.preventDefault();
+
+		    $.ajax({
+		      type: 'POST',
+		      url: '/addtruck',
+		      data: $(this).serialize()
+		    }).done(function() {
+		     document.getElementById("new_truck").reset();
+		     $('#usersubmitform').hide();
+		   })
+  		})
  	},
 	listenToClose: function() {
 		$(document).on('click', '#close', function(e){

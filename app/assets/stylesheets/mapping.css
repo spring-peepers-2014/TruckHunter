@@ -44,11 +44,11 @@ body {
    display: none;
 }
 
-.Absolute-Center {
+/*.Absolute-Center {
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
- }
+ }*/
 
 #map img {
   position: absolute;
@@ -57,7 +57,7 @@ body {
   margin-left: 5px;
 }
 
- #map .marker-title {
+#map .marker-title {
   margin-left: 65px;
  }
 

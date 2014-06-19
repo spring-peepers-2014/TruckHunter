@@ -82,12 +82,25 @@
 	background-color: rgba(0, 0, 0, .70);
 	border-radius: 20px;
 	text-align: center;
-	font-size: 2em;
+	font-size: 25px;
 	color: #fff;
 	font-family: 'lato';
 }
 
+/*form {
+	padding-top: 30px;
+}
+*/
+.new_truck input {
+	width: 200px;
+	height: 25px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
 
+.new_truck input[name="commit"] {
+	background-color: #fff;
+}
 
 #truckownerreadme {
 	width: 500px;

@@ -1,7 +1,9 @@
 <%= form_for @truck do |f| %>
-	<%= f.label :name %>
-	<%= f.text_area :name %><br>
+	<br><%= f.label :name %>
+	<%= f.text_field :name %><br>
 	<%= f.label :twitter_handle %>
-	<%= f.text_area :twitter_handle %>
+	<%= f.text_field :twitter_handle %><br>
+	<%= f.label :address %>
+	<%= f.text_field :address %><br><br>
 	<%= f.submit "edit truck"%>
 <% end %>

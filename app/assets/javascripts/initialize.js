@@ -3,5 +3,6 @@ $(document).ready(function(){
   var mapView = new MapWidget.View(map);
   var mapController = new MapWidget.Controller(mapView);
   var searchBarController = new SearchBarWidget.Controller(mapView);
-  var eventListener = new EventListener();
+  var eventListener = new EventListener(mapView);
+
 });

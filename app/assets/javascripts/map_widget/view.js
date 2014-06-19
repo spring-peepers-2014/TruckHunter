@@ -91,6 +91,10 @@ MapWidget.View.prototype = {
 			console.log(response);
 			$('#header').append(response);
 		});
+	},
+
+	closeEverything: function() {
+		$('#usersubmit')
 	}
 
 };

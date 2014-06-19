@@ -1,11 +1,11 @@
 #addtruck, #findme  {
 	position: absolute;
 	bottom: 5px;
-	left: 5px;
+	left: 10px;
 	width: 50px;
 	height: 50px;
 	background-color: #000;
-	box-shadow: 3px 6px 12px #000000;
+	/*box-shadow: 3px 6px 12px #000000;*/
 	border-radius: 10px;
 	font-family: 'lato';
 	text-align: center;
@@ -57,6 +57,7 @@
 	font-size: 2em;
 	cursor: pointer;
 	font-family: 'open sans';
+	padding: 0 10px;
 }
 
 
@@ -72,7 +73,7 @@
 #usersubmitform {
 	position: absolute;
 	width: 500px;
-	height: 300px;
+	height: 210px;
 	display: none;
 	left: 0;
 	right: 0;
@@ -85,21 +86,26 @@
 	font-size: 25px;
 	color: #fff;
 	font-family: 'lato';
+	padding-top: 40px;
 }
 
-/*form {
-	padding-top: 30px;
-}
-*/
+/*.new_truck form {
+	margin-top: 30px;
+}*/
+
 .new_truck input {
 	width: 200px;
 	height: 25px;
 	border-radius: 5px;
 	margin-bottom: 15px;
+	padding: 5px;
 }
 
-.new_truck input[name="commit"] {
+input[type="commit"] {
 	background-color: #fff;
+	width: 200px;
+	height: 25px;
+	padding: 5px;
 }
 
 #truckownerreadme {

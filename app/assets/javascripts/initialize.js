@@ -1,13 +1,13 @@
 $(document).ready(function(){
-  var map = L.mapbox.map('map').setView([40.75, -73.97], 13);
+  var map = L.mapbox.map('map', 'inslee.igapaca7').setView([40.75, -73.97], 13);
 	
-  var loader = document.getElementById('loader');
+  // var loader = document.getElementById('loader');
   
-  startLoading();
+  // startLoading();
 
-  L.mapbox.tileLayer('inslee.igapaca7')
-      .addTo(map) // add your tiles to the map
-      .on('load', finishedLoading); // when the tiles load, remove the screen
+  // L.mapbox.tileLayer('inslee.igapaca7')
+  //     .addTo(map) // add your tiles to the map
+  //     .on('load', finishedLoading); // when the tiles load, remove the screen
 
   var mapView = new MapWidget.View(map);
 

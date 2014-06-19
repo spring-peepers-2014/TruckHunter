@@ -4,34 +4,35 @@ body {
 }
 
 #map {
-  position:absolute;
+  position: absolute;
   top:0;
   bottom:0;
   width:100%;
-  margin-top: 80px;
-  /*margin-bottom: 60px;*/
+  margin-top: 70px;
 }
 
 #header {
   position: fixed !important;
   width: 100%;
-  z-index: 10000;
-  height: 70px;
+  z-index: 100;
+  height: 50px;
   background-color: #2F2F4F;
   padding-left: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
   padding-top: 0px;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
 }
 
 
-#header h1 {
-	font-family: 'Wendy One', sans-serif;
+#header h2 {
+	font-family: 'poiret one', sans-serif;
 	text-shadow: 1px 1px 3px #000000;
-	font-size: 80px;
-	padding-top: 0px;
-	margin-top: 0px;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  margin-top: 5px;
+  padding: 0;
   float: left;
   color: white;
 }
@@ -41,7 +42,6 @@ body {
    height:100%; 
    background:url('/assets/loader.gif') center center no-repeat;
    display: none;
-
 }
 
 .Absolute-Center {
@@ -50,13 +50,25 @@ body {
   top: 0; left: 0; bottom: 0; right: 0;
  }
 
-
-/*#footer {
-	border-top: 1px solid black;
-	background-color: #eee;
-  position:fixed;
-  left:0;
-  bottom:0;  
-  width: 100%;
+#map img {
+  position: absolute;
+  top: 0;
+  margin-top: 10px;
+  margin-left: 5px;
 }
-*/
+
+ #map .marker-title {
+  margin-left: 65px;
+ }
+
+.marker-description {
+  margin-left: 5px;
+}
+
+.marker-description a {
+  position: absolute;
+  top: 0;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+

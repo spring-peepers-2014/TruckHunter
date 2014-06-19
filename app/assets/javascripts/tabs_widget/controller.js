@@ -5,19 +5,32 @@ TabBarWidget.Controller = function() {
 
 TabBarWidget.Controller.prototype = {
 	listenToClick: function() {
-		$('#truckownertab').on('click', function(){
-			$('#readme').show();
+		$('#addtruck').on('click', function(){
+  			console.log('yo')
+  			$('#usersubmit').show();
+  			$('#truckowner').show();
 		});
 
-		$('#newtrucktab').on('click', function(){
-  			$('#newtruckform').show();
+		$('#usersubmit').on('click', function(){
+  			$('#truckowner').hide();
+  			$(this).hide()
+  			$('#usersubmitform').slideDown('slow');
 		});
+
+		$('#truckowner').on('click', function(){
+			$('#usersubmit').hide();
+  			$(this).hide();
+  			$('#truckownerreadme').slideDown('slow');
+		});
+
  	},
 	listenToClose: function() {
 		$(document).on('click', '#close', function(e){
   			$('#popup').remove();
   			$('#readme').hide();
   			$('#newtruckform').hide();
+  			$('#usersubmitform').hide();
+  			$('#truckownerreadme').hide();
 		})
 	}
 }

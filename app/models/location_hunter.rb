@@ -19,7 +19,6 @@ class LocationHunter
 		match
 	end
 
-
 	def self.get_coordinates(tweet_body)
 		match = parse_tweet(tweet_body)
 		cleaned_match = clean_match(match)

@@ -7,9 +7,9 @@ class Truck < ActiveRecord::Base
 
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
-	
+
 	before_save :geocode
-	
+
 	before_save do
 		self.name.downcase!
 	end

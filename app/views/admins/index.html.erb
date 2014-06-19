@@ -18,7 +18,7 @@
 	      <td><%= truck.name %></td>
 	      <td><a href="https://twitter.com/<%= truck.twitter_handle %>"><%= truck.twitter_handle %></a></td>
 	      <td><%= link_to "approved!", truck_approve_path(truck) %></td>
-	      <td><%= link_to "edit truck", edit_truck_path(truck)%></td>
+	      <td><%= link_to "edit truck", edit_truck_path(truck), id: 'edit_truck'%></td>
 	      <td><%= link_to "kill truck", truck_path(truck), method: :delete %></td>
 	    </tr>
 	  <% end %>

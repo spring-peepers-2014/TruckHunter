@@ -5,8 +5,9 @@ class SearchbarController < ApplicationController
 
 	def create
 		@truck = Truck.find_by_name(params[:name])
-		if @truck
-			render partial: "index", locals: {truck: @truck}
+		if @truck 
+			@last_tweet = @truck.tweets.last
+			render partial: "index", locals: {truck: @truck, last_tweet: @last_tweet}
 		else
 			render partial: "does_not_exist"
 		end

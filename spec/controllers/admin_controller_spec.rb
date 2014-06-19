@@ -15,13 +15,6 @@ describe AdminsController, :type => :controller do
 		end
 	end
 
-	describe 'POST #create' do
-		it "if admin is authenticated, it redirects to admin's page" do
-			post :create, admin: Admin.new(username: "admin", password_digest: "password")
-			expect(response).to redirect_to admins_page(assigns[:admin])
-		end
-	end
-
 	describe 'GET #new' do
 		it "renders the login page for admin" do
 			get :new
@@ -29,13 +22,20 @@ describe AdminsController, :type => :controller do
 		end
 	end
 
-	describe 'POST #destroy' do
-		it "logs out and directs to homagepage" do
-			expect(response).to redirect_to root_path
+	describe 'POST #create' do
+		it "if admin is authenticated, it redirects to admin's page" do
+			post :create, {admin: {username: 'admin', password: 'password'}}
+
+			expect(response).to redirect_to admins_page_path
 		end
 	end
 
 
-
+	describe 'DELETE #destroy' do
+		it "logs out and directs to homagepage" do
+	    delete :destroy
+			expect(response).to redirect_to root_path
+		end
+	end
 
 end

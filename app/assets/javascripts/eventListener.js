@@ -1,22 +1,27 @@
-EventListener = function() {
+EventListener = function(view) {
+	this.view = view;
 	this.listenToClick();
 	this.listenToClose();
 }
 
 EventListener.prototype = {
 	listenToClick: function() {
+		var self = this;
 		$('#addtruck').on('click', function(){
+			self.view.closePopUp();
   			$('#usersubmit').show();
   			$('#truckowner').show();
 		});
 
 		$('#usersubmit').on('click', function(){
+			self.view.closePopUp();
   			$('#truckowner').hide();
   			$(this).hide()
   			$('#usersubmitform').slideDown('slow');
 		});
 
 		$('#truckowner').on('click', function(){
+			self.view.closePopUp();
 			$('#usersubmit').hide();
   			$(this).hide();
   			$('#truckownerreadme').slideDown('slow');

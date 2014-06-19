@@ -90,6 +90,7 @@ MapWidget.View.prototype = {
 		}).done(function(response){
 			console.log(response);
 			$('#header').append(response);
+			console.log('attached!')
 		});
 	},
 

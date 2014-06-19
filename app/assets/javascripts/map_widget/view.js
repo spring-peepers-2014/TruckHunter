@@ -94,7 +94,11 @@ MapWidget.View.prototype = {
 	},
 
 	closeEverything: function() {
-		$('#usersubmit')
+		$('#usersubmit').hide();
+		$('#truckowner').hide();
+		$('#usersubmitform').hide();
+		$('#truckownerreadme').hide();	
+		$('#popup').hide();
 	}
 
 };

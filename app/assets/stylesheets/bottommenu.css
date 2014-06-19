@@ -99,13 +99,14 @@
 	border-radius: 5px;
 	margin-bottom: 15px;
 	padding: 5px;
+	font-size: 20px;
 }
 
-input[type="commit"] {
+input[name="commit"] {
+	font-size: 15px;
 	background-color: #fff;
-	width: 200px;
-	height: 25px;
-	padding: 5px;
+	width: 210px;
+	height: 35px;
 }
 
 #truckownerreadme {

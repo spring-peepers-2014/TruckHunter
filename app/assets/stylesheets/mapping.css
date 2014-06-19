@@ -53,11 +53,12 @@ body {
 #map img {
   position: absolute;
   top: 0;
-  margin-top: 10px;
+  margin-top: 25px;
   margin-left: 5px;
 }
 
 #map .marker-title {
+  margin-top: 15px;
   margin-left: 65px;
  }
 
@@ -68,7 +69,9 @@ body {
 .marker-description a {
   position: absolute;
   top: 0;
-  margin-top: 30px;
+  margin-top: 40px;
   margin-left: 60px;
 }
+
+
 

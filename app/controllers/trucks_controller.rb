@@ -36,10 +36,10 @@ class TrucksController < ApplicationController
   def update
     truck = Truck.find(params[:id])
     truck.update_attributes(truck_params)
+    truck.update_attributes(location_last_updated: Time.now)
     truck.save
 
     redirect_to admins_path
-
   end
 
   def destroy
@@ -53,7 +53,7 @@ class TrucksController < ApplicationController
   private
 
   def truck_params
-    params.require(:truck).permit(:name, :twitter_handle)
+    params.require(:truck).permit(:name, :twitter_handle, :address, :location_last_updated)
   end
 
    def load_truck

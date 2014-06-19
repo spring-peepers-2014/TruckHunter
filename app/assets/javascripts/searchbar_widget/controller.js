@@ -62,7 +62,6 @@ SearchBarWidget.Controller.prototype = {
 
 	sendCoordinates: function() {
 		var newCoordinates =this.searchedTruckMarker.geometry.coordinates;
-		console.log(newCoordinates)
 		this.view.redraw(this.searchedTruckMarker, newCoordinates);
 	},
 

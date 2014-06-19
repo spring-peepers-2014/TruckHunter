@@ -26,7 +26,7 @@ class TruckPresenter
 				json.properties do
 					json.title truck.name
 					json.description  "<img src='#{truck.profile_img_url}' /><br><a href='http://twitter.com/#{truck.twitter_handle}' target='_blank'>@"+truck.twitter_handle+"</a>
-					<br><i>"+truck.tweets.last.body+"</i><br>Tweeted on "+(truck.tweets.last.tweet_time).in_time_zone.strftime("%b %e, %l:%M %p")
+					<br><i>"+truck.tweets.last.body+"</i><br><span class='tweettime'>Tweeted on "+(truck.tweets.last.tweet_time).in_time_zone.strftime("%b %e, %l:%M %p")+"</span>"
 					
 					json.icon do
 						json.iconUrl "/assets/foodTruck.png"

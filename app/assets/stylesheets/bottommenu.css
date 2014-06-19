@@ -7,7 +7,6 @@
 	background-color: #000;
 	/*box-shadow: 3px 6px 12px #000000;*/
 	border-radius: 10px;
-	font-family: 'lato';
 	text-align: center;
 	cursor: pointer;
 }
@@ -85,15 +84,13 @@
 	text-align: center;
 	font-size: 25px;
 	color: #fff;
-	font-family: 'lato';
+	font-family: 'open sans';
 	padding-top: 40px;
 }
 
-/*.new_truck form {
-	margin-top: 30px;
-}*/
 
 .new_truck input {
+	font-size: 20px;
 	width: 200px;
 	height: 25px;
 	border-radius: 5px;
@@ -101,11 +98,13 @@
 	padding: 5px;
 }
 
-input[type="commit"] {
+input[name="commit"] {
+	font-size: 15px;
 	background-color: #fff;
 	width: 200px;
-	height: 25px;
+	height: 30px;
 	padding: 5px;
+	margin-bottom: 15px;
 }
 
 #truckownerreadme {
@@ -124,5 +123,5 @@ input[type="commit"] {
 	text-align: center;
 	font-size: 1em;
 	color: #fff;
-	font-family: 'asap';
+	font-family: 'open sans';
 }

@@ -9,22 +9,26 @@ EventListener.prototype = {
 		var self = this;
 		$('#addtruck').on('click', function(){
 			self.view.closePopUp();
+			self.view.closeEverything();
   			$('#usersubmit').show();
   			$('#truckowner').show();
 		});
 
 		$('#usersubmit').on('click', function(){
 			self.view.closePopUp();
-  			$('#truckowner').hide();
-  			$(this).hide()
+  			self.view.closeEverything();
   			$('#usersubmitform').slideDown('slow');
 		});
 
 		$('#truckowner').on('click', function(){
 			self.view.closePopUp();
-			$('#usersubmit').hide();
-  			$(this).hide();
+  			self.view.closeEverything();
   			$('#truckownerreadme').slideDown('slow');
+		});
+
+		$('findme').on('click', function() {
+			self.view.closeEverything();
+			console.log('yo')
 		});
 
 		$('form.new_truck').submit(function(e) {

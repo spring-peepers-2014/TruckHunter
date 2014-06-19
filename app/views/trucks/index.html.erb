@@ -26,9 +26,7 @@
 <div id="usersubmitform">
 	<div id="close"><text>&#10005;</text></div>
 		<%= form_for @newtruck, url: "/addtruck" do |f| %>
-			<!-- Truck's Name:<br> -->
 			<%= f.text_field :name, placeholder: "truck's name" %><br>
-			<!-- Twitter Handle: <br> -->
 			<%= f.text_field :twitter_handle, placeholder: "twitter handle" %><br>
 			<%= f.submit "let us know!"%>
 		<% end %>

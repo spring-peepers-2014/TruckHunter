@@ -41,9 +41,9 @@ SearchBarWidget.Controller.prototype = {
 			dataType: 'json'
 		}).done(function(response){
 			for (var i =0; i < response.length; i++) {
-				self.currentTrucks.push(response[i]);
-				console.log(response[i].properties.title)
-
+				self.currentTrucks.push(response[i])
+				console.log('yo')
+				console.log(response)
 			}
 		});
 	},
@@ -60,10 +60,8 @@ SearchBarWidget.Controller.prototype = {
 
 	sendCoordinates: function() {
 		var newCoordinates =this.searchedTruckMarker.geometry.coordinates;
-		console.log(newCoordinates)
 		this.view.redraw(this.searchedTruckMarker, newCoordinates);
 	},
-
 
 
 ///////auto completition methods

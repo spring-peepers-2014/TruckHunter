@@ -8,6 +8,7 @@
 	padding: 30px;
 	border-radius: 10px;
 	background-color: rgba(0, 0, 0, .70);
+	z-index: 500;
 }
 
 #close {

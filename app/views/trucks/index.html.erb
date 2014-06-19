@@ -9,16 +9,15 @@
 
 <div id='map' class='dark'></div>
 
-<!-- <div id="loader"><span class="message"><img src="/assets/loader.gif"></span></div> -->
 
 <div id="addtruck">
-	<img src='/assets/addtruckicon.png'></img>	
+	<img src='/assets/addtruckplus.png'></img>	
 </div>
+
 
 <div id="findme">
 	<img id="geolocate" src='/assets/gpslogo.png'></img>
 </div>
-
 
 
 <div id="usersubmit">
@@ -28,17 +27,17 @@
 <div id="usersubmitform">
 	<div id="close"><text>&#10005;</text></div>
 		<%= form_for @newtruck, url: "/addtruck" do |f| %>
-			<!-- Truck's Name:<br> -->
 			<%= f.text_field :name, placeholder: "truck's name" %><br>
-			<!-- Twitter Handle: <br> -->
 			<%= f.text_field :twitter_handle, placeholder: "twitter handle" %><br>
 			<%= f.submit "let us know!"%>
 		<% end %>
 </div>
 
+
 <div id="truckowner">
 	<p>how do i get my food truck on this awesome map?!</p>
 </div>
+
 
 <div id="truckownerreadme">
 	<div id="close"><text>&#10005;</text></div>

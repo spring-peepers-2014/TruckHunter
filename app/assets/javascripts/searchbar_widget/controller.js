@@ -26,6 +26,7 @@ SearchBarWidget.Controller.prototype = {
     		else {
     			$('#popup').remove();
     			self.view.closePopUp();
+    			self.view.closeEverything();
     			self.view.renderPartial(searchString);
     		}
   			$('form')[0].reset();

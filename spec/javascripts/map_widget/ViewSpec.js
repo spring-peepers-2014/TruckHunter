@@ -2,7 +2,8 @@ describe("A View", function() {
 
 
   beforeEach(function() {
-    viewer = new MapWidget.View(map);
+    var map = L.mapbox.map('map').setView([40.75, -73.97], 13);
+    var viewer = new MapWidget.View(map);
   });
 
   it("creates a new instance", function(){

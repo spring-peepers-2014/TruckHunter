@@ -37,8 +37,6 @@ MapWidget.View.prototype = {
 			};
 		}
 
-		// Once we've got a position, zoom and center the map
-		// on it, and add a single marker.
 		map.on('locationfound', function(e) {
 			map.fitBounds(e.bounds).setView([e.latlng.lat, e.latlng.lng],15);
 
@@ -54,12 +52,10 @@ MapWidget.View.prototype = {
 					'marker-symbol': 'star'
 				}
 			});
-		// And hide the geolocation button
+
 		geolocate.parentNode.removeChild(geolocate);
 		});
 
-		// If the user chooses not to allow their location
-		// to be shared, display an error message.
 		map.on('locationerror', function() {
 			geolocate.innerHTML = 'Position could not be found';
 		});
@@ -69,7 +65,6 @@ MapWidget.View.prototype = {
 			this.map.setView([newCoordinates[1], newCoordinates[0]], [15]);
 			this.openPopUp(searchedMarker);
 	},
-
 
 	openPopUp: function(searchedMarker) {
 		var self = this;

@@ -1,14 +1,15 @@
 #searchform {
   float: right;
   top: 0;
-  margin-top: 25px;
+  margin-top: 18px;
 }
 
 #autocomplete {
   font-size: 1.5em;
   font-family: 'lato';
   width: 400px;
-  height: 40px;
+  height: 30px;
+  padding: 2px;
   margin-right: 60px;
   border-radius: 8px;
 }

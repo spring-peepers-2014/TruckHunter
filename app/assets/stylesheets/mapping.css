@@ -14,12 +14,9 @@ body {
 #header {
   position: fixed !important;
   width: 100%;
-  z-index: 100;
   height: 50px;
   background-color: #2F2F4F;
-  padding-left: 30px;
-  padding-bottom: 25px;
-  padding-top: 0px;
+  padding: 0 0 25px 30px;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
 }
@@ -36,19 +33,6 @@ body {
   float: left;
   color: white;
 }
-
-#loading {
-   width:100%; 
-   height:100%; 
-   background:url('/assets/loader.gif') center center no-repeat;
-   display: none;
-}
-
-/*.Absolute-Center {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
- }*/
 
 #map img {
   position: absolute;

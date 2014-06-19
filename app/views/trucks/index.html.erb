@@ -17,18 +17,18 @@
 	<img id="geolocate" src='/assets/gps.png'></img>
 </div>
 
-<div id="loader"><span class="message"><img src="/assets/loader.gif"></span></div>
-
+<!-- <div id="loader"><span class="message"><img src="/assets/loader.gif"></span></div>
+ -->
 <div id="usersubmit">
 	<p>i know a freaking amazing truck that i want to share with the world.</p>
 </div>
 
 <div id="usersubmitform">
-	<span id="close">&#10005;<span>
+	<div id="close"><text>&#10005;</text></div>
 		<%= form_for @newtruck, url: "/addtruck" do |f| %>
-			Truck <%= f.label :name %><br>
+			Truck's Name:<br>
 			<%= f.text_field :name%><br>
-			Truck's <%= f.label :twitter_handle %> <br>
+			Twitter Handle: <br>
 			<%= f.text_field :twitter_handle %><br>
 			<%= f.submit "let us know!"%>
 		<% end %>
@@ -39,7 +39,7 @@
 </div>
 
 <div id="truckownerreadme">
-	<span id="close">&#10005;<span>
+	<div id="close"><text>&#10005;</text></div>
 	<h2>wanna be on our map?</h2>
 	<p>TruckHunter parses food truck's tweets to determine your location. We first check to see if your tweet is geo-tagged, and then use the coordinates to plot the food truck marker on our map. If your tweet is not geo-tagged, we then parse through the tweet to grab any text mentioning a location. We pull tweets out every hour, and when a user visits our app, we make sure to display the most recent tweets. <p>
 

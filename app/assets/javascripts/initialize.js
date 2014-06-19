@@ -43,10 +43,8 @@ $(document).ready(function(){
       url: '/addtruck',
       data: $(this).serialize()
     }).done(function() {
-     // document.getElementById("new_truck").reset();
-     $('#newtruckform form')[0].reset();
-     $('#newtruckform').hide();
-     // console.log(response)
+     document.getElementById("new_truck").reset();
+     $('#usersubmitform').hide();
    })
   })
 

@@ -20,7 +20,6 @@ class TrucksController < ApplicationController
   def addtruck
     twitter_handle = params[:truck][:twitter_handle].gsub('@','')
     @newtruck = Truck.create(name: params[:truck][:name], twitter_handle: twitter_handle, approved: false)
-    # @message = "thanks! we'll check it soon!"
     render :index
   end
 

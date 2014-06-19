@@ -11,36 +11,40 @@
 	background-color: rgba(0, 0, 0, .70);
 }
 
-#popup p {
+#close {
+	position: absolute;
+	padding: 10px;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+}
+
+
+
+
+
+/*#popup p {
 	font-size: 24px;
 	margin-left: 10px;
 	font-weight: normal;
 	font-family: 'roboto';
 }
 
-
-#popup #doesnotexist {
-	margin-left: 0;
-}
-
-p span {
+#time{
 	font-size: 15px;
 	font-style: normal;
 }
+
 #popup a {
 	font-size: 30px;
 	font-weight: bold;
 	color: #0099ff;
 	font-family: 'oxygen';
 }
+*/
 
-#close {
-	margin-left: 115px;
-	cursor: pointer;
-}
-
-
+/*
 #popup img {
 	float: left;
 	margin-right: 10px;
-}
+}*/

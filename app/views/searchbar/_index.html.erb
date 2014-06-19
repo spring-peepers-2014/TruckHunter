@@ -1,12 +1,12 @@
 <div id="popup">
-	<span id="close">&#10005;<span>
+	<div id="close"><text>&#10005;</text></div>
 
 	<%= link_to "#{@truck.twitter_handle}", "http://twitter.com/#{@truck.twitter_handle}"%>
 	<img src=<%="#{@truck.profile_img_url}"%>></img>
 	
 	<% if @last_tweet %>
 		<p><%= @last_tweet.body %><br>
-			<span><%= @truck.tweets.last.tweet_time.strftime('%l:%M %p') %></span>
+			<span id="time"><%= @truck.tweets.last.tweet_time.strftime('%l:%M %p') %></span>
 		</p>
 	<% else %>
 		<p>we do not have any recent tweets for this truck!</p>

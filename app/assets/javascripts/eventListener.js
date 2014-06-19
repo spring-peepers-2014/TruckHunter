@@ -33,6 +33,11 @@ EventListener.prototype = {
 			self.view.closeEverything();
 		});
 
+		$('img').on('click', function() {
+			console.log('sup')
+		});
+
+
 		$('form.new_truck').submit(function(e) {
 		    e.preventDefault();
 

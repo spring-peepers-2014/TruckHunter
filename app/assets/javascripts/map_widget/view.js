@@ -3,7 +3,7 @@ MapWidget.View = function(map) {
 	this.map = map;
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
 	this.draw();
-
+  this.userLocator();
 };
 
 MapWidget.View.prototype = {
@@ -18,7 +18,7 @@ MapWidget.View.prototype = {
 		});
 
 		this.layer.loadURL('/trucks/new.json');
-		this.userLocator();
+    
 	},
 
 	userLocator: function() {

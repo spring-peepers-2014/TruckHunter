@@ -64,6 +64,7 @@ body {
 
 .marker-description {
   margin-left: 5px;
+  padding-bottom: 5px;
 }
 
 .marker-description a {
@@ -73,10 +74,6 @@ body {
   margin-left: 60px;
 }
 
-.leaflet-popup  leaflet-zoom-animated {
-  margin-left: 200px;
-  border: 2px solid black;
-}
 
 .tweettime {
   font-size: 12px;

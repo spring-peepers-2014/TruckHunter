@@ -1,7 +1,7 @@
 class TweetManager
 
 	def self.fetch_tweets!(twitter_handle)
-		trucks_tweets = CLIENT.user_timeline(twitter_handle, count: 5, exclude_replies: true)
+		trucks_tweets = (TwitterClient.instance.client).user_timeline(twitter_handle, count: 5, exclude_replies: true)
 		return trucks_tweets.select { |tweet| (Time.now - tweet.created_at) < 86400 }
 	end
 

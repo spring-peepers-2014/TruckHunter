@@ -89,16 +89,11 @@
 	padding-top: 40px;
 }
 
-/*.new_truck form {
-	margin-top: 30px;
-}*/
-
 .new_truck input {
 	width: 200px;
 	height: 25px;
 	border-radius: 5px;
 	margin-top: 15px;
-	/*margin-bottom: 15px;*/
 	padding: 5px;
 	font-size: 20px;
 }
@@ -113,10 +108,9 @@ input[name="commit"] {
 #truckownerreadme {
 	width: 500px;
 	height: 450px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 40px;
+	padding-right: 40px;
 	padding-top: 30px;
-	/*padding: 0 30px;*/
 	position: absolute;
 	display: none;
 	left: 0;
@@ -129,5 +123,5 @@ input[name="commit"] {
 	text-align: center;
 	font-size: 1em;
 	color: #fff;
-	font-family: 'asap';
+	font-family: 'open sans';
 }

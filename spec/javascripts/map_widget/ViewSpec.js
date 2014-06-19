@@ -1,4 +1,4 @@
-describe("A View", function() {
+xdescribe("A View", function() {
 
 
   beforeEach(function() {
@@ -39,7 +39,7 @@ describe("A View", function() {
 
   describe("#redraw", function() {
 
-    it("should display map", function() {
+    it("", function() {
 
     });
 
@@ -48,15 +48,15 @@ describe("A View", function() {
 
   describe("#openPopUp", function() {
 
-    it("should display map", function() {
+    it("", function() {
 
     });
 
   });
 
-  describe("#clsePopUp", function() {
+  describe("#colsePopUp", function() {
 
-    it("should display map", function() {
+    it("", function() {
 
     });
 
@@ -64,7 +64,7 @@ describe("A View", function() {
 
   describe("#renderPartial", function() {
 
-    it("should display map", function() {
+    it("", function() {
 
     });
 

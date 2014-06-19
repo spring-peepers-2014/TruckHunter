@@ -73,5 +73,9 @@ body {
   margin-left: 60px;
 }
 
+.leaflet-popup  leaflet-zoom-animated {
+  margin-left: 200px;
+  border: 2px solid black;
+}
 
 

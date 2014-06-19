@@ -44,6 +44,7 @@ EventListener.prototype = {
 		   })
   		})
  	},
+  
 	listenToClose: function() {
 		$(document).on('click', '#close', function(e){
   			$('#popup').remove();

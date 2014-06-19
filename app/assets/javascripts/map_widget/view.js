@@ -1,7 +1,9 @@
 MapWidget.View = function(map) {
+
 	this.map = map;
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
 	this.draw();
+  this.userLocator();
 };
 
 MapWidget.View.prototype = {
@@ -16,7 +18,7 @@ MapWidget.View.prototype = {
 		});
 
 		this.layer.loadURL('/trucks/new.json');
-		this.userLocator();
+    
 	},
 
 	userLocator: function() {
@@ -35,8 +37,6 @@ MapWidget.View.prototype = {
 			};
 		}
 
-		// Once we've got a position, zoom and center the map
-		// on it, and add a single marker.
 		map.on('locationfound', function(e) {
 			map.fitBounds(e.bounds).setView([e.latlng.lat, e.latlng.lng],15);
 
@@ -52,12 +52,10 @@ MapWidget.View.prototype = {
 					'marker-symbol': 'star'
 				}
 			});
-		// And hide the geolocation button
+
 		geolocate.parentNode.removeChild(geolocate);
 		});
 
-		// If the user chooses not to allow their location
-		// to be shared, display an error message.
 		map.on('locationerror', function() {
 			geolocate.innerHTML = 'Position could not be found';
 		});
@@ -68,21 +66,20 @@ MapWidget.View.prototype = {
 			this.openPopUp(searchedMarker);
 	},
 
-
 	openPopUp: function(searchedMarker) {
 		var self = this;
 		this.layer.eachLayer(function(marker){
 			if (marker.feature.properties.title == searchedMarker.properties.title){
 				marker.openPopup();
 			}
-		})
+    });
 	},
 
 	closePopUp: function(){
 		var self = this;
 		this.layer.eachLayer(function(marker){
 			marker.closePopup();
-			})
+    });
 	},
 
 	renderPartial: function(searchString) {
@@ -91,10 +88,9 @@ MapWidget.View.prototype = {
 			url: '/searchbar',
 			data: {name: searchString}
 		}).done(function(response){
-			console.log(response)
-			$('#header').append(response)
-		})
-
+			console.log(response);
+			$('#header').append(response);
+		});
 	},
 
 	closeEverything: function() {

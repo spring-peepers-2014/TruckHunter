@@ -1,27 +1,74 @@
 describe("A View", function() {
-  
+
+
   beforeEach(function() {
-  	viewer = new MapWidget.View();
+    var map = L.mapbox.map('map').setView([40.75, -73.97], 13);
+    var viewer = new MapWidget.View(map);
   });
 
-  it("should be defined", function() {
+  it("creates a new instance", function(){
     expect(viewer).toBeDefined();
   });
 
-  it("should have set up map", function() {
-  	expect(viewer.map).toBeDefined();
+  it("should be initialized with map", function() {
+    expect(viewer.map).toBeDefined();
+
+  });
+  
+  it("should be initialized with layer", function() {
+    expect(viewer.layer).toBeDefined();
+
   });
 
   describe("#draw", function() {
 
-  	it("should make an AJAX request to the correct URL", function() {
-    	spyOn($, "ajax");
-    	MapWidget.View.map();
-    	expect($.ajax.mostRecentCall.args[0]["url"]).toEqual("/trucks/new.json");
-		});
+    it("should display map", function() {
+      expect(viwer.draw).toBeDefined();
+
+    });
 
   });
 
+  describe("#userLocator", function() {
+
+    it("", function() {
+
+    });
+
+  });
+
+  describe("#redraw", function() {
+
+    it("should display map", function() {
+
+    });
+
+  });
+
+
+  describe("#openPopUp", function() {
+
+    it("should display map", function() {
+
+    });
+
+  });
+
+  describe("#clsePopUp", function() {
+
+    it("should display map", function() {
+
+    });
+
+  });
+
+  describe("#renderPartial", function() {
+
+    it("should display map", function() {
+
+    });
+
+  });
 
 
 });

@@ -94,7 +94,14 @@ MapWidget.View.prototype = {
 	},
 
 	closeEverything: function() {
-		$('#usersubmit')
+		var clickableObjects = []
+		clickableObjects.push($('#usersubmit'))
+		clickableObjects.push($('#truckowner'))
+		clickableObjects.push($('#usersubmitform'))
+		clickableObjects.push($('#truckownerreadme'))
+		for (var i = 0; i < clickableObjects.length; i++) {
+			clickableObjects[i].hide();
+		}
 	}
 
 };

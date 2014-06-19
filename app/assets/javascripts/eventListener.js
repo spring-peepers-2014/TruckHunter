@@ -31,7 +31,6 @@ EventListener.prototype = {
 
 		$('findme').on('click', function() {
 			self.view.closeEverything();
-			console.log('yo')
 		});
 
 		$('form.new_truck').submit(function(e) {
@@ -46,6 +45,7 @@ EventListener.prototype = {
 		     $('#usersubmitform').hide();
 		   })
   		})
+
  	},
   
 	listenToClose: function() {

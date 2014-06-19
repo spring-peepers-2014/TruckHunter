@@ -97,5 +97,9 @@ MapWidget.View.prototype = {
 
 	},
 
+	closeEverything: function() {
+		$('#usersubmit')
+	}
+
 };
 

@@ -73,7 +73,7 @@
 #usersubmitform {
 	position: absolute;
 	width: 500px;
-	height: 300px;
+	height: 210px;
 	display: none;
 	left: 0;
 	right: 0;
@@ -86,21 +86,26 @@
 	font-size: 25px;
 	color: #fff;
 	font-family: 'lato';
+	padding-top: 40px;
 }
 
-/*form {
-	padding-top: 30px;
-}
-*/
+/*.new_truck form {
+	margin-top: 30px;
+}*/
+
 .new_truck input {
 	width: 200px;
 	height: 25px;
 	border-radius: 5px;
 	margin-bottom: 15px;
+	padding: 5px;
 }
 
-.new_truck input[name="commit"] {
+input[type="commit"] {
 	background-color: #fff;
+	width: 200px;
+	height: 25px;
+	padding: 5px;
 }
 
 #truckownerreadme {

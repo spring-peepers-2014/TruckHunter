@@ -4,9 +4,6 @@ EventListener = function(view) {
 	this.listenToClose();
 }
 
-
-
-
 EventListener.prototype = {
 	listenToClick: function() {
 		var self = this;
@@ -36,7 +33,6 @@ EventListener.prototype = {
 
 		$('form.new_truck').submit(function(e) {
 		    e.preventDefault();
-
 		    $.ajax({
 		      type: 'POST',
 		      url: '/addtruck',

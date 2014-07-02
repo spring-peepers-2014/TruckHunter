@@ -1,9 +1,8 @@
 MapWidget.View = function(map) {
-
 	this.map = map;
 	this.layer = L.mapbox.featureLayer().addTo(this.map);
 	this.draw();
-  this.userLocator();
+  	this.userLocator();
 };
 
 MapWidget.View.prototype = {
@@ -88,9 +87,7 @@ MapWidget.View.prototype = {
 			url: '/searchbar',
 			data: {name: searchString}
 		}).done(function(response){
-			console.log(response);
 			$('#header').append(response);
-			console.log('attached!')
 		});
 	},
 

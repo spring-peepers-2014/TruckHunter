@@ -1,6 +1,5 @@
 class TrucksController < ApplicationController
 	respond_to :json
-	# before_filter :load_truck, :except => [:index, :create]
 
   def index
     @newtruck = Truck.new

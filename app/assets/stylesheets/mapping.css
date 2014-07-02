@@ -9,7 +9,6 @@ body {
   bottom:0;
   width:100%;
   margin-top: 70px;
-
   z-index: -1;
 }
 
@@ -22,7 +21,6 @@ body {
   margin-bottom: 10px;
   border-bottom: 1px solid black;
 }
-
 
 #header h2 {
 	font-family: 'poiret one', sans-serif;

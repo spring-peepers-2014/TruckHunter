@@ -4,7 +4,6 @@ SearchBarWidget.Controller = function(view) {
 	this.grabTruckMarkers();
 	this.listenForSearch();
 	this.searchedTruckMarker = '';
-
 	this.foodTrucks = [];
 	this.findFoodTrucks();
 	this.autoCompleteThis();
@@ -16,7 +15,6 @@ SearchBarWidget.Controller.prototype = {
 	listenForSearch: function() {
 		var self = this;
 		$('#searchform').on('submit', function(e){
-		console.log("listening....")
 			e.preventDefault();
 			var searchString = $('input[name="foodtruck"]').val().toLowerCase();
 			 if (self.searchTruckMarkersOnMap(searchString)) {
@@ -44,8 +42,6 @@ SearchBarWidget.Controller.prototype = {
 		}).done(function(response){
 			for (var i =0; i < response.length; i++) {
 				self.currentTrucks.push(response[i]);
-				console.log(response[i].properties.title)
-
 			}
 		});
 	},
@@ -65,10 +61,7 @@ SearchBarWidget.Controller.prototype = {
 		this.view.redraw(this.searchedTruckMarker, newCoordinates);
 	},
 
-
-
-///////auto completition methods
-
+///////auto completion methods
 	findFoodTrucks: function() {
 		var self = this;
 		$.ajax({
@@ -82,7 +75,6 @@ SearchBarWidget.Controller.prototype = {
 			}
 		})
 	},
-
 
 	autoCompleteThis: function() {
 		$('#autocomplete').autocomplete({

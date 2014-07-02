@@ -20,7 +20,6 @@ class AdminsController < ApplicationController
 		end
 	end
 
-
 	def destroy
 		session.clear
 		redirect_to root_path

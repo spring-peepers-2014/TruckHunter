@@ -5,7 +5,6 @@
 	width: 50px;
 	height: 50px;
 	background-color: #000;
-	/*box-shadow: 3px 6px 12px #000000;*/
 	border-radius: 10px;
 	font-family: 'lato';
 	text-align: center;
@@ -18,7 +17,6 @@
 	height: 50px;
 }
 
-
 #addtruck img {
 	position: absolute;
 	left: 10px;
@@ -27,7 +25,6 @@
 	height: 30px;
 	display: block;
 }
-
 
 #findme img {
 	z-index: 10000;
@@ -38,7 +35,6 @@
 	height: 37px;
 	display: block;
 }
-
 
 #usersubmit, #truckowner {
 	position: absolute;
@@ -59,7 +55,6 @@
 	font-family: 'open sans';
 	padding: 0 10px;
 }
-
 
 #truckowner {
 	margin-top: 410px;

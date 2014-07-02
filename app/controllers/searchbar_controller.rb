@@ -2,7 +2,6 @@ class SearchbarController < ApplicationController
 
 	respond_to :json
 
-
 	def create
 		@truck = Truck.find_by_name(params[:name])
 		if @truck 
@@ -17,7 +16,6 @@ class SearchbarController < ApplicationController
 		@trucks = Truck.where(approved: true).pluck(:name)
 		render :json => @trucks
 	end
-
 
 end
 
